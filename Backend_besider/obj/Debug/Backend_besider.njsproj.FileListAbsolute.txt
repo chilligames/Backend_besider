@@ -1,0 +1,2 @@
+C:\Users\ph0b14\Desktop\Backend_besider\Backend_besider\obj\Debug\Backend_besider.njsprojAssemblyReference.cache
+C:\Users\ph0b14\Desktop\Backend_besider\Backend_besider\bin\Microsoft.NodejsTools.WebRole.dll

@@ -1,0 +1,19 @@
+{
+  "name": "backend_besider",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app"
+  },
+  "description": "Backend_besider",
+  "author": {
+    "name": "hossynassghary",
+    "email": "hossynassghary@gmail.com ",
+    "url": "http://chilligames.ir"
+  },
+  "dependencies": {
+    "debug": "^2.2.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.3.2"
+  }
+}
