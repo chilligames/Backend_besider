@@ -136,7 +136,7 @@ module.exports.creat_Stone_build = async function (Username, Password, Postion) 
 
 module.exports.recive_info_pos = async function (Postions) {
 
-    var End_result = [];
+    var End_result = { Builds: [] };
 
     //convert and new pos for start
     var C = JSON.parse(Postions);
@@ -163,7 +163,7 @@ module.exports.recive_info_pos = async function (Postions) {
                     let B = Math.pow(N.z - C.z, 2);
 
                     if (Math.sqrt(A + B) <= 80) {
-                        End_result.push(Build_wood);
+                        End_result.Builds.push(Build_wood);
                     }
 
                 });
@@ -182,7 +182,7 @@ module.exports.recive_info_pos = async function (Postions) {
 
                     if (Math.sqrt(A + B) <= 80) {
 
-                        End_result.push(Build_food);
+                        End_result.Builds.push(Build_food);
                     }
 
 
@@ -202,7 +202,7 @@ module.exports.recive_info_pos = async function (Postions) {
 
                     if (Math.sqrt(A + B) <= 80) {
 
-                        End_result.push(Build_stone);
+                        End_result.Builds.push(Build_stone);
                     }
 
 

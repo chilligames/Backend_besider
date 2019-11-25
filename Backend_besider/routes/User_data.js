@@ -120,7 +120,8 @@ router.get("/creat_stone_build", (req, res) => {
 router.get("/recive_data_pos", (req, res) => {
     var Postions = req.headers.postions;
 
-    Raw_DB.recive_info_pos(Postions).then(() => {
+    Raw_DB.recive_info_pos(Postions).then((result) => {
+        res.send(result).end();
 
 
     });
