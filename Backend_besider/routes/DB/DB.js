@@ -159,13 +159,56 @@ module.exports.recive_info_pos = async function (Postions) {
                     N.z = Raw_model.Model_resource.Postion.z;
 
                     //formula for find distance
-                    var A = Math.pow(N.x - C.x, 2);
-                    var B = Math.pow(N.z - C.z, 2);
+                    let A = Math.pow(N.x - C.x, 2);
+                    let B = Math.pow(N.z - C.z, 2);
 
-                    console.log(Math.sqrt(A + B));
+                    if (Math.sqrt(A + B) <= 80) {
+                        End_result.push(Build_wood);
+                    }
 
                 });
 
+                //food
+                Raw_model.Model_User.Builds.Resource_Builds.Food_Build.forEach(Build_food => {
+
+                    //fill values
+                    Raw_model.Model_resource = Build_food;
+                    N.x = Raw_model.Model_resource.Postion.x;
+                    N.z = Raw_model.Model_resource.Postion.z;
+
+                    //formula for find distance
+                    let A = Math.pow(N.x - C.x, 2);
+                    let B = Math.pow(N.z - C.z, 2);
+
+                    if (Math.sqrt(A + B) <= 80) {
+
+                        End_result.push(Build_food);
+                    }
+
+
+                });
+
+                //stone
+                Raw_model.Model_User.Builds.Resource_Builds.Food_Build.forEach(Build_stone => {
+
+                    //fill values
+                    Raw_model.Model_resource = Build_stone;
+                    N.x = Raw_model.Model_resource.Postion.x;
+                    N.z = Raw_model.Model_resource.Postion.z;
+
+                    //formula for find distance
+                    let A = Math.pow(N.x - C.x, 2);
+                    let B = Math.pow(N.z - C.z, 2);
+
+                    if (Math.sqrt(A + B) <= 80) {
+
+                        End_result.push(Build_stone);
+                    }
+
+
+                });
+
+                //other build here
 
             });
 
@@ -174,7 +217,7 @@ module.exports.recive_info_pos = async function (Postions) {
 
     });
 
-
+    return End_result;
 
 
 }
