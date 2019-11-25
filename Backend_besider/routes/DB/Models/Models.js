@@ -41,5 +41,6 @@ exports.Model_resource = {
     "Level": 0,
     "Health": 0,
     "Storage": 0,
-    "Postion": {x:0,y:0,z:0}
+    "Postion": { x: 0, y: 0, z: 0 },
+    "Type_build":0
 }

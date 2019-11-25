@@ -62,17 +62,17 @@ module.exports.recive_values = async function (Username, Password) {
     return JSON.stringify(result);
 }
 
-
+//type 0
 module.exports.creat_wood_build = async function (Username, Password, Postion) {
 
 
+    Raw_model.Model_resource.ID = new Mongo_raw.ObjectId().toHexString();
     Raw_model.Model_resource.Health = 1000;//callibrate
     Raw_model.Model_resource.Level = 1;
     Raw_model.Model_resource.Name = Username + Math.random().toString();
     Raw_model.Model_resource.Postion = JSON.parse(Postion);
     Raw_model.Model_resource.Storage = 10000;//calibrate
-    Raw_model.Model_resource.ID = new Mongo_raw.ObjectId().toHexString();
-
+    Raw_model.Model_resource.Type_build = 0;
 
     await new Mongo_raw.MongoClient(Mongo_string, { useUnifiedTopology: true, useNewUrlParser: true }).connect().then(async connection => {
 
@@ -86,7 +86,7 @@ module.exports.creat_wood_build = async function (Username, Password, Postion) {
     });
 }
 
-
+//type=1
 module.exports.creat_Food_build = async function (Username, Password, Postion) {
 
 
@@ -96,7 +96,7 @@ module.exports.creat_Food_build = async function (Username, Password, Postion) {
     Raw_model.Model_resource.Name = Username + Math.random().toString();
     Raw_model.Model_resource.Postion = JSON.parse(Postion);
     Raw_model.Model_resource.Storage = 10000;//calibrate
-
+    Raw_model.Model_resource.Type_build = 1;
 
     await new Mongo_raw.MongoClient(Mongo_string, { useUnifiedTopology: true, useNewUrlParser: true }).connect().then(async connection => {
 
@@ -110,7 +110,7 @@ module.exports.creat_Food_build = async function (Username, Password, Postion) {
     });
 }
 
-
+//type=2
 module.exports.creat_Stone_build = async function (Username, Password, Postion) {
 
     Raw_model.Model_resource.ID = new Mongo_raw.ObjectId().toHexString();
@@ -119,6 +119,7 @@ module.exports.creat_Stone_build = async function (Username, Password, Postion) 
     Raw_model.Model_resource.Name = Username + Math.random().toString();
     Raw_model.Model_resource.Postion = JSON.parse(Postion);
     Raw_model.Model_resource.Storage = 10000;//calibrate
+    Raw_model.Model_resource.Type_build = 2
 
 
     await new Mongo_raw.MongoClient(Mongo_string, { useUnifiedTopology: true, useNewUrlParser: true }).connect().then(async connection => {
@@ -184,12 +185,10 @@ module.exports.recive_info_pos = async function (Postions) {
 
                         End_result.Builds.push(Build_food);
                     }
-
-
                 });
 
                 //stone
-                Raw_model.Model_User.Builds.Resource_Builds.Food_Build.forEach(Build_stone => {
+                Raw_model.Model_User.Builds.Resource_Builds.Stone_Build.forEach(Build_stone => {
 
                     //fill values
                     Raw_model.Model_resource = Build_stone;
@@ -204,8 +203,6 @@ module.exports.recive_info_pos = async function (Postions) {
 
                         End_result.Builds.push(Build_stone);
                     }
-
-
                 });
 
                 //other build here
@@ -216,6 +213,7 @@ module.exports.recive_info_pos = async function (Postions) {
         });
 
     });
+   
 
     return End_result;
 
