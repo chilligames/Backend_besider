@@ -4,6 +4,7 @@ var router = express.Router();
 var Raw_DB = require("./DB/DB");
 var Models = require("./DB/Models/Models");
 
+Raw_DB
 //creat user url
 router.get('/Register', function (req, res) {
 
@@ -70,7 +71,8 @@ router.get("/resource_value", (req, res) => {
 
     Raw_DB.recive_values(Username, Password).then((result) => {
 
-        res.send(result);
+        res.send(result).end();
+       
 
     });
 });
@@ -84,7 +86,7 @@ router.get("/creat_wood_build", (req, res) => {
 
     Raw_DB.creat_wood_build(Username, Password, postion).then(() => {
 
-        res.sendStatus(200);
+        res.sendStatus(200).end();
 
     });
 
@@ -97,8 +99,8 @@ router.get("/creat_food_build", (req, res) => {
     var Password = req.headers.password;
     var postion = req.headers.postion;
 
-    Raw_DB.creat_Food_build(Username, Password, postion).then(() => {
-        res.sendStatus(200);
+    Raw_DB.creat_food_build(Username, Password, postion).then(() => {
+        res.sendStatus(200).end();
     });
 
 });
@@ -110,8 +112,8 @@ router.get("/creat_stone_build", (req, res) => {
     var Password = req.headers.password;
     var postion = req.headers.postion;
 
-    Raw_DB.creat_Stone_build(Username, Password, postion).then(() => {
-        res.sendStatus(200);
+    Raw_DB.creat_stone_build(Username, Password, postion).then(() => {
+        res.sendStatus(200).end();
     });
 
 });
@@ -120,7 +122,7 @@ router.get("/creat_stone_build", (req, res) => {
 router.get("/recive_data_pos", (req, res) => {
     var Postions = req.headers.postions;
 
-    Raw_DB.recive_info_pos(Postions).then((result) => {
+    Raw_DB.recive_postion_info(Postions).then((result) => {
         res.send(result).end();
 
 
