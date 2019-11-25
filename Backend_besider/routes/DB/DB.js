@@ -66,14 +66,17 @@ class Data_base {
     //type 0
     async   creat_wood_build(Username, Password, Postion) {
 
+        let Raw_model_resource = {
+            "ID": new Mongo_raw.ObjectId().toHexString(),
+            "Name": Username + Math.random(),
+            "Level": 1,
+            "Health": 1000,
+            "Storage": 1000,
+            "Postion": JSON.parse(Postion),
+            "Type_build": 0
+        }
 
-        Raw_model.Model_resource.ID = new Mongo_raw.ObjectId().toHexString();
-        Raw_model.Model_resource.Health = 1000;//callibrate
-        Raw_model.Model_resource.Level = 1;
-        Raw_model.Model_resource.Name = Username + Math.random().toString();
-        Raw_model.Model_resource.Postion = JSON.parse(Postion);
-        Raw_model.Model_resource.Storage = 10000;//calibrate
-        Raw_model.Model_resource.Type_build = 0;
+
 
         await new Mongo_raw.MongoClient(Mongo_string, { useUnifiedTopology: true, useNewUrlParser: true }).connect().then(async connection => {
 
@@ -82,7 +85,7 @@ class Data_base {
             console.log("cheack here creat wood build");
 
             //insert to user build
-            await connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Builds.Resource_Builds.Wood_Build": Raw_model.Model_resource } });
+            await connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Builds.Resource_Builds.Wood_Build": Raw_model_resource } });
 
         });
     }
@@ -91,22 +94,27 @@ class Data_base {
     async creat_food_build(Username, Password, Postion) {
 
 
-        Raw_model.Model_resource.ID = new Mongo_raw.ObjectId().toHexString();
-        Raw_model.Model_resource.Health = 1000;//callibrate
-        Raw_model.Model_resource.Level = 1;
-        Raw_model.Model_resource.Name = Username + Math.random().toString();
-        Raw_model.Model_resource.Postion = JSON.parse(Postion);
-        Raw_model.Model_resource.Storage = 10000;//calibrate
-        Raw_model.Model_resource.Type_build = 1;
+        let Raw_model_resource = {
+            "ID": new Mongo_raw.ObjectId().toHexString(),
+            "Name": Username + Math.random(),
+            "Level": 1,
+            "Health": 1000,
+            "Storage": 1000,
+            "Postion": JSON.parse(Postion),
+            "Type_build": 1
+        }
+
+
 
         await new Mongo_raw.MongoClient(Mongo_string, { useUnifiedTopology: true, useNewUrlParser: true }).connect().then(async connection => {
 
             //cheack resurce here
+
             //cheak postion
             console.log("cheack here creat food build");
 
             //insert to user build
-            await connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Builds.Resource_Builds.Food_Build": Raw_model.Model_resource } });
+            await connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Builds.Resource_Builds.Food_Build": Raw_model_resource } });
 
         });
     }
@@ -114,15 +122,17 @@ class Data_base {
     //type=2
     async creat_stone_build(Username, Password, Postion) {
 
-        Raw_model.Model_resource.ID = new Mongo_raw.ObjectId().toHexString();
-        Raw_model.Model_resource.Health = 1000;//callibrate
-        Raw_model.Model_resource.Level = 1;
-        Raw_model.Model_resource.Name = Username + Math.random().toString();
-        Raw_model.Model_resource.Postion = JSON.parse(Postion);
-        Raw_model.Model_resource.Storage = 10000;//calibrate
-        Raw_model.Model_resource.Type_build = 2
+        let Raw_model_resource = {
+            "ID": new Mongo_raw.ObjectId().toHexString(),
+            "Name": Username + Math.random(),
+            "Level": 1,
+            "Health": 1000,
+            "Storage": 1000,
+            "Postion": JSON.parse(Postion),
+            "Type_build": 2
+        }
 
-        
+
 
         await new Mongo_raw.MongoClient(Mongo_string, { useUnifiedTopology: true, useNewUrlParser: true }).connect().then(async connection => {
 
@@ -131,7 +141,7 @@ class Data_base {
             console.log("cheack here creat stone build");
 
             //insert to user build
-            await connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Builds.Resource_Builds.Stone_Build": Raw_model.Model_resource } });
+            await connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Builds.Resource_Builds.Stone_Build": Raw_model_resource } });
 
         });
     }
@@ -223,7 +233,6 @@ class Data_base {
     }
 
 }
-
 
 
 module.exports = new Data_base();
