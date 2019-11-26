@@ -72,10 +72,11 @@ router.get("/resource_value", (req, res) => {
     Raw_DB.recive_values(Username, Password).then((result) => {
 
         res.send(result).end();
-       
+
 
     });
 });
+
 
 
 router.get("/creat_wood_build", (req, res) => {

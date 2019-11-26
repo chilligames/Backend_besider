@@ -42,7 +42,20 @@ class Data_base {
 
     async  recive_values(Username, Password) {
 
-        var result = {};
+        var result = {
+            "Values": {
+                "Wood": 0,
+                "Food": 0,
+                "Stone":0
+            },
+            "Per_Values": {
+                "Per_Value_Wood": 0,
+                "Per_Value_Food": 0,
+                "Per_Value_Stone":0
+            }
+        };
+
+      
 
         await new Mongo_raw.MongoClient(Mongo_string, { useNewUrlParser: true, useUnifiedTopology: true }).connect().then(async Connection => {
 
@@ -50,19 +63,324 @@ class Data_base {
                 if (Data != null) {
 
                     Raw_model.Model_User = Data;
-                    result = Raw_model.Model_User.Resource_Value;
+                    result.Values.Food = Raw_model.Model_User.Resource_Value.Food;
+                    result.Values.Wood = Raw_model.Model_User.Resource_Value.Wood;
+                    result.Values.Stone = Raw_model.Model_User.Resource_Value.Stone;
 
-                } else {
-                    result = 0;
+                } 
+
+                if (Data != null) {
+
+                    Raw_model.Model_User = Data;
+                    var user = Raw_model.Model_User;
+
+                    //food
+                    user.Builds.Resource_Builds.Food_Build.forEach(builds => {
+                        switch (builds.Level) {
+                            case 1: {
+                                result.Per_Values.Per_Value_Food += 30;
+                            } break;
+                            case 2: {
+
+                            } break;
+                            case 3: {
+
+                            } break;
+                            case 4: {
+
+                            } break;
+                            case 5: {
+
+                            } break;
+                            case 6: {
+
+                            } break;
+                            case 7: {
+
+                            } break;
+                            case 8: {
+
+                            } break;
+                            case 9: {
+
+                            } break;
+                            case 10: {
+
+                            } break;
+                            case 11: {
+
+                            } break;
+                            case 12: {
+
+                            } break;
+                            case 13: {
+
+                            } break;
+                            case 14: {
+
+                            } break;
+                            case 15: {
+
+                            } break;
+                            case 16: {
+
+                            } break;
+                            case 17: {
+
+                            } break;
+                            case 18: {
+
+                            } break;
+                            case 19: {
+
+                            } break;
+                            case 20: {
+
+                            } break;
+                            case 21: {
+
+                            } break;
+                            case 22: {
+
+                            } break;
+                            case 23: {
+
+                            } break;
+                            case 24: {
+
+                            } break;
+                            case 25: {
+
+                            } break;
+                            case 26: {
+
+                            } break;
+                            case 27: {
+
+                            } break;
+                            case 28: {
+
+                            } break;
+                            case 29: {
+
+                            } break;
+                            case 30: {
+
+                            } break;
+                        }
+
+
+
+                    });
+
+                    //wood
+                    user.Builds.Resource_Builds.Wood_Build.forEach(builds => {
+                        switch (builds.Level) {
+                            case 1: {
+                                result.Per_Values.Per_Value_Wood += 30;
+                            } break;
+                            case 2: {
+
+                            } break;
+                            case 3: {
+
+                            } break;
+                            case 4: {
+
+                            } break;
+                            case 5: {
+
+                            } break;
+                            case 6: {
+
+                            } break;
+                            case 7: {
+
+                            } break;
+                            case 8: {
+
+                            } break;
+                            case 9: {
+
+                            } break;
+                            case 10: {
+
+                            } break;
+                            case 11: {
+
+                            } break;
+                            case 12: {
+
+                            } break;
+                            case 13: {
+
+                            } break;
+                            case 14: {
+
+                            } break;
+                            case 15: {
+
+                            } break;
+                            case 16: {
+
+                            } break;
+                            case 17: {
+
+                            } break;
+                            case 18: {
+
+                            } break;
+                            case 19: {
+
+                            } break;
+                            case 20: {
+
+                            } break;
+                            case 21: {
+
+                            } break;
+                            case 22: {
+
+                            } break;
+                            case 23: {
+
+                            } break;
+                            case 24: {
+
+                            } break;
+                            case 25: {
+
+                            } break;
+                            case 26: {
+
+                            } break;
+                            case 27: {
+
+                            } break;
+                            case 28: {
+
+                            } break;
+                            case 29: {
+
+                            } break;
+                            case 30: {
+
+                            } break;
+                        }
+
+
+
+                    });
+
+                    //stone
+                    user.Builds.Resource_Builds.Stone_Build.forEach(builds => {
+                        switch (builds.Level) {
+                            case 1: {
+                                result.Per_Values.Per_Value_Stone += 30;
+                            } break;
+                            case 2: {
+
+                            } break;
+                            case 3: {
+
+                            } break;
+                            case 4: {
+
+                            } break;
+                            case 5: {
+
+                            } break;
+                            case 6: {
+
+                            } break;
+                            case 7: {
+
+                            } break;
+                            case 8: {
+
+                            } break;
+                            case 9: {
+
+                            } break;
+                            case 10: {
+
+                            } break;
+                            case 11: {
+
+                            } break;
+                            case 12: {
+
+                            } break;
+                            case 13: {
+
+                            } break;
+                            case 14: {
+
+                            } break;
+                            case 15: {
+
+                            } break;
+                            case 16: {
+
+                            } break;
+                            case 17: {
+
+                            } break;
+                            case 18: {
+
+                            } break;
+                            case 19: {
+
+                            } break;
+                            case 20: {
+
+                            } break;
+                            case 21: {
+
+                            } break;
+                            case 22: {
+
+                            } break;
+                            case 23: {
+
+                            } break;
+                            case 24: {
+
+                            } break;
+                            case 25: {
+
+                            } break;
+                            case 26: {
+
+                            } break;
+                            case 27: {
+
+                            } break;
+                            case 28: {
+
+                            } break;
+                            case 29: {
+
+                            } break;
+                            case 30: {
+
+                            } break;
+                        }
+
+
+
+                    });
+
+                    
                 }
-
             });
 
         });
 
-        return JSON.stringify(result);
+        return result;
     }
 
+   
     //type 0
     async   creat_wood_build(Username, Password, Postion) {
 
@@ -89,6 +407,7 @@ class Data_base {
 
         });
     }
+
 
     //type=1
     async creat_food_build(Username, Password, Postion) {
@@ -118,6 +437,7 @@ class Data_base {
 
         });
     }
+
 
     //type=2
     async creat_stone_build(Username, Password, Postion) {
@@ -231,6 +551,8 @@ class Data_base {
 
 
     }
+
+
 
 }
 
