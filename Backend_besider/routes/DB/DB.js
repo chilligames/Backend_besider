@@ -46,16 +46,17 @@ class Data_base {
             "Values": {
                 "Wood": 0,
                 "Food": 0,
-                "Stone":0
+                "Stone": 0
             },
             "Per_Values": {
                 "Per_Value_Wood": 0,
                 "Per_Value_Food": 0,
-                "Per_Value_Stone":0
-            }
+                "Per_Value_Stone": 0
+            },
+            "Storage": 0
         };
 
-      
+
 
         await new Mongo_raw.MongoClient(Mongo_string, { useNewUrlParser: true, useUnifiedTopology: true }).connect().then(async Connection => {
 
@@ -67,7 +68,7 @@ class Data_base {
                     result.Values.Wood = Raw_model.Model_User.Resource_Value.Wood;
                     result.Values.Stone = Raw_model.Model_User.Resource_Value.Stone;
 
-                } 
+                }
 
                 if (Data != null) {
 
@@ -168,9 +169,6 @@ class Data_base {
 
                             } break;
                         }
-
-
-
                     });
 
                     //wood
@@ -267,9 +265,6 @@ class Data_base {
 
                             } break;
                         }
-
-
-
                     });
 
                     //stone
@@ -366,22 +361,24 @@ class Data_base {
 
                             } break;
                         }
-
-
-
                     });
 
-                    
+                    //Store age
+                    user.Builds.Resource_Builds.Storage_Build.forEach(builds => {
+
+                        result.Storage += builds.Storage;
+                    });
                 }
             });
 
         });
 
+        console.log(result);
         return result;
     }
 
-   
-    //type 0
+
+    //wood type 0
     async   creat_wood_build(Username, Password, Postion) {
 
         let Raw_model_resource = {
@@ -389,7 +386,6 @@ class Data_base {
             "Name": Username + Math.random(),
             "Level": 1,
             "Health": 1000,
-            "Storage": 1000,
             "Postion": JSON.parse(Postion),
             "Type_build": 0
         }
@@ -409,7 +405,7 @@ class Data_base {
     }
 
 
-    //type=1
+    //food type=1
     async creat_food_build(Username, Password, Postion) {
 
 
@@ -418,7 +414,6 @@ class Data_base {
             "Name": Username + Math.random(),
             "Level": 1,
             "Health": 1000,
-            "Storage": 1000,
             "Postion": JSON.parse(Postion),
             "Type_build": 1
         }
@@ -439,7 +434,7 @@ class Data_base {
     }
 
 
-    //type=2
+    //stone type=2
     async creat_stone_build(Username, Password, Postion) {
 
         let Raw_model_resource = {
@@ -447,7 +442,6 @@ class Data_base {
             "Name": Username + Math.random(),
             "Level": 1,
             "Health": 1000,
-            "Storage": 1000,
             "Postion": JSON.parse(Postion),
             "Type_build": 2
         }
@@ -465,6 +459,33 @@ class Data_base {
 
         });
     }
+
+    //storage type=3
+    async creat_storage(Username, Password, Postion) {
+
+        let Storage = {
+            "ID": new Mongo_raw.ObjectId().toHexString(),
+            "Name": Username + Math.random(),
+            "Level": 1,
+            "Health": 1000,
+            "Storage": 1000,
+            "Postion": JSON.parse(Postion),
+            "Type_build": 3
+        }
+
+
+
+        await new Mongo_raw.MongoClient(Mongo_string, { useNewUrlParser: true, useUnifiedTopology: true }).connect().then(async connection => {
+
+            console.log("cheak storeage money");
+            await connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: {"Builds.Resource_Builds.Storage_Build":Storage}});
+
+
+        });
+
+
+    }
+
 
 
     async recive_postion_info(Postions) {
@@ -535,8 +556,28 @@ class Data_base {
 
                             End_result.Builds.push(Build_stone);
                         }
+
                     });
 
+                    //storage
+                    Raw_model.Model_User.Builds.Resource_Builds.Storage_Build.forEach(Build_storage => {
+
+                        //fill values
+                        Raw_model.Model_resource = Build_storage;
+                        N.x = Raw_model.Model_resource.Postion.x;
+                        N.z = Raw_model.Model_resource.Postion.z;
+
+                        //formula for find distance
+                        let A = Math.pow(N.x - C.x, 2);
+                        let B = Math.pow(N.z - C.z, 2);
+
+                        if (Math.sqrt(A + B) <= 80) {
+
+                            End_result.Builds.push(Build_storage);
+                        }
+
+
+                    });
                     //other build here
 
                 });
@@ -551,8 +592,6 @@ class Data_base {
 
 
     }
-
-
 
 }
 

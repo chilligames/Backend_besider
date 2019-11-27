@@ -21,7 +21,8 @@ module.exports.Model_User = {
         "Resource_Builds": {
             "Wood_Build": [],
             "Food_Build": [],
-            "Stone_Build": []
+            "Stone_Build": [],
+            "Storage_Build":[]
         },
         "War_build": {
 

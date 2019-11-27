@@ -78,7 +78,6 @@ router.get("/resource_value", (req, res) => {
 });
 
 
-
 router.get("/creat_wood_build", (req, res) => {
 
     var Username = req.headers.username;
@@ -131,6 +130,20 @@ router.get("/recive_data_pos", (req, res) => {
 
 });
 
+
+router.get("/creat_storage", (req, res) => {
+
+    var Username = req.headers.username;
+    var Password = req.headers.password;
+    var Postion = req.headers.postion;
+
+    Raw_DB.creat_storage(Username, Password, Postion).then(() => {
+
+        res.sendStatus(200).end();
+
+    });
+
+});
 
 module.exports = router;
 
