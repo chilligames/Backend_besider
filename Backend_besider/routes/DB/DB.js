@@ -605,16 +605,333 @@ class Data_base_user {
         "Feed_to_value": async () => {
             await new Mongo_raw.MongoClient(Mongo_string, { useUnifiedTopology: true, useNewUrlParser: true }).connect().then(async Connection => {
 
-                await Connection.db("Besider").collection("Users").find({}).toArray().then(async Arry_Users => {
+                await Connection.db("Besider").collection("Users").find({}).toArray().then( Arry_Users => {
+
+                    
+                    Arry_Users.forEach(async Raw_User => {
+
+                        //aut user
+                        let password=Raw_User.Info.Password;
+                        let username=Raw_User.Info.Username;
+
+                        //end value
+                        let end_value_food = 0;
+                        let end_value_wood = 0;
+                        let end_value_stone = 0;
+
+                        //serilise model
+                        Raw_model.Model_User = Raw_User;
+                        var user = Raw_model.Model_User;
+
+                        //fill values wood
+                        for (var i = 0; i < user.Builds.Resource_Builds.Wood_Build.length; i++) {
+                            switch (user.Builds.Resource_Builds.Wood_Build[i].Level) {
+
+                                case 1: {
+                                    end_value_wood += 30;
+
+                                } break;
+                                case 2: {
+
+                                } break;
+                                case 3: {
+
+                                } break;
+                                case 4: {
+
+                                } break;
+                                case 5: {
+
+                                } break;
+                                case 6: {
+
+                                } break;
+                                case 7: {
+
+                                } break;
+                                case 8: {
+
+                                } break;
+                                case 9: {
+
+                                } break;
+                                case 10: {
+
+                                } break;
+                                case 11: {
+
+                                } break;
+                                case 12: {
+
+                                } break;
+                                case 13: {
+
+                                } break;
+                                case 14: {
+
+                                } break;
+                                case 15: {
+
+                                } break;
+                                case 16: {
+
+                                } break;
+                                case 17: {
+
+                                } break;
+                                case 18: {
+
+                                } break;
+                                case 19: {
+
+                                } break;
+                                case 20: {
+
+                                } break;
+                                case 21: {
+
+                                } break;
+                                case 22: {
+
+                                } break;
+                                case 23: {
+
+                                } break;
+                                case 24: {
+
+                                } break;
+                                case 25: {
+
+                                } break;
+                                case 26: {
+
+                                } break;
+                                case 27: {
+
+                                } break;
+                                case 28: {
+
+                                } break;
+                                case 29: {
+
+                                } break;
+                                case 30: {
+
+                                } break;
 
 
-                    Arry_Users.forEach(Raw_User => {
+                            }
 
-                    let end_value_food = 0;
-                    let end_value_wood = 0;
-                    let end_value_stone = 0;
+                        }
+
+
+                        //fill values food
+                        for (var i = 0; i < user.Builds.Resource_Builds.Food_Build.length; i++) {
+                            switch (user.Builds.Resource_Builds.Food_Build[i].Level) {
+
+                                case 1: {
+                                    end_value_food += 30;
+
+                                } break;
+                                case 2: {
+
+                                } break;
+                                case 3: {
+
+                                } break;
+                                case 4: {
+
+                                } break;
+                                case 5: {
+
+                                } break;
+                                case 6: {
+
+                                } break;
+                                case 7: {
+
+                                } break;
+                                case 8: {
+
+                                } break;
+                                case 9: {
+
+                                } break;
+                                case 10: {
+
+                                } break;
+                                case 11: {
+
+                                } break;
+                                case 12: {
+
+                                } break;
+                                case 13: {
+
+                                } break;
+                                case 14: {
+
+                                } break;
+                                case 15: {
+
+                                } break;
+                                case 16: {
+
+                                } break;
+                                case 17: {
+
+                                } break;
+                                case 18: {
+
+                                } break;
+                                case 19: {
+
+                                } break;
+                                case 20: {
+
+                                } break;
+                                case 21: {
+
+                                } break;
+                                case 22: {
+
+                                } break;
+                                case 23: {
+
+                                } break;
+                                case 24: {
+
+                                } break;
+                                case 25: {
+
+                                } break;
+                                case 26: {
+
+                                } break;
+                                case 27: {
+
+                                } break;
+                                case 28: {
+
+                                } break;
+                                case 29: {
+
+                                } break;
+                                case 30: {
+
+                                } break;
+
+
+                            }
+
+                        }
+
+
+                        //fill values food
+                        for (var i = 0; i < user.Builds.Resource_Builds.Stone_Build.length; i++) {
+                            switch (user.Builds.Resource_Builds.Stone_Build[i].Level) {
+
+                                case 1: {
+                                    end_value_stone += 30;
+
+                                } break;
+                                case 2: {
+
+                                } break;
+                                case 3: {
+
+                                } break;
+                                case 4: {
+
+                                } break;
+                                case 5: {
+
+                                } break;
+                                case 6: {
+
+                                } break;
+                                case 7: {
+
+                                } break;
+                                case 8: {
+
+                                } break;
+                                case 9: {
+
+                                } break;
+                                case 10: {
+
+                                } break;
+                                case 11: {
+
+                                } break;
+                                case 12: {
+
+                                } break;
+                                case 13: {
+
+                                } break;
+                                case 14: {
+
+                                } break;
+                                case 15: {
+
+                                } break;
+                                case 16: {
+
+                                } break;
+                                case 17: {
+
+                                } break;
+                                case 18: {
+
+                                } break;
+                                case 19: {
+
+                                } break;
+                                case 20: {
+
+                                } break;
+                                case 21: {
+
+                                } break;
+                                case 22: {
+
+                                } break;
+                                case 23: {
+
+                                } break;
+                                case 24: {
+
+                                } break;
+                                case 25: {
+
+                                } break;
+                                case 26: {
+
+                                } break;
+                                case 27: {
+
+                                } break;
+                                case 28: {
+
+                                } break;
+                                case 29: {
+
+                                } break;
+                                case 30: {
+
+                                } break;
+
+
+                            }
+
+                        }
+
+                        //cheack storage and depos to acc
+                        await Connection.db("Besider").collection("Users").updateOne({ "Info.Username": username, "Info.Password": password }, { $inc: { "Resource_Value.Food": end_value_food, "Resource_Value.Wood": end_value_wood, "Resource_Value.Stone": end_value_stone } });
+
                         
-
                     });
 
 
