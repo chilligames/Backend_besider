@@ -373,7 +373,7 @@ class Data_base {
 
         });
 
-        console.log(result);
+
         return result;
     }
 
@@ -460,6 +460,7 @@ class Data_base {
         });
     }
 
+
     //storage type=3
     async creat_storage(Username, Password, Postion) {
 
@@ -478,7 +479,7 @@ class Data_base {
         await new Mongo_raw.MongoClient(Mongo_string, { useNewUrlParser: true, useUnifiedTopology: true }).connect().then(async connection => {
 
             console.log("cheak storeage money");
-            await connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: {"Builds.Resource_Builds.Storage_Build":Storage}});
+            await connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Builds.Resource_Builds.Storage_Build": Storage } });
 
 
         });
@@ -578,6 +579,9 @@ class Data_base {
 
 
                     });
+
+
+
                     //other build here
 
                 });
@@ -592,6 +596,18 @@ class Data_base {
 
 
     }
+
+
+
+
+    //motor db game    
+    async Feed_to_value() {
+
+
+
+    }
+
+
 
 }
 

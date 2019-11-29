@@ -37,6 +37,9 @@
     <Content Include="routes\Models\Models.js">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="routes\Motors.js">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="routes\User_data.js" />
     <Content Include="routes\Data.js" />
     <Content Include="package.json" />
