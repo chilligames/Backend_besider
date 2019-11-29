@@ -3,7 +3,7 @@ var Mongo_string = "mongodb://localhost:27017/admin";
 var Raw_model = require("./Models/Models");
 
 
-class Data_base {
+class Data_base_user {
 
 
     async  Register(model_data) {
@@ -25,6 +25,7 @@ class Data_base {
         return result;
     };
 
+
     async  Login(Username, password) {
 
         var result_login = "";
@@ -39,6 +40,7 @@ class Data_base {
         })
         return result_login;
     };
+
 
     async  recive_values(Username, Password) {
 
@@ -599,18 +601,35 @@ class Data_base {
 
 
 
+    Motor_db = {
+        "Feed_to_value": async () => {
+            await new Mongo_raw.MongoClient(Mongo_string, { useUnifiedTopology: true, useNewUrlParser: true }).connect().then(async Connection => {
 
-    //motor db game    
-    async Feed_to_value() {
+                await Connection.db("Besider").collection("Users").find({}).toArray().then(async Arry_Users => {
+
+
+                    Arry_Users.forEach(Raw_User => {
+
+                    let end_value_food = 0;
+                    let end_value_wood = 0;
+                    let end_value_stone = 0;
+                        
+
+                    });
 
 
 
+                });
+
+            });
+
+
+        },
     }
-
-
 
 }
 
 
-module.exports = new Data_base();
+
+module.exports = new Data_base_user();
 
