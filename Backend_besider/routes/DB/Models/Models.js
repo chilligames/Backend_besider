@@ -34,6 +34,7 @@ module.exports.Model_User = {
         "Envormernt": {}
 
     },
+    "Worker":[]
 }
 
 exports.Model_resource = {

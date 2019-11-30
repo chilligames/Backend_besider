@@ -127,7 +127,7 @@ router.get("/recive_data_pos", (req, res) => {
 
 
     });
-    
+
 });
 
 
@@ -145,6 +145,19 @@ router.get("/creat_storage", (req, res) => {
 
 });
 
+
+router.get("/update_build", (req, res) => {
+
+    var Username = req.headers.username;
+    var Password = req.headers.password;
+    var Type_build = req.headers.type_build;
+    var ID_build = req.headers.id_build;
+
+    Raw_DB.Update_build(Username, Password, ID_build, Type_build).then(result => {
+        res.sendStatus(200).end();
+    });
+
+});
 module.exports = router;
 
 

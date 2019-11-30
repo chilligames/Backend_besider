@@ -600,19 +600,52 @@ class Data_base_user {
     }
 
 
+    async Update_build(Username, Password, ID_build, Type_build) {
+
+        var worker_update = {
+            "ID_Build ": ID_build,
+            "To_level": 0
+
+        }
+
+        await new Mongo_raw.MongoClient(Mongo_string, { useNewUrlParser: true, useUnifiedTopology: true }).connect().then(async Connection => {
+
+            //wood 0
+            if (Type_build == 0) {
+                await Connection.db("Besider").collection("Users").findOne({ "Info.Username": Username, "Info.Password": Password }).then(user => {
+
+                    //desrilse user
+                    user.Builds.Resource_Builds.Wood_Build.forEach(async build_wood => {
+                        if (build_wood.ID == worker_update["ID_Build "]) {
+
+                            worker_update.To_level = build_wood.Level + 1;
+
+                            await Connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Worker": worker_update } });
+                        }
+
+                    });
+
+                });
+
+            }
+
+        });
+
+    }
+
 
     Motor_db = {
         "Feed_to_value": async () => {
             await new Mongo_raw.MongoClient(Mongo_string, { useUnifiedTopology: true, useNewUrlParser: true }).connect().then(async Connection => {
 
-                await Connection.db("Besider").collection("Users").find({}).toArray().then( Arry_Users => {
+                await Connection.db("Besider").collection("Users").find({}).toArray().then(Arry_Users => {
 
-                    
+
                     Arry_Users.forEach(async Raw_User => {
 
                         //aut user
-                        let password=Raw_User.Info.Password;
-                        let username=Raw_User.Info.Username;
+                        let password = Raw_User.Info.Password;
+                        let username = Raw_User.Info.Username;
 
                         //end value
                         let end_value_food = 0;
@@ -931,7 +964,7 @@ class Data_base_user {
                         //cheack storage and depos to acc
                         await Connection.db("Besider").collection("Users").updateOne({ "Info.Username": username, "Info.Password": password }, { $inc: { "Resource_Value.Food": end_value_food, "Resource_Value.Wood": end_value_wood, "Resource_Value.Stone": end_value_stone } });
 
-                        
+
                     });
 
 
