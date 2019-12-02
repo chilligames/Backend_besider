@@ -1,6 +1,7 @@
 var Mongo_raw = require("mongodb");
 var Mongo_string = "mongodb://localhost:27017/admin";
 var Raw_model = require("./Models/Models");
+var Raw_Time = require("moment");
 
 
 class Data_base_user {
@@ -380,8 +381,7 @@ class Data_base_user {
     }
 
 
-    //wood type 0
-    async   creat_wood_build(Username, Password, Postion) {
+    async   creat_wood_build(Username, Password, Postion, type_build) {
 
         let Raw_model_resource = {
             "ID": new Mongo_raw.ObjectId().toHexString(),
@@ -389,7 +389,7 @@ class Data_base_user {
             "Level": 1,
             "Health": 1000,
             "Postion": JSON.parse(Postion),
-            "Type_build": 0
+            "Type_build": Number(type_build)
         }
 
 
@@ -407,8 +407,7 @@ class Data_base_user {
     }
 
 
-    //food type=1
-    async creat_food_build(Username, Password, Postion) {
+    async creat_food_build(Username, Password, Postion, type_build) {
 
 
         let Raw_model_resource = {
@@ -417,7 +416,7 @@ class Data_base_user {
             "Level": 1,
             "Health": 1000,
             "Postion": JSON.parse(Postion),
-            "Type_build": 1
+            "Type_build": Number(type_build)
         }
 
 
@@ -436,8 +435,7 @@ class Data_base_user {
     }
 
 
-    //stone type=2
-    async creat_stone_build(Username, Password, Postion) {
+    async creat_stone_build(Username, Password, Postion, type_build) {
 
         let Raw_model_resource = {
             "ID": new Mongo_raw.ObjectId().toHexString(),
@@ -445,7 +443,7 @@ class Data_base_user {
             "Level": 1,
             "Health": 1000,
             "Postion": JSON.parse(Postion),
-            "Type_build": 2
+            "Type_build": Number(type_build)
         }
 
 
@@ -463,8 +461,7 @@ class Data_base_user {
     }
 
 
-    //storage type=3
-    async creat_storage(Username, Password, Postion) {
+    async creat_storage(Username, Password, Postion, type_build) {
 
         let Storage = {
             "ID": new Mongo_raw.ObjectId().toHexString(),
@@ -473,7 +470,7 @@ class Data_base_user {
             "Health": 1000,
             "Storage": 1000,
             "Postion": JSON.parse(Postion),
-            "Type_build": 3
+            "Type_build": Number(type_build)
         }
 
 
@@ -488,7 +485,6 @@ class Data_base_user {
 
 
     }
-
 
 
     async recive_postion_info(Postions) {
@@ -604,8 +600,9 @@ class Data_base_user {
 
         var worker_update = {
             "ID_Build ": ID_build,
-            "To_level": 0
-
+            "To_level": 0,
+            "Type_build": Type_build,
+            "Time": 0
         }
 
         await new Mongo_raw.MongoClient(Mongo_string, { useNewUrlParser: true, useUnifiedTopology: true }).connect().then(async Connection => {
@@ -618,8 +615,105 @@ class Data_base_user {
                     user.Builds.Resource_Builds.Wood_Build.forEach(async build_wood => {
                         if (build_wood.ID == worker_update["ID_Build "]) {
 
+                            //change values 
                             worker_update.To_level = build_wood.Level + 1;
 
+                            //time change
+
+                            var hand = Raw_Time().add(1, "m").add(3, "s");
+
+                            switch (worker_update.To_level) {
+
+                                case 2: {
+                                   
+                                } break;
+                                case 3: {
+
+                                } break;
+                                case 4: {
+
+                                } break;
+                                case 5: {
+
+                                } break;
+                                case 6: {
+
+                                } break;
+                                case 7: {
+
+                                } break;
+                                case 8: {
+
+                                } break;
+                                case 9: {
+
+                                } break;
+                                case 10: {
+
+                                } break;
+                                case 11: {
+
+                                } break;
+                                case 12: {
+
+                                } break;
+                                case 13: {
+
+                                } break;
+                                case 14: {
+
+                                } break;
+                                case 15: {
+
+                                } break;
+                                case 16: {
+
+                                } break;
+                                case 17: {
+
+                                } break;
+                                case 18: {
+
+                                } break;
+                                case 19: {
+
+                                } break;
+                                case 20: {
+
+                                } break;
+                                case 21: {
+
+                                } break;
+                                case 22: {
+
+                                } break;
+                                case 23: {
+
+                                } break;
+                                case 24: {
+
+                                } break;
+                                case 25: {
+
+                                } break;
+                                case 26: {
+
+                                } break;
+                                case 27: {
+
+                                } break;
+                                case 28: {
+
+                                } break;
+                                case 29: {
+
+                                } break;
+                                case 30: {
+
+                                } break;
+
+
+                            }
                             await Connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Worker": worker_update } });
                         }
 
@@ -983,3 +1077,8 @@ class Data_base_user {
 
 module.exports = new Data_base_user();
 
+
+var hand = Raw_Time();
+
+console.log(hand);
+console.log(Date.now());
