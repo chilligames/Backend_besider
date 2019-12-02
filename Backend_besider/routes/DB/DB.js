@@ -607,25 +607,23 @@ class Data_base_user {
 
         await new Mongo_raw.MongoClient(Mongo_string, { useNewUrlParser: true, useUnifiedTopology: true }).connect().then(async Connection => {
 
-            //wood 0
-            if (Type_build == 0) {
-                await Connection.db("Besider").collection("Users").findOne({ "Info.Username": Username, "Info.Password": Password }).then(user => {
+            switch (Number(Type_build)) {
+                //wood
+                case 0: {
 
-                    //desrilse user
-                    user.Builds.Resource_Builds.Wood_Build.forEach(async build_wood => {
-                        if (build_wood.ID == worker_update["ID_Build "]) {
+                    await Connection.db("Besider").collection("Users").findOne({ "Info.Username": Username, "Info.Password": Password }).then(Raw_User => {
+                        //fill level and time
+                        Raw_User.Builds.Resource_Builds.Wood_Build.forEach(async wood_build => {
 
-                            //change values 
-                            worker_update.To_level = build_wood.Level + 1;
-
-                            //time change
-
-                            var hand = Raw_Time().add(1, "m").add(3, "s");
-
-                            switch (worker_update.To_level) {
+                            //fill level
+                            if (wood_build.ID == ID_build && wood_build.Level <= 29) {
+                                wood_build.Level += 1;
+                                worker_update.To_level = wood_build.Level;
+                            }
+                            switch (wood_build.Level) {
 
                                 case 2: {
-                                   
+                                    worker_update.Time = Raw_Time().add(1, "m").add(18, "s").unix();
                                 } break;
                                 case 3: {
 
@@ -714,13 +712,347 @@ class Data_base_user {
 
 
                             }
+
                             await Connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Worker": worker_update } });
-                        }
+
+                        });
 
                     });
 
-                });
+                } break;
+                //food
+                case 1: {
+                    await Connection.db("Besider").collection("Users").findOne({ "Info.Username": Username, "Info.Password": Password }).then(Raw_User => {
+                        //fill level and time
+                        Raw_User.Builds.Resource_Builds.Food_Build.forEach(async Food_Build => {
 
+                            //fill level
+                            if (Food_Build.ID == ID_build && Food_Build.Level <= 29) {
+                                Food_Build.Level += 1;
+                                worker_update.To_level = Food_Build.Level;
+                            }
+                            switch (Food_Build.Level) {
+
+                                case 2: {
+                                    worker_update.Time = Raw_Time().add(1, "m").add(18, "s").unix();
+                                } break;
+                                case 3: {
+
+                                } break;
+                                case 4: {
+
+                                } break;
+                                case 5: {
+
+                                } break;
+                                case 6: {
+
+                                } break;
+                                case 7: {
+
+                                } break;
+                                case 8: {
+
+                                } break;
+                                case 9: {
+
+                                } break;
+                                case 10: {
+
+                                } break;
+                                case 11: {
+
+                                } break;
+                                case 12: {
+
+                                } break;
+                                case 13: {
+
+                                } break;
+                                case 14: {
+
+                                } break;
+                                case 15: {
+
+                                } break;
+                                case 16: {
+
+                                } break;
+                                case 17: {
+
+                                } break;
+                                case 18: {
+
+                                } break;
+                                case 19: {
+
+                                } break;
+                                case 20: {
+
+                                } break;
+                                case 21: {
+
+                                } break;
+                                case 22: {
+
+                                } break;
+                                case 23: {
+
+                                } break;
+                                case 24: {
+
+                                } break;
+                                case 25: {
+
+                                } break;
+                                case 26: {
+
+                                } break;
+                                case 27: {
+
+                                } break;
+                                case 28: {
+
+                                } break;
+                                case 29: {
+
+                                } break;
+                                case 30: {
+
+                                } break;
+
+
+                            }
+
+                            await Connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Worker": worker_update } });
+
+                        });
+
+                    });
+
+                } break;
+                //stone
+                case 2: {
+                    await Connection.db("Besider").collection("Users").findOne({ "Info.Username": Username, "Info.Password": Password }).then(Raw_User => {
+                        //fill level and time
+                        Raw_User.Builds.Resource_Builds.Stone_Build.forEach(async Stone_Build => {
+
+                            //fill level
+                            if (Stone_Build.ID == ID_build && Stone_Build.Level <= 29) {
+                                Stone_Build.Level += 1;
+                                worker_update.To_level = Stone_Build.Level;
+                            }
+                            switch (Stone_Build.Level) {
+
+                                case 2: {
+                                    worker_update.Time = Raw_Time().add(1, "m").add(18, "s").unix();
+                                } break;
+                                case 3: {
+
+                                } break;
+                                case 4: {
+
+                                } break;
+                                case 5: {
+
+                                } break;
+                                case 6: {
+
+                                } break;
+                                case 7: {
+
+                                } break;
+                                case 8: {
+
+                                } break;
+                                case 9: {
+
+                                } break;
+                                case 10: {
+
+                                } break;
+                                case 11: {
+
+                                } break;
+                                case 12: {
+
+                                } break;
+                                case 13: {
+
+                                } break;
+                                case 14: {
+
+                                } break;
+                                case 15: {
+
+                                } break;
+                                case 16: {
+
+                                } break;
+                                case 17: {
+
+                                } break;
+                                case 18: {
+
+                                } break;
+                                case 19: {
+
+                                } break;
+                                case 20: {
+
+                                } break;
+                                case 21: {
+
+                                } break;
+                                case 22: {
+
+                                } break;
+                                case 23: {
+
+                                } break;
+                                case 24: {
+
+                                } break;
+                                case 25: {
+
+                                } break;
+                                case 26: {
+
+                                } break;
+                                case 27: {
+
+                                } break;
+                                case 28: {
+
+                                } break;
+                                case 29: {
+
+                                } break;
+                                case 30: {
+
+                                } break;
+
+
+                            }
+
+                            await Connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Worker": worker_update } });
+
+                        });
+
+                    });
+
+                } break;
+                case 3: {
+
+                    await Connection.db("Besider").collection("Users").findOne({ "Info.Username": Username, "Info.Password": Password }).then(Raw_User => {
+                        //fill level and time
+                        Raw_User.Builds.Resource_Builds.Storage_Build.forEach(async Storage_Build => {
+
+                            //fill level
+                            if (Storage_Build.ID == ID_build && Storage_Build.Level <= 29) {
+                                Storage_Build.Level += 1;
+                                worker_update.To_level = Storage_Build.Level;
+                            }
+                            switch (Storage_Build.Level) {
+
+                                case 2: {
+                                    worker_update.Time = Raw_Time().add(1, "m").add(18, "s").unix();
+                                } break;
+                                case 3: {
+
+                                } break;
+                                case 4: {
+
+                                } break;
+                                case 5: {
+
+                                } break;
+                                case 6: {
+
+                                } break;
+                                case 7: {
+
+                                } break;
+                                case 8: {
+
+                                } break;
+                                case 9: {
+
+                                } break;
+                                case 10: {
+
+                                } break;
+                                case 11: {
+
+                                } break;
+                                case 12: {
+
+                                } break;
+                                case 13: {
+
+                                } break;
+                                case 14: {
+
+                                } break;
+                                case 15: {
+
+                                } break;
+                                case 16: {
+
+                                } break;
+                                case 17: {
+
+                                } break;
+                                case 18: {
+
+                                } break;
+                                case 19: {
+
+                                } break;
+                                case 20: {
+
+                                } break;
+                                case 21: {
+
+                                } break;
+                                case 22: {
+
+                                } break;
+                                case 23: {
+
+                                } break;
+                                case 24: {
+
+                                } break;
+                                case 25: {
+
+                                } break;
+                                case 26: {
+
+                                } break;
+                                case 27: {
+
+                                } break;
+                                case 28: {
+
+                                } break;
+                                case 29: {
+
+                                } break;
+                                case 30: {
+
+                                } break;
+
+
+                            }
+
+                            await Connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Worker": worker_update } });
+
+                        });
+
+                    });
+
+                } break;
             }
 
         });
@@ -950,7 +1282,6 @@ class Data_base_user {
 
 
                             }
-
                         }
 
 
@@ -1077,8 +1408,3 @@ class Data_base_user {
 
 module.exports = new Data_base_user();
 
-
-var hand = Raw_Time();
-
-console.log(hand);
-console.log(Date.now());
