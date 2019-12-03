@@ -601,7 +601,7 @@ class Data_base_user {
         var worker_update = {
             "ID_Build ": ID_build,
             "To_level": 0,
-            "Type_build": Type_build,
+            "Type_build":Number(Type_build),
             "Time": 0
         }
 
@@ -615,105 +615,105 @@ class Data_base_user {
                         //fill level and time
                         Raw_User.Builds.Resource_Builds.Wood_Build.forEach(async wood_build => {
 
-                            //fill level
+                            //fill level and time
                             if (wood_build.ID == ID_build && wood_build.Level <= 29) {
                                 wood_build.Level += 1;
                                 worker_update.To_level = wood_build.Level;
+                                switch (Number(wood_build.Level)) {
+
+                                    case 2: {
+                                        worker_update.Time = Raw_Time().add(1, "m").add(18, "s").unix();
+                                    } break;
+                                    case 3: {
+
+                                    } break;
+                                    case 4: {
+
+                                    } break;
+                                    case 5: {
+
+                                    } break;
+                                    case 6: {
+
+                                    } break;
+                                    case 7: {
+
+                                    } break;
+                                    case 8: {
+
+                                    } break;
+                                    case 9: {
+
+                                    } break;
+                                    case 10: {
+
+                                    } break;
+                                    case 11: {
+
+                                    } break;
+                                    case 12: {
+
+                                    } break;
+                                    case 13: {
+
+                                    } break;
+                                    case 14: {
+
+                                    } break;
+                                    case 15: {
+
+                                    } break;
+                                    case 16: {
+
+                                    } break;
+                                    case 17: {
+
+                                    } break;
+                                    case 18: {
+
+                                    } break;
+                                    case 19: {
+
+                                    } break;
+                                    case 20: {
+
+                                    } break;
+                                    case 21: {
+
+                                    } break;
+                                    case 22: {
+
+                                    } break;
+                                    case 23: {
+
+                                    } break;
+                                    case 24: {
+
+                                    } break;
+                                    case 25: {
+
+                                    } break;
+                                    case 26: {
+
+                                    } break;
+                                    case 27: {
+
+                                    } break;
+                                    case 28: {
+
+                                    } break;
+                                    case 29: {
+
+                                    } break;
+                                    case 30: {
+
+                                    } break;
+
+
+                                }
+                                await Connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Worker": worker_update } });
                             }
-                            switch (wood_build.Level) {
 
-                                case 2: {
-                                    worker_update.Time = Raw_Time().add(1, "m").add(18, "s").unix();
-                                } break;
-                                case 3: {
-
-                                } break;
-                                case 4: {
-
-                                } break;
-                                case 5: {
-
-                                } break;
-                                case 6: {
-
-                                } break;
-                                case 7: {
-
-                                } break;
-                                case 8: {
-
-                                } break;
-                                case 9: {
-
-                                } break;
-                                case 10: {
-
-                                } break;
-                                case 11: {
-
-                                } break;
-                                case 12: {
-
-                                } break;
-                                case 13: {
-
-                                } break;
-                                case 14: {
-
-                                } break;
-                                case 15: {
-
-                                } break;
-                                case 16: {
-
-                                } break;
-                                case 17: {
-
-                                } break;
-                                case 18: {
-
-                                } break;
-                                case 19: {
-
-                                } break;
-                                case 20: {
-
-                                } break;
-                                case 21: {
-
-                                } break;
-                                case 22: {
-
-                                } break;
-                                case 23: {
-
-                                } break;
-                                case 24: {
-
-                                } break;
-                                case 25: {
-
-                                } break;
-                                case 26: {
-
-                                } break;
-                                case 27: {
-
-                                } break;
-                                case 28: {
-
-                                } break;
-                                case 29: {
-
-                                } break;
-                                case 30: {
-
-                                } break;
-
-
-                            }
-
-                            await Connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Worker": worker_update } });
 
                         });
 
@@ -722,6 +722,7 @@ class Data_base_user {
                 } break;
                 //food
                 case 1: {
+                    
                     await Connection.db("Besider").collection("Users").findOne({ "Info.Username": Username, "Info.Password": Password }).then(Raw_User => {
                         //fill level and time
                         Raw_User.Builds.Resource_Builds.Food_Build.forEach(async Food_Build => {
@@ -730,101 +731,101 @@ class Data_base_user {
                             if (Food_Build.ID == ID_build && Food_Build.Level <= 29) {
                                 Food_Build.Level += 1;
                                 worker_update.To_level = Food_Build.Level;
+                                switch (Food_Build.Level) {
+
+                                    case 2: {
+                                        worker_update.Time = Raw_Time().add(1, "m").add(18, "s").unix();
+                                    } break;
+                                    case 3: {
+
+                                    } break;
+                                    case 4: {
+
+                                    } break;
+                                    case 5: {
+
+                                    } break;
+                                    case 6: {
+
+                                    } break;
+                                    case 7: {
+
+                                    } break;
+                                    case 8: {
+
+                                    } break;
+                                    case 9: {
+
+                                    } break;
+                                    case 10: {
+
+                                    } break;
+                                    case 11: {
+
+                                    } break;
+                                    case 12: {
+
+                                    } break;
+                                    case 13: {
+
+                                    } break;
+                                    case 14: {
+
+                                    } break;
+                                    case 15: {
+
+                                    } break;
+                                    case 16: {
+
+                                    } break;
+                                    case 17: {
+
+                                    } break;
+                                    case 18: {
+
+                                    } break;
+                                    case 19: {
+
+                                    } break;
+                                    case 20: {
+
+                                    } break;
+                                    case 21: {
+
+                                    } break;
+                                    case 22: {
+
+                                    } break;
+                                    case 23: {
+
+                                    } break;
+                                    case 24: {
+
+                                    } break;
+                                    case 25: {
+
+                                    } break;
+                                    case 26: {
+
+                                    } break;
+                                    case 27: {
+
+                                    } break;
+                                    case 28: {
+
+                                    } break;
+                                    case 29: {
+
+                                    } break;
+                                    case 30: {
+
+                                    } break;
+
+
+                                }
+
+                                await Connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Worker": worker_update } });
                             }
-                            switch (Food_Build.Level) {
-
-                                case 2: {
-                                    worker_update.Time = Raw_Time().add(1, "m").add(18, "s").unix();
-                                } break;
-                                case 3: {
-
-                                } break;
-                                case 4: {
-
-                                } break;
-                                case 5: {
-
-                                } break;
-                                case 6: {
-
-                                } break;
-                                case 7: {
-
-                                } break;
-                                case 8: {
-
-                                } break;
-                                case 9: {
-
-                                } break;
-                                case 10: {
-
-                                } break;
-                                case 11: {
-
-                                } break;
-                                case 12: {
-
-                                } break;
-                                case 13: {
-
-                                } break;
-                                case 14: {
-
-                                } break;
-                                case 15: {
-
-                                } break;
-                                case 16: {
-
-                                } break;
-                                case 17: {
-
-                                } break;
-                                case 18: {
-
-                                } break;
-                                case 19: {
-
-                                } break;
-                                case 20: {
-
-                                } break;
-                                case 21: {
-
-                                } break;
-                                case 22: {
-
-                                } break;
-                                case 23: {
-
-                                } break;
-                                case 24: {
-
-                                } break;
-                                case 25: {
-
-                                } break;
-                                case 26: {
-
-                                } break;
-                                case 27: {
-
-                                } break;
-                                case 28: {
-
-                                } break;
-                                case 29: {
-
-                                } break;
-                                case 30: {
-
-                                } break;
-
-
-                            }
-
-                            await Connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Worker": worker_update } });
 
                         });
 
@@ -841,107 +842,108 @@ class Data_base_user {
                             if (Stone_Build.ID == ID_build && Stone_Build.Level <= 29) {
                                 Stone_Build.Level += 1;
                                 worker_update.To_level = Stone_Build.Level;
+                                switch (Number(Stone_Build.Level)) {
+
+                                    case 2: {
+                                        worker_update.Time = Raw_Time().add(1, "m").add(18, "s").unix();
+                                    } break;
+                                    case 3: {
+
+                                    } break;
+                                    case 4: {
+
+                                    } break;
+                                    case 5: {
+
+                                    } break;
+                                    case 6: {
+
+                                    } break;
+                                    case 7: {
+
+                                    } break;
+                                    case 8: {
+
+                                    } break;
+                                    case 9: {
+
+                                    } break;
+                                    case 10: {
+
+                                    } break;
+                                    case 11: {
+
+                                    } break;
+                                    case 12: {
+
+                                    } break;
+                                    case 13: {
+
+                                    } break;
+                                    case 14: {
+
+                                    } break;
+                                    case 15: {
+
+                                    } break;
+                                    case 16: {
+
+                                    } break;
+                                    case 17: {
+
+                                    } break;
+                                    case 18: {
+
+                                    } break;
+                                    case 19: {
+
+                                    } break;
+                                    case 20: {
+
+                                    } break;
+                                    case 21: {
+
+                                    } break;
+                                    case 22: {
+
+                                    } break;
+                                    case 23: {
+
+                                    } break;
+                                    case 24: {
+
+                                    } break;
+                                    case 25: {
+
+                                    } break;
+                                    case 26: {
+
+                                    } break;
+                                    case 27: {
+
+                                    } break;
+                                    case 28: {
+
+                                    } break;
+                                    case 29: {
+
+                                    } break;
+                                    case 30: {
+
+                                    } break;
+
+
+                                }
+
+                                await Connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Worker": worker_update } });
                             }
-                            switch (Stone_Build.Level) {
-
-                                case 2: {
-                                    worker_update.Time = Raw_Time().add(1, "m").add(18, "s").unix();
-                                } break;
-                                case 3: {
-
-                                } break;
-                                case 4: {
-
-                                } break;
-                                case 5: {
-
-                                } break;
-                                case 6: {
-
-                                } break;
-                                case 7: {
-
-                                } break;
-                                case 8: {
-
-                                } break;
-                                case 9: {
-
-                                } break;
-                                case 10: {
-
-                                } break;
-                                case 11: {
-
-                                } break;
-                                case 12: {
-
-                                } break;
-                                case 13: {
-
-                                } break;
-                                case 14: {
-
-                                } break;
-                                case 15: {
-
-                                } break;
-                                case 16: {
-
-                                } break;
-                                case 17: {
-
-                                } break;
-                                case 18: {
-
-                                } break;
-                                case 19: {
-
-                                } break;
-                                case 20: {
-
-                                } break;
-                                case 21: {
-
-                                } break;
-                                case 22: {
-
-                                } break;
-                                case 23: {
-
-                                } break;
-                                case 24: {
-
-                                } break;
-                                case 25: {
-
-                                } break;
-                                case 26: {
-
-                                } break;
-                                case 27: {
-
-                                } break;
-                                case 28: {
-
-                                } break;
-                                case 29: {
-
-                                } break;
-                                case 30: {
-
-                                } break;
-
-
-                            }
-
-                            await Connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Worker": worker_update } });
 
                         });
 
                     });
 
                 } break;
+                //storage
                 case 3: {
 
                     await Connection.db("Besider").collection("Users").findOne({ "Info.Username": Username, "Info.Password": Password }).then(Raw_User => {
@@ -952,102 +954,102 @@ class Data_base_user {
                             if (Storage_Build.ID == ID_build && Storage_Build.Level <= 29) {
                                 Storage_Build.Level += 1;
                                 worker_update.To_level = Storage_Build.Level;
+                                switch (Number(Storage_Build.Level)) {
+
+                                    case 2: {
+                                        worker_update.Time = Raw_Time().add(1, "m").add(18, "s").unix();
+                                    } break;
+                                    case 3: {
+
+                                    } break;
+                                    case 4: {
+
+                                    } break;
+                                    case 5: {
+
+                                    } break;
+                                    case 6: {
+
+                                    } break;
+                                    case 7: {
+
+                                    } break;
+                                    case 8: {
+
+                                    } break;
+                                    case 9: {
+
+                                    } break;
+                                    case 10: {
+
+                                    } break;
+                                    case 11: {
+
+                                    } break;
+                                    case 12: {
+
+                                    } break;
+                                    case 13: {
+
+                                    } break;
+                                    case 14: {
+
+                                    } break;
+                                    case 15: {
+
+                                    } break;
+                                    case 16: {
+
+                                    } break;
+                                    case 17: {
+
+                                    } break;
+                                    case 18: {
+
+                                    } break;
+                                    case 19: {
+
+                                    } break;
+                                    case 20: {
+
+                                    } break;
+                                    case 21: {
+
+                                    } break;
+                                    case 22: {
+
+                                    } break;
+                                    case 23: {
+
+                                    } break;
+                                    case 24: {
+
+                                    } break;
+                                    case 25: {
+
+                                    } break;
+                                    case 26: {
+
+                                    } break;
+                                    case 27: {
+
+                                    } break;
+                                    case 28: {
+
+                                    } break;
+                                    case 29: {
+
+                                    } break;
+                                    case 30: {
+
+                                    } break;
+
+
+                                }
+
+                                await Connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Worker": worker_update } });
+
                             }
-                            switch (Storage_Build.Level) {
-
-                                case 2: {
-                                    worker_update.Time = Raw_Time().add(1, "m").add(18, "s").unix();
-                                } break;
-                                case 3: {
-
-                                } break;
-                                case 4: {
-
-                                } break;
-                                case 5: {
-
-                                } break;
-                                case 6: {
-
-                                } break;
-                                case 7: {
-
-                                } break;
-                                case 8: {
-
-                                } break;
-                                case 9: {
-
-                                } break;
-                                case 10: {
-
-                                } break;
-                                case 11: {
-
-                                } break;
-                                case 12: {
-
-                                } break;
-                                case 13: {
-
-                                } break;
-                                case 14: {
-
-                                } break;
-                                case 15: {
-
-                                } break;
-                                case 16: {
-
-                                } break;
-                                case 17: {
-
-                                } break;
-                                case 18: {
-
-                                } break;
-                                case 19: {
-
-                                } break;
-                                case 20: {
-
-                                } break;
-                                case 21: {
-
-                                } break;
-                                case 22: {
-
-                                } break;
-                                case 23: {
-
-                                } break;
-                                case 24: {
-
-                                } break;
-                                case 25: {
-
-                                } break;
-                                case 26: {
-
-                                } break;
-                                case 27: {
-
-                                } break;
-                                case 28: {
-
-                                } break;
-                                case 29: {
-
-                                } break;
-                                case 30: {
-
-                                } break;
-
-
-                            }
-
-                            await Connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Worker": worker_update } });
-
                         });
 
                     });
@@ -1056,6 +1058,18 @@ class Data_base_user {
             }
 
         });
+
+    }
+
+
+    async recive_worker_detail(Username, Password) {
+        var Worker_detail = {
+            Count_worker:0,
+            Count_work: 0,
+            Updates:[]
+        }
+        
+
 
     }
 

@@ -121,27 +121,28 @@ router.get("/creat_stone_build", (req, res) => {
 });
 
 
-router.get("/recive_data_pos", (req, res) => {
-    var Postions = req.headers.postions;
+router.get("/creat_storage", (req, res) => {
 
-    Raw_DB.recive_postion_info(Postions).then((result) => {
-        res.send(result).end();
+    var Username = req.headers.username;
+    var Password = req.headers.password;
+    var Postion = req.headers.postion;
+    var Type_build = req.headers.type_build;
 
+    Raw_DB.creat_storage(Username, Password, Postion,Type_build).then(() => {
+
+        res.sendStatus(200).end();
 
     });
 
 });
 
 
-router.get("/creat_storage", (req, res) => {
+router.get("/recive_data_pos", (req, res) => {
+    var Postions = req.headers.postions;
 
-    var Username = req.headers.username;
-    var Password = req.headers.password;
-    var Postion = req.headers.postion;
+    Raw_DB.recive_postion_info(Postions).then((result) => {
+        res.send(result).end();
 
-    Raw_DB.creat_storage(Username, Password, Postion).then(() => {
-
-        res.sendStatus(200).end();
 
     });
 
@@ -161,6 +162,18 @@ router.get("/update_build", (req, res) => {
 
 });
 
+
+router.get("/recive_worker_detail", (req, res) => {
+
+    var Username = req.headers.username;
+    var Password = req.headers.password;
+
+    Raw_DB.recive_worker_detail(Username, Password).then(() => {
+        res.sendStatus(200).end();
+
+    });
+
+});
 
 module.exports = router;
 
