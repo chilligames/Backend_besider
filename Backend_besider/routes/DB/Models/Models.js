@@ -31,6 +31,7 @@ module.exports.Model_User = {
     },
     Worker: [],
     Monitise: {
+        Worker:0
 
     }
 

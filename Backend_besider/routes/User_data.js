@@ -170,7 +170,6 @@ router.get("/recive_worker_detail", (req, res) => {
 
     Raw_DB.recive_worker_detail(Username, Password).then(() => {
         res.sendStatus(200).end();
-
     });
 
 });

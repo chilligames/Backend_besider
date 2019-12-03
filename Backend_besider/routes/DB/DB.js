@@ -601,7 +601,7 @@ class Data_base_user {
         var worker_update = {
             "ID_Build ": ID_build,
             "To_level": 0,
-            "Type_build":Number(Type_build),
+            "Type_build": Number(Type_build),
             "Time": 0
         }
 
@@ -722,7 +722,7 @@ class Data_base_user {
                 } break;
                 //food
                 case 1: {
-                    
+
                     await Connection.db("Besider").collection("Users").findOne({ "Info.Username": Username, "Info.Password": Password }).then(Raw_User => {
                         //fill level and time
                         Raw_User.Builds.Resource_Builds.Food_Build.forEach(async Food_Build => {
@@ -1064,13 +1064,25 @@ class Data_base_user {
 
     async recive_worker_detail(Username, Password) {
         var Worker_detail = {
-            Count_worker:0,
+            Count_worker: 0,
             Count_work: 0,
-            Updates:[]
+            Updates: []
         }
-        
+
+        await new Mongo_raw.MongoClient(Mongo_string, { useNewUrlParser: true, useUnifiedTopology: true }).connect().then(async Connection => {
+
+            await Connection.db("Besider").collection("Users").findOne({ "Info.Username": Username, "Info.Password": Password }).then(User => {
+
+                Worker_detail.Count_work = User.Monitise.Worker;
+                Worker_detail.Count_worker = User.Worker.length;
+                Worker_detail.Updates = User.Worker;
+
+            });
 
 
+        });
+
+        return Worker_detail;
     }
 
 
