@@ -5,13 +5,11 @@ module.exports.Model_User = {
         Password: '',
         Email: ''
     },
-
     Resource_Value: {
         Wood: 0,
         Food: 0,
         Stone: 0,
     },
-
     Builds: {
         Base: {
         },

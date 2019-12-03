@@ -11,8 +11,9 @@ class Data_base_user {
 
         var result = "";
 
+        //frist inject date
         model_data._id = new Mongo_raw.ObjectId();
-
+        model_data.Monitise.Worker = 2;
 
         await new Mongo_raw.MongoClient(Mongo_string, { useNewUrlParser: true, useUnifiedTopology: true }).connect().then(async connection => {
 
@@ -46,17 +47,17 @@ class Data_base_user {
     async  recive_values(Username, Password) {
 
         var result = {
-            "Values": {
-                "Wood": 0,
-                "Food": 0,
-                "Stone": 0
+            Values: {
+                Wood: 0,
+                Food: 0,
+                Stone: 0
             },
-            "Per_Values": {
-                "Per_Value_Wood": 0,
-                "Per_Value_Food": 0,
-                "Per_Value_Stone": 0
+            Per_Values: {
+                Per_Value_Wood: 0,
+                Per_Value_Food: 0,
+                Per_Value_Stone: 0
             },
-            "Storage": 0
+            Storage: 0
         };
 
 
@@ -381,15 +382,15 @@ class Data_base_user {
     }
 
 
-    async   creat_wood_build(Username, Password, Postion, type_build) {
+    async creat_wood_build(Username, Password, Postion, type_build) {
 
         let Raw_model_resource = {
-            "ID": new Mongo_raw.ObjectId().toHexString(),
-            "Name": Username + Math.random(),
-            "Level": 1,
-            "Health": 1000,
-            "Postion": JSON.parse(Postion),
-            "Type_build": Number(type_build)
+            ID: new Mongo_raw.ObjectId().toHexString(),
+            Name: Username + Math.random(),
+            Level: 1,
+            Health: 1000,
+            Postion: JSON.parse(Postion),
+            Type_build: Number(type_build)
         }
 
 
@@ -411,12 +412,12 @@ class Data_base_user {
 
 
         let Raw_model_resource = {
-            "ID": new Mongo_raw.ObjectId().toHexString(),
-            "Name": Username + Math.random(),
-            "Level": 1,
-            "Health": 1000,
-            "Postion": JSON.parse(Postion),
-            "Type_build": Number(type_build)
+            ID: new Mongo_raw.ObjectId().toHexString(),
+            Name: Username + Math.random(),
+            Level: 1,
+            Health: 1000,
+            Postion: JSON.parse(Postion),
+            Type_build: Number(type_build)
         }
 
 
@@ -438,12 +439,12 @@ class Data_base_user {
     async creat_stone_build(Username, Password, Postion, type_build) {
 
         let Raw_model_resource = {
-            "ID": new Mongo_raw.ObjectId().toHexString(),
-            "Name": Username + Math.random(),
-            "Level": 1,
-            "Health": 1000,
-            "Postion": JSON.parse(Postion),
-            "Type_build": Number(type_build)
+            ID: new Mongo_raw.ObjectId().toHexString(),
+            Name: Username + Math.random(),
+            Level: 1,
+            Health: 1000,
+            Postion: JSON.parse(Postion),
+            Type_build: Number(type_build)
         }
 
 
@@ -464,13 +465,13 @@ class Data_base_user {
     async creat_storage(Username, Password, Postion, type_build) {
 
         let Storage = {
-            "ID": new Mongo_raw.ObjectId().toHexString(),
-            "Name": Username + Math.random(),
-            "Level": 1,
-            "Health": 1000,
-            "Storage": 1000,
-            "Postion": JSON.parse(Postion),
-            "Type_build": Number(type_build)
+            ID: new Mongo_raw.ObjectId().toHexString(),
+            Name: Username + Math.random(),
+            Level: 1,
+            Health: 1000,
+            Storage: 1000,
+            Postion: JSON.parse(Postion),
+            Type_build: Number(type_build)
         }
 
 
@@ -599,10 +600,11 @@ class Data_base_user {
     async Update_build(Username, Password, ID_build, Type_build) {
 
         var worker_update = {
-            "ID_Build ": ID_build,
-            "To_level": 0,
-            "Type_build": Number(Type_build),
-            "Time": 0
+            ID_Build: ID_build,
+            To_level: 0,
+            Type_build: Number(Type_build),
+            Time: 0,
+            Deserilze_time: { Y: 0, MO: 0, D: 0, H: 0, M: 0, S: 0 },
         }
 
         await new Mongo_raw.MongoClient(Mongo_string, { useNewUrlParser: true, useUnifiedTopology: true }).connect().then(async Connection => {
@@ -622,7 +624,15 @@ class Data_base_user {
                                 switch (Number(wood_build.Level)) {
 
                                     case 2: {
+
+                                        worker_update.Deserilze_time.Y = Raw_Time().add(1, "m").add(18, "s").years();
+                                        worker_update.Deserilze_time.MO = Raw_Time().add(1, "m").add(18, "s").days();
+                                        worker_update.Deserilze_time.D = Raw_Time().add(1, "m").add(18, "s").days();
+
                                         worker_update.Time = Raw_Time().add(1, "m").add(18, "s").unix();
+                                        worker_update.Deserilze_time.H = Raw_Time().add(1, "m").add(18, "s").hour();
+                                        worker_update.Deserilze_time.M = Raw_Time().add(1, "m").add(18, "s").minute();
+                                        worker_update.Deserilze_time.S = Raw_Time().add(1, "m").add(18, "s").second();
                                     } break;
                                     case 3: {
 
@@ -734,7 +744,15 @@ class Data_base_user {
                                 switch (Food_Build.Level) {
 
                                     case 2: {
+
+                                        worker_update.Deserilze_time.Y = Raw_Time().add(1, "m").add(18, "s").years();
+                                        worker_update.Deserilze_time.MO = Raw_Time().add(1, "m").add(18, "s").days();
+                                        worker_update.Deserilze_time.D = Raw_Time().add(1, "m").add(18, "s").days();
+
                                         worker_update.Time = Raw_Time().add(1, "m").add(18, "s").unix();
+                                        worker_update.Deserilze_time.H = Raw_Time().add(1, "m").add(18, "s").hour();
+                                        worker_update.Deserilze_time.M = Raw_Time().add(1, "m").add(18, "s").minute();
+                                        worker_update.Deserilze_time.S = Raw_Time().add(1, "m").add(18, "s").second();
                                     } break;
                                     case 3: {
 
@@ -845,7 +863,15 @@ class Data_base_user {
                                 switch (Number(Stone_Build.Level)) {
 
                                     case 2: {
+
+                                        worker_update.Deserilze_time.Y = Raw_Time().add(1, "m").add(18, "s").years();
+                                        worker_update.Deserilze_time.MO = Raw_Time().add(1, "m").add(18, "s").days();
+                                        worker_update.Deserilze_time.D = Raw_Time().add(1, "m").add(18, "s").days();
+
                                         worker_update.Time = Raw_Time().add(1, "m").add(18, "s").unix();
+                                        worker_update.Deserilze_time.H = Raw_Time().add(1, "m").add(18, "s").hour();
+                                        worker_update.Deserilze_time.M = Raw_Time().add(1, "m").add(18, "s").minute();
+                                        worker_update.Deserilze_time.S = Raw_Time().add(1, "m").add(18, "s").second();
                                     } break;
                                     case 3: {
 
@@ -958,6 +984,15 @@ class Data_base_user {
 
                                     case 2: {
                                         worker_update.Time = Raw_Time().add(1, "m").add(18, "s").unix();
+
+                                        worker_update.Deserilze_time.Y = Raw_Time().add(1, "m").add(18, "s").years();
+                                        worker_update.Deserilze_time.MO = Raw_Time().add(1, "m").add(18, "s").days();
+                                        worker_update.Deserilze_time.D = Raw_Time().add(1, "m").add(18, "s").days();
+
+                                        worker_update.Deserilze_time.H = Raw_Time().add(1, "m").add(18, "s").hour();
+                                        worker_update.Deserilze_time.M = Raw_Time().add(1, "m").add(18, "s").minute();
+                                        worker_update.Deserilze_time.S = Raw_Time().add(1, "m").add(18, "s").second();
+
                                     } break;
                                     case 3: {
 
@@ -1063,6 +1098,7 @@ class Data_base_user {
 
 
     async recive_worker_detail(Username, Password) {
+
         var Worker_detail = {
             Count_worker: 0,
             Count_work: 0,
@@ -1076,7 +1112,6 @@ class Data_base_user {
                 Worker_detail.Count_work = User.Monitise.Worker;
                 Worker_detail.Count_worker = User.Worker.length;
                 Worker_detail.Updates = User.Worker;
-
             });
 
 
@@ -1433,4 +1468,5 @@ class Data_base_user {
 
 
 module.exports = new Data_base_user();
+
 

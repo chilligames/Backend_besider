@@ -43,6 +43,7 @@ router.get('/Register', function (req, res) {
 
 });
 
+
 router.get("/login", (req, res) => {
 
     //fill entitys
@@ -168,8 +169,8 @@ router.get("/recive_worker_detail", (req, res) => {
     var Username = req.headers.username;
     var Password = req.headers.password;
 
-    Raw_DB.recive_worker_detail(Username, Password).then(() => {
-        res.sendStatus(200).end();
+    Raw_DB.recive_worker_detail(Username, Password).then((result) => {
+        res.send(result).end();
     });
 
 });
