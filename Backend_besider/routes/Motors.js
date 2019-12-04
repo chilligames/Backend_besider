@@ -11,7 +11,13 @@ class Motors {
 
         }, 1000);
     }
+    worker_value() {
+        var worker = setTimeout(() => {
+            Raw_DB.Motor_db.Worker_minuse();
+            worker.refresh();
 
+        }, 1000);
+    }
 }
 
 module.exports = new Motors();

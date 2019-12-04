@@ -17,3 +17,4 @@ app.use("/", (req, res) => {
 
 //start motors
 Motors.Feed_to_value();
+Motors.worker_value();

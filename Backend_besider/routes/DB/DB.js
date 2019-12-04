@@ -3,7 +3,6 @@ var Mongo_string = "mongodb://localhost:27017/admin";
 var Raw_model = require("./Models/Models");
 var Raw_Time = require("moment");
 
-
 class Data_base_user {
 
 
@@ -625,9 +624,9 @@ class Data_base_user {
 
                                     case 2: {
 
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(1, "m").add(18, "s").years();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(1, "m").add(18, "s").days();
-                                        worker_update.Deserilze_time.D = Raw_Time().add(1, "m").add(18, "s").days();
+                                        worker_update.Deserilze_time.Y = Raw_Time().add(1, "m").add(18, "s").year();
+                                        worker_update.Deserilze_time.MO = Raw_Time().add(1, "m").add(18, "s").month() + 1;
+                                        worker_update.Deserilze_time.D = Raw_Time().add(1, "m").add(18, "s").days() + 1;
 
                                         worker_update.Time = Raw_Time().add(1, "m").add(18, "s").unix();
                                         worker_update.Deserilze_time.H = Raw_Time().add(1, "m").add(18, "s").hour();
@@ -745,9 +744,9 @@ class Data_base_user {
 
                                     case 2: {
 
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(1, "m").add(18, "s").years();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(1, "m").add(18, "s").days();
-                                        worker_update.Deserilze_time.D = Raw_Time().add(1, "m").add(18, "s").days();
+                                        worker_update.Deserilze_time.Y = Raw_Time().add(1, "m").add(18, "s").year();
+                                        worker_update.Deserilze_time.MO = Raw_Time().add(1, "m").add(18, "s").month() + 1;
+                                        worker_update.Deserilze_time.D = Raw_Time().add(1, "m").add(18, "s").days() + 1;
 
                                         worker_update.Time = Raw_Time().add(1, "m").add(18, "s").unix();
                                         worker_update.Deserilze_time.H = Raw_Time().add(1, "m").add(18, "s").hour();
@@ -864,9 +863,9 @@ class Data_base_user {
 
                                     case 2: {
 
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(1, "m").add(18, "s").years();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(1, "m").add(18, "s").days();
-                                        worker_update.Deserilze_time.D = Raw_Time().add(1, "m").add(18, "s").days();
+                                        worker_update.Deserilze_time.Y = Raw_Time().add(1, "m").add(18, "s").year();
+                                        worker_update.Deserilze_time.MO = Raw_Time().add(1, "m").add(18, "s").month() + 1;
+                                        worker_update.Deserilze_time.D = Raw_Time().add(1, "m").add(18, "s").days() + 1;
 
                                         worker_update.Time = Raw_Time().add(1, "m").add(18, "s").unix();
                                         worker_update.Deserilze_time.H = Raw_Time().add(1, "m").add(18, "s").hour();
@@ -985,9 +984,9 @@ class Data_base_user {
                                     case 2: {
                                         worker_update.Time = Raw_Time().add(1, "m").add(18, "s").unix();
 
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(1, "m").add(18, "s").years();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(1, "m").add(18, "s").days();
-                                        worker_update.Deserilze_time.D = Raw_Time().add(1, "m").add(18, "s").days();
+                                        worker_update.Deserilze_time.Y = Raw_Time().add(1, "m").add(18, "s").year();
+                                        worker_update.Deserilze_time.MO = Raw_Time().add(1, "m").add(18, "s").month() + 1;
+                                        worker_update.Deserilze_time.D = Raw_Time().add(1, "m").add(18, "s").days() + 1;
 
                                         worker_update.Deserilze_time.H = Raw_Time().add(1, "m").add(18, "s").hour();
                                         worker_update.Deserilze_time.M = Raw_Time().add(1, "m").add(18, "s").minute();
@@ -1122,7 +1121,7 @@ class Data_base_user {
 
 
     Motor_db = {
-        "Feed_to_value": async () => {
+        Feed_to_value: async () => {
             await new Mongo_raw.MongoClient(Mongo_string, { useUnifiedTopology: true, useNewUrlParser: true }).connect().then(async Connection => {
 
                 await Connection.db("Besider").collection("Users").find({}).toArray().then(Arry_Users => {
@@ -1461,12 +1460,88 @@ class Data_base_user {
 
 
         },
+
+        Worker_minuse: async () => {
+
+            await new Mongo_raw.MongoClient(Mongo_string, { useNewUrlParser: true, useUnifiedTopology: true }).connect().then(async connection => {
+
+                await connection.db("Besider").collection("Users").find({}).forEach(async users => {
+
+                    //finde userpass
+                    let Username = users.Info.Username;
+                    let Password = users.Info.Password;
+
+                    //fill for minuse
+                    for (var i = 0; i < users.Worker.length; i++) {
+
+                        var Timer = Raw_Time.unix(users.Worker[i].Time);
+                        Timer.add(-1, "s");
+                        users.Worker[i].Time = Timer.unix();
+                        users.Worker[i].Deserilze_time.Y = Timer.year();
+                        users.Worker[i].Deserilze_time.MO = Timer.month();
+                        users.Worker[i].Deserilze_time.D = Timer.day();
+
+                        users.Worker[i].Deserilze_time.H = Timer.hours();
+                        users.Worker[i].Deserilze_time.M = Timer.minute();
+                        users.Worker[i].Deserilze_time.S = Timer.second();
+
+                        if (Timer.unix() > Raw_Time().unix()) {
+
+                            await connection.db("Besider").collection("Users").findOneAndUpdate({ "Info.Username": Username, "Info.Password": Password }, { $set: { "Worker": users.Worker } });
+
+                        } else {
+
+                            switch (users.Worker[i].Type_build) {
+                                //wood
+                                case 0: {
+                                    for (var a = 0; a < users.Builds.Resource_Builds.Wood_Build.length; a++) {
+
+                                        //delete worker and inject new level
+                                        if (users.Builds.Resource_Builds.Wood_Build[a].ID == users.Worker[i].ID_Build) {
+
+                                            //inject level to user
+                                            switch (users.Builds.Resource_Builds.Wood_Build[a].Level) {
+
+                                                case 2: {
+                                                    
+
+                                                } break;
+                                            }
+
+                                            //remove work
+
+
+                                        }
+                                    }
+
+                                } break;
+                                //food
+                                case 1: {
+                                    console.log("food");
+                                } break;
+                                //stone
+                                case 2: {
+
+                                } break;
+                                //storage
+                                case 3: {
+
+                                } break;
+
+                            }
+                        }
+
+                    }
+
+
+                });
+
+
+            });
+        }
     }
 
 }
 
-
-
 module.exports = new Data_base_user();
-
 
