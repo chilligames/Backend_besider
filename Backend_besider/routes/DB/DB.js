@@ -6,7 +6,7 @@ var Raw_Time = require("moment");
 class Data_base_user {
 
 
-    async  Register(model_data) {
+    async Register(model_data) {
 
         var result = "";
 
@@ -27,7 +27,7 @@ class Data_base_user {
     };
 
 
-    async  Login(Username, password) {
+    async Login(Username, password) {
 
         var result_login = "";
 
@@ -43,7 +43,7 @@ class Data_base_user {
     };
 
 
-    async  recive_values(Username, Password) {
+    async recive_values(Username, Password) {
 
         var result = {
             Values: {
@@ -82,7 +82,7 @@ class Data_base_user {
                     user.Builds.Resource_Builds.Food_Build.forEach(builds => {
                         switch (builds.Level) {
                             case 1: {
-                                result.Per_Values.Per_Value_Food += 30;
+                                result.Per_Values.Per_Value_Food += 55;
                             } break;
                             case 2: {
 
@@ -178,7 +178,7 @@ class Data_base_user {
                     user.Builds.Resource_Builds.Wood_Build.forEach(builds => {
                         switch (builds.Level) {
                             case 1: {
-                                result.Per_Values.Per_Value_Wood += 30;
+                                result.Per_Values.Per_Value_Wood += 55;
                             } break;
                             case 2: {
 
@@ -274,7 +274,7 @@ class Data_base_user {
                     user.Builds.Resource_Builds.Stone_Build.forEach(builds => {
                         switch (builds.Level) {
                             case 1: {
-                                result.Per_Values.Per_Value_Stone += 30;
+                                result.Per_Values.Per_Value_Stone += 55;
                             } break;
                             case 2: {
 
@@ -487,6 +487,7 @@ class Data_base_user {
     }
 
 
+
     async recive_postion_info(Postions) {
 
         var End_result = { Builds: [] };
@@ -611,7 +612,6 @@ class Data_base_user {
             switch (Number(Type_build)) {
                 //wood
                 case 0: {
-
                     await Connection.db("Besider").collection("Users").findOne({ "Info.Username": Username, "Info.Password": Password }).then(Raw_User => {
                         //fill level and time
                         Raw_User.Builds.Resource_Builds.Wood_Build.forEach(async wood_build => {
@@ -624,14 +624,14 @@ class Data_base_user {
 
                                     case 2: {
 
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(1, "m").add(18, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(1, "m").add(18, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(1, "m").add(18, "s").days() + 1;
+                                        worker_update.Deserilze_time.Y = Raw_Time().add(2, "m").add(33, "s").year();
+                                        worker_update.Deserilze_time.MO = Raw_Time().add(2, "m").add(33, "s").month() + 1;
+                                        worker_update.Deserilze_time.D = Raw_Time().add(2, "m").add(33, "s").days() + 1;
 
-                                        worker_update.Time = Raw_Time().add(1, "m").add(18, "s").unix();
-                                        worker_update.Deserilze_time.H = Raw_Time().add(1, "m").add(18, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(1, "m").add(18, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(1, "m").add(18, "s").second();
+                                        worker_update.Time = Raw_Time().add(2, "m").add(33, "s").unix();
+                                        worker_update.Deserilze_time.H = Raw_Time().add(2, "m").add(33, "s").hour();
+                                        worker_update.Deserilze_time.M = Raw_Time().add(2, "m").add(33, "s").minute();
+                                        worker_update.Deserilze_time.S = Raw_Time().add(2, "m").add(33, "s").second();
                                     } break;
                                     case 3: {
 
@@ -727,7 +727,6 @@ class Data_base_user {
                         });
 
                     });
-
                 } break;
                 //food
                 case 1: {
@@ -744,14 +743,14 @@ class Data_base_user {
 
                                     case 2: {
 
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(1, "m").add(18, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(1, "m").add(18, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(1, "m").add(18, "s").days() + 1;
+                                        worker_update.Deserilze_time.Y = Raw_Time().add(2, "m").add(33, "s").year();
+                                        worker_update.Deserilze_time.MO = Raw_Time().add(2, "m").add(33, "s").month() + 1;
+                                        worker_update.Deserilze_time.D = Raw_Time().add(2, "m").add(33, "s").days() + 1;
 
-                                        worker_update.Time = Raw_Time().add(1, "m").add(18, "s").unix();
-                                        worker_update.Deserilze_time.H = Raw_Time().add(1, "m").add(18, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(1, "m").add(18, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(1, "m").add(18, "s").second();
+                                        worker_update.Time = Raw_Time().add(2, "m").add(33, "s").unix();
+                                        worker_update.Deserilze_time.H = Raw_Time().add(2, "m").add(33, "s").hour();
+                                        worker_update.Deserilze_time.M = Raw_Time().add(2, "m").add(33, "s").minute();
+                                        worker_update.Deserilze_time.S = Raw_Time().add(2, "m").add(33, "s").second();
                                     } break;
                                     case 3: {
 
@@ -863,14 +862,14 @@ class Data_base_user {
 
                                     case 2: {
 
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(1, "m").add(18, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(1, "m").add(18, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(1, "m").add(18, "s").days() + 1;
+                                        worker_update.Deserilze_time.Y = Raw_Time().add(2, "m").add(33, "s").year();
+                                        worker_update.Deserilze_time.MO = Raw_Time().add(2, "m").add(33, "s").month() + 1;
+                                        worker_update.Deserilze_time.D = Raw_Time().add(2, "m").add(33, "s").days() + 1;
 
-                                        worker_update.Time = Raw_Time().add(1, "m").add(18, "s").unix();
-                                        worker_update.Deserilze_time.H = Raw_Time().add(1, "m").add(18, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(1, "m").add(18, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(1, "m").add(18, "s").second();
+                                        worker_update.Time = Raw_Time().add(2, "m").add(33, "s").unix();
+                                        worker_update.Deserilze_time.H = Raw_Time().add(2, "m").add(33, "s").hour();
+                                        worker_update.Deserilze_time.M = Raw_Time().add(2, "m").add(33, "s").minute();
+                                        worker_update.Deserilze_time.S = Raw_Time().add(2, "m").add(33, "s").second();
                                     } break;
                                     case 3: {
 
@@ -966,11 +965,9 @@ class Data_base_user {
                         });
 
                     });
-
                 } break;
                 //storage
                 case 3: {
-
                     await Connection.db("Besider").collection("Users").findOne({ "Info.Username": Username, "Info.Password": Password }).then(Raw_User => {
                         //fill level and time
                         Raw_User.Builds.Resource_Builds.Storage_Build.forEach(async Storage_Build => {
@@ -982,15 +979,15 @@ class Data_base_user {
                                 switch (Number(Storage_Build.Level)) {
 
                                     case 2: {
-                                        worker_update.Time = Raw_Time().add(1, "m").add(18, "s").unix();
+                                        worker_update.Time = Raw_Time().add(2, "m").add(33, "s").unix();
 
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(1, "m").add(18, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(1, "m").add(18, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(1, "m").add(18, "s").days() + 1;
+                                        worker_update.Deserilze_time.Y = Raw_Time().add(2, "m").add(33, "s").year();
+                                        worker_update.Deserilze_time.MO = Raw_Time().add(2, "m").add(33, "s").month() + 1;
+                                        worker_update.Deserilze_time.D = Raw_Time().add(2, "m").add(33, "s").days() + 1;
 
-                                        worker_update.Deserilze_time.H = Raw_Time().add(1, "m").add(18, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(1, "m").add(18, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(1, "m").add(18, "s").second();
+                                        worker_update.Deserilze_time.H = Raw_Time().add(2, "m").add(33, "s").hour();
+                                        worker_update.Deserilze_time.M = Raw_Time().add(2, "m").add(33, "s").minute();
+                                        worker_update.Deserilze_time.S = Raw_Time().add(2, "m").add(33, "s").second();
 
                                     } break;
                                     case 3: {
@@ -1087,7 +1084,6 @@ class Data_base_user {
                         });
 
                     });
-
                 } break;
             }
 
@@ -1147,7 +1143,7 @@ class Data_base_user {
                             switch (user.Builds.Resource_Builds.Wood_Build[i].Level) {
 
                                 case 1: {
-                                    end_value_wood += 30;
+                                    end_value_wood += 55;
 
                                 } break;
                                 case 2: {
@@ -1249,7 +1245,7 @@ class Data_base_user {
                             switch (user.Builds.Resource_Builds.Food_Build[i].Level) {
 
                                 case 1: {
-                                    end_value_food += 30;
+                                    end_value_food += 55;
 
                                 } break;
                                 case 2: {
@@ -1350,7 +1346,7 @@ class Data_base_user {
                             switch (user.Builds.Resource_Builds.Stone_Build[i].Level) {
 
                                 case 1: {
-                                    end_value_stone += 30;
+                                    end_value_stone += 55;
 
                                 } break;
                                 case 2: {
@@ -1457,8 +1453,6 @@ class Data_base_user {
                 });
 
             });
-
-
         },
 
         Worker_minuse: async () => {
@@ -1494,6 +1488,7 @@ class Data_base_user {
                             switch (users.Worker[i].Type_build) {
                                 //wood
                                 case 0: {
+
                                     for (var a = 0; a < users.Builds.Resource_Builds.Wood_Build.length; a++) {
 
                                         //delete worker and inject new level
@@ -1594,23 +1589,363 @@ class Data_base_user {
 
                                             }
                                             //remove work
-
-
-
+                                            delete users.Worker[i];
+                                            let new_work = [];
+                                            for (var i = 0; i < users.Worker.length; i++) {
+                                                if (users.Worker[i] != undefined) {
+                                                    new_worker.push(users.Worker[i]);
+                                                }
+                                            }
+                                            users.Worker = new_work;
                                         }
                                     }
+                                    await connection.db("Besider").collection("Users").findOneAndUpdate({ "Info.Username": Username, "Info.Password": Password }, { $set: { Worker: users.Worker, "Builds": users.Builds } });
 
                                 } break;
                                 //food
                                 case 1: {
-                                    console.log("food");
+                                    for (var a = 0; a < users.Builds.Resource_Builds.Food_Build.length; a++) {
+
+                                        //delete worker and inject new level
+                                        if (users.Builds.Resource_Builds.Food_Build[a].ID == users.Worker[i].ID_Build) {
+
+                                            //inject level and health build
+                                            switch (Number(users.Worker[i].To_level)) {
+
+                                                case 2: {
+                                                    users.Builds.Resource_Builds.Food_Build[a].Level = users.Worker[i].To_level;
+                                                    users.Builds.Resource_Builds.Food_Build[a].Health += 500;
+                                                } break;
+                                                case 3: {
+
+                                                } break;
+                                                case 4: {
+
+                                                } break;
+                                                case 5: {
+
+                                                } break;
+                                                case 6: {
+
+                                                } break;
+                                                case 7: {
+
+                                                } break;
+                                                case 8: {
+
+                                                } break;
+                                                case 9: {
+
+                                                } break;
+                                                case 10: {
+
+                                                } break;
+                                                case 11: {
+
+                                                } break;
+                                                case 12: {
+
+                                                } break;
+                                                case 13: {
+
+                                                } break;
+                                                case 14: {
+
+                                                } break;
+                                                case 15: {
+
+                                                } break;
+                                                case 16: {
+
+                                                } break;
+                                                case 17: {
+
+                                                } break;
+                                                case 18: {
+
+                                                } break;
+                                                case 19: {
+
+                                                } break;
+                                                case 20: {
+
+                                                } break;
+                                                case 21: {
+
+                                                } break;
+                                                case 22: {
+
+                                                } break;
+                                                case 23: {
+
+                                                } break;
+                                                case 24: {
+
+                                                } break;
+                                                case 25: {
+
+                                                } break;
+                                                case 26: {
+
+                                                } break;
+                                                case 27: {
+
+                                                } break;
+                                                case 28: {
+
+                                                } break;
+                                                case 29: {
+
+                                                } break;
+                                                case 30: {
+
+                                                } break;
+
+
+                                            }
+                                            //remove work
+                                            delete users.Worker[i];
+                                            let new_work = [];
+                                            for (var i = 0; i < users.Worker.length; i++) {
+                                                if (users.Worker[i] != undefined) {
+                                                    new_worker.push(users.Worker[i]);
+                                                }
+                                            }
+                                            users.Worker = new_work;
+                                        }
+                                    }
+                                    await connection.db("Besider").collection("Users").findOneAndUpdate({ "Info.Username": Username, "Info.Password": Password }, { $set: { Worker: users.Worker, "Builds": users.Builds } });
+
                                 } break;
                                 //stone
                                 case 2: {
+                                    for (var a = 0; a < users.Builds.Resource_Builds.Stone_Build.length; a++) {
+
+                                        //delete worker and inject new level
+                                        if (users.Builds.Resource_Builds.Stone_Build[a].ID == users.Worker[i].ID_Build) {
+
+                                            //inject level and health build
+                                            switch (Number(users.Worker[i].To_level)) {
+
+                                                case 2: {
+                                                    users.Builds.Resource_Builds.Stone_Build[a].Level = users.Worker[i].To_level;
+                                                    users.Builds.Resource_Builds.Stone_Build[a].Health += 500;
+                                                } break;
+                                                case 3: {
+
+                                                } break;
+                                                case 4: {
+
+                                                } break;
+                                                case 5: {
+
+                                                } break;
+                                                case 6: {
+
+                                                } break;
+                                                case 7: {
+
+                                                } break;
+                                                case 8: {
+
+                                                } break;
+                                                case 9: {
+
+                                                } break;
+                                                case 10: {
+
+                                                } break;
+                                                case 11: {
+
+                                                } break;
+                                                case 12: {
+
+                                                } break;
+                                                case 13: {
+
+                                                } break;
+                                                case 14: {
+
+                                                } break;
+                                                case 15: {
+
+                                                } break;
+                                                case 16: {
+
+                                                } break;
+                                                case 17: {
+
+                                                } break;
+                                                case 18: {
+
+                                                } break;
+                                                case 19: {
+
+                                                } break;
+                                                case 20: {
+
+                                                } break;
+                                                case 21: {
+
+                                                } break;
+                                                case 22: {
+
+                                                } break;
+                                                case 23: {
+
+                                                } break;
+                                                case 24: {
+
+                                                } break;
+                                                case 25: {
+
+                                                } break;
+                                                case 26: {
+
+                                                } break;
+                                                case 27: {
+
+                                                } break;
+                                                case 28: {
+
+                                                } break;
+                                                case 29: {
+
+                                                } break;
+                                                case 30: {
+
+                                                } break;
+
+
+                                            }
+                                            //remove work
+                                            delete users.Worker[i];
+                                            let new_work = [];
+                                            for (var i = 0; i < users.Worker.length; i++) {
+                                                if (users.Worker[i] != undefined) {
+                                                    new_worker.push(users.Worker[i]);
+                                                }
+                                            }
+                                            users.Worker = new_work;
+                                        }
+                                    }
+                                    await connection.db("Besider").collection("Users").findOneAndUpdate({ "Info.Username": Username, "Info.Password": Password }, { $set: { Worker: users.Worker, "Builds": users.Builds } });
 
                                 } break;
                                 //storage
                                 case 3: {
+                                    for (var a = 0; a < users.Builds.Resource_Builds.Storage_Build.length; a++) {
+
+                                        //delete worker and inject new level
+                                        if (users.Builds.Resource_Builds.Storage_Build[a].ID == users.Worker[i].ID_Build) {
+
+                                            //inject level and health build
+                                            switch (Number(users.Worker[i].To_level)) {
+
+                                                case 2: {
+                                                    users.Builds.Resource_Builds.Storage_Build[a].Level = users.Worker[i].To_level;
+                                                    users.Builds.Resource_Builds.Storage_Build[a].Health += 500;
+                                                } break;
+                                                case 3: {
+
+                                                } break;
+                                                case 4: {
+
+                                                } break;
+                                                case 5: {
+
+                                                } break;
+                                                case 6: {
+
+                                                } break;
+                                                case 7: {
+
+                                                } break;
+                                                case 8: {
+
+                                                } break;
+                                                case 9: {
+
+                                                } break;
+                                                case 10: {
+
+                                                } break;
+                                                case 11: {
+
+                                                } break;
+                                                case 12: {
+
+                                                } break;
+                                                case 13: {
+
+                                                } break;
+                                                case 14: {
+
+                                                } break;
+                                                case 15: {
+
+                                                } break;
+                                                case 16: {
+
+                                                } break;
+                                                case 17: {
+
+                                                } break;
+                                                case 18: {
+
+                                                } break;
+                                                case 19: {
+
+                                                } break;
+                                                case 20: {
+
+                                                } break;
+                                                case 21: {
+
+                                                } break;
+                                                case 22: {
+
+                                                } break;
+                                                case 23: {
+
+                                                } break;
+                                                case 24: {
+
+                                                } break;
+                                                case 25: {
+
+                                                } break;
+                                                case 26: {
+
+                                                } break;
+                                                case 27: {
+
+                                                } break;
+                                                case 28: {
+
+                                                } break;
+                                                case 29: {
+
+                                                } break;
+                                                case 30: {
+
+                                                } break;
+
+
+                                            }
+                                            //remove work
+                                            delete users.Worker[i];
+                                            let new_work = [];
+                                            for (var i = 0; i < users.Worker.length; i++) {
+                                                if (users.Worker[i] != undefined) {
+                                                    new_worker.push(users.Worker[i]);
+                                                }
+                                            }
+                                            users.Worker = new_work;
+                                        }
+                                    }
+                                    await connection.db("Besider").collection("Users").findOneAndUpdate({ "Info.Username": Username, "Info.Password": Password }, { $set: { Worker: users.Worker, "Builds": users.Builds } });
+
 
                                 } break;
 
