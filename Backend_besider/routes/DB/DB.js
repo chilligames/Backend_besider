@@ -2364,8 +2364,8 @@ class Data_base_user {
                         Timer.add(-1, "s");
                         users.Worker[i].Time = Timer.unix();
                         users.Worker[i].Deserilze_time.Y = Timer.year();
-                        users.Worker[i].Deserilze_time.MO = Timer.month();
-                        users.Worker[i].Deserilze_time.D = Timer.day();
+                        users.Worker[i].Deserilze_time.MO = Timer.month()+1;
+                        users.Worker[i].Deserilze_time.D = Timer.day()+1;
 
                         users.Worker[i].Deserilze_time.H = Timer.hours();
                         users.Worker[i].Deserilze_time.M = Timer.minute();
