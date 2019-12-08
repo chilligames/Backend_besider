@@ -2348,10 +2348,10 @@ class Data_base_user {
         },
 
         Worker_minuse: async () => {
-            
+
             await new Mongo_raw.MongoClient(Mongo_string, { useNewUrlParser: true, useUnifiedTopology: true }).connect().then(async connection => {
 
-                await  connection.db("Besider").collection("Users").find({}).forEach(async users => {
+                await connection.db("Besider").collection("Users").find({}).forEach(async users => {
 
                     //finde userpass
                     let Username = users.Info.Username;
@@ -2364,8 +2364,8 @@ class Data_base_user {
                         Timer.add(-1, "s");
                         users.Worker[i].Time = Timer.unix();
                         users.Worker[i].Deserilze_time.Y = Timer.year();
-                        users.Worker[i].Deserilze_time.MO = Timer.month()+1;
-                        users.Worker[i].Deserilze_time.D = Timer.day()+1;
+                        users.Worker[i].Deserilze_time.MO = Timer.month() + 1;
+                        users.Worker[i].Deserilze_time.D = Timer.day() + 1;
 
                         users.Worker[i].Deserilze_time.H = Timer.hours();
                         users.Worker[i].Deserilze_time.M = Timer.minute();
@@ -2373,7 +2373,11 @@ class Data_base_user {
 
                         if (Timer.unix() > Raw_Time().unix()) {
 
-                            await connection.db("Besider").collection("Users").findOneAndUpdate({ "Info.Username": Username, "Info.Password": Password }, { $set: { "Worker": users.Worker } });
+                            await new Mongo_raw.MongoClient(Mongo_string, { useNewUrlParser: true, useUnifiedTopology: true }).connect().then(async Connection_Internal => {
+
+                                await Connection_Internal.db("Besider").collection("Users").findOneAndUpdate({ "Info.Username": Username, "Info.Password": Password }, { $set: { "Worker": users.Worker } });
+
+                            })
 
                         } else {
 
@@ -2391,16 +2395,23 @@ class Data_base_user {
                                             users.Builds.Resource_Builds.Wood_Build[a].Health += Math.round(users.Builds.Resource_Builds.Wood_Build[a].Health * 1.2);
                                             //remove work
                                             delete users.Worker[i];
-                                            let new_work = [];
+                                            let new_worker = [];
                                             for (var i = 0; i < users.Worker.length; i++) {
                                                 if (users.Worker[i] != undefined) {
                                                     new_worker.push(users.Worker[i]);
                                                 }
                                             }
-                                            users.Worker = new_work;
+                                            users.Worker = new_worker;
                                         }
                                     }
-                                    await connection.db("Besider").collection("Users").findOneAndUpdate({ "Info.Username": Username, "Info.Password": Password }, { $set: { Worker: users.Worker, "Builds": users.Builds } });
+
+                                    //data to user
+                                    await new Mongo_raw.MongoClient(Mongo_string, { useUnifiedTopology: true, useNewUrlParser: true }).connect().then(async Connection_Internal => {
+
+                                        await Connection_Internal.db("Besider").collection("Users").findOneAndUpdate({ "Info.Username": Username, "Info.Password": Password }, { $set: { Worker: users.Worker, "Builds": users.Builds } });
+
+                                    });
+
 
                                 } break;
                                 //food
@@ -2417,16 +2428,19 @@ class Data_base_user {
                                         }
                                         //remove work
                                         delete users.Worker[i];
-                                        let new_work = [];
+                                        let new_worker = [];
                                         for (var i = 0; i < users.Worker.length; i++) {
                                             if (users.Worker[i] != undefined) {
                                                 new_worker.push(users.Worker[i]);
                                             }
                                         }
-                                        users.Worker = new_work;
+                                        users.Worker = new_worker;
 
                                     }
-                                    await connection.db("Besider").collection("Users").findOneAndUpdate({ "Info.Username": Username, "Info.Password": Password }, { $set: { Worker: users.Worker, "Builds": users.Builds } });
+                                    await new Mongo_raw.MongoClient(Mongo_string, { useUnifiedTopology: true, useNewUrlParser: true }).connect().then(async Connection_Internal => {
+                                        await Connection_Internal.db("Besider").collection("Users").findOneAndUpdate({ "Info.Username": Username, "Info.Password": Password }, { $set: { Worker: users.Worker, "Builds": users.Builds } });
+                                    });
+
 
                                 } break;
                                 //stone
@@ -2441,16 +2455,20 @@ class Data_base_user {
                                             users.Builds.Resource_Builds.Stone_Build[a].Health += Math.round(users.Builds.Resource_Builds.Stone_Build[a].Health * 1.2);
                                             //remove work
                                             delete users.Worker[i];
-                                            let new_work = [];
+                                            let new_worker = [];
                                             for (var i = 0; i < users.Worker.length; i++) {
                                                 if (users.Worker[i] != undefined) {
                                                     new_worker.push(users.Worker[i]);
                                                 }
                                             }
-                                            users.Worker = new_work;
+                                            users.Worker = new_worker;
                                         }
                                     }
-                                    await connection.db("Besider").collection("Users").findOneAndUpdate({ "Info.Username": Username, "Info.Password": Password }, { $set: { Worker: users.Worker, "Builds": users.Builds } });
+                                    await new Mongo_raw.MongoClient(Mongo_string, { useNewUrlParser: true, useUnifiedTopology: true }).connect().then(async  Connection_Internal => {
+
+                                        await Connection_Internal.db("Besider").collection("Users").findOneAndUpdate({ "Info.Username": Username, "Info.Password": Password }, { $set: { Worker: users.Worker, "Builds": users.Builds } });
+
+                                    });
 
                                 } break;
                                 //storage
@@ -2465,24 +2483,27 @@ class Data_base_user {
                                             users.Builds.Resource_Builds.Storage_Build[a].Health += Math.round(users.Builds.Resource_Builds.Storage_Build[a].Health * 1.2);
                                             //remove work
                                             delete users.Worker[i];
-                                            let new_work = [];
+                                            let new_worker = [];
                                             for (var i = 0; i < users.Worker.length; i++) {
                                                 if (users.Worker[i] != undefined) {
                                                     new_worker.push(users.Worker[i]);
                                                 }
                                             }
-                                            users.Worker = new_work;
+                                            users.Worker = new_worker;
                                         }
                                     }
-                                    await connection.db("Besider").collection("Users").findOneAndUpdate({ "Info.Username": Username, "Info.Password": Password }, { $set: { Worker: users.Worker, "Builds": users.Builds } });
+                                    await new Mongo_raw.MongoClient(Mongo_string, { useNewUrlParser: true, useUnifiedTopology: true }).connect().then(async Connection_Internal => {
+
+                                        await Connection_Internal.db("Besider").collection("Users").findOneAndUpdate({ "Info.Username": Username, "Info.Password": Password }, { $set: { Worker: users.Worker, "Builds": users.Builds } });
+
+                                    });
+
                                 } break;
 
                             }
                         }
 
                     }
-
-
                 });
 
 
