@@ -129,7 +129,7 @@ router.get("/creat_storage", (req, res) => {
     var Postion = req.headers.postion;
     var Type_build = req.headers.type_build;
 
-    Raw_DB.creat_storage(Username, Password, Postion,Type_build).then(() => {
+    Raw_DB.creat_storage(Username, Password, Postion, Type_build).then(() => {
 
         res.sendStatus(200).end();
 
@@ -157,8 +157,8 @@ router.get("/update_build", (req, res) => {
     var Type_build = req.headers.type_build;
     var ID_build = req.headers.id_build;
 
-    Raw_DB.Update_build(Username, Password, ID_build, Type_build).then(() => {
-        res.sendStatus(200).end();
+    Raw_DB.Update_build(Username, Password, ID_build, Type_build).then((result) => {
+        res.send(result).end();
     });
 
 });

@@ -1982,6 +1982,7 @@ class Data_base_user {
 
         });
 
+        return worker_update;
     }
 
 
@@ -1997,8 +1998,8 @@ class Data_base_user {
 
             await Connection.db("Besider").collection("Users").findOne({ "Info.Username": Username, "Info.Password": Password }).then(User => {
 
-                Worker_detail.Count_work = User.Monitise.Worker;
-                Worker_detail.Count_worker = User.Worker.length;
+                Worker_detail.Count_worker = User.Monitise.Worker;
+                Worker_detail.Count_work = User.Worker.length;
                 Worker_detail.Updates = User.Worker;
             });
 
