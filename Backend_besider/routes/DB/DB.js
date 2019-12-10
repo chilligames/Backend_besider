@@ -610,686 +610,697 @@ class Data_base_user {
                 //wood
                 case 0: {
                     await Connection.db("Besider").collection("Users").findOne({ "Info.Username": Username, "Info.Password": Password }).then(Raw_User => {
-                        //fill level and time
-                        Raw_User.Builds.Resource_Builds.Wood_Build.forEach(async wood_build => {
 
+                        if (Raw_User.Worker.length < Raw_User.Monitise.Worker) {
                             //fill level and time
-                            if (wood_build.ID == ID_build && wood_build.Level <= 29) {
-                                //fill level time
-                                wood_build.Level += 1;
-                                worker_update.To_level = wood_build.Level;
-                                switch (Number(wood_build.Level)) {
+                            Raw_User.Builds.Resource_Builds.Wood_Build.forEach(async wood_build => {
 
-                                    case 2: {
-                                        worker_update.Time = Raw_Time().add(4, "m").add(2, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(4, "m").add(2, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(4, "m").add(2, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(4, "m").add(2, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(4, "m").add(2, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(4, "m").add(2, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(4, "m").add(2, "s").second();
-                                    } break;
-                                    case 3: {
-                                        worker_update.Time = Raw_Time().add(5, "m").add(6, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(5, "m").add(6, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(5, "m").add(6, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(5, "m").add(6, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(5, "m").add(6, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(5, "m").add(6, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(5, "m").add(6, "s").second();
-                                    } break;
-                                    case 4: {
-                                        worker_update.Time = Raw_Time().add(6, "m").add(25, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(6, "m").add(25, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(6, "m").add(25, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(6, "m").add(25, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(6, "m").add(25, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(6, "m").add(25, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(6, "m").add(25, "s").second();
-                                    } break;
-                                    case 5: {
-                                        worker_update.Time = Raw_Time().add(8, "m").add(5, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(8, "m").add(5, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(8, "m").add(5, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(8, "m").add(5, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(8, "m").add(5, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(8, "m").add(5, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(8, "m").add(5, "s").second();
-                                    } break;
-                                    case 6: {
-                                        worker_update.Time = Raw_Time().add(10, "m").add(12, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(10, "m").add(12, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(10, "m").add(12, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(10, "m").add(12, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(10, "m").add(12, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(10, "m").add(12, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(10, "m").add(12, "s").second();
-                                    } break;
-                                    case 7: {
-                                        worker_update.Time = Raw_Time().add(12, "m").add(51, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(12, "m").add(51, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(12, "m").add(51, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(12, "m").add(51, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(12, "m").add(51, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(12, "m").add(51, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(12, "m").add(51, "s").second();
-                                    } break;
-                                    case 8: {
-                                        worker_update.Time = Raw_Time().add(16, "m").add(11, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(16, "m").add(11, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(16, "m").add(11, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(16, "m").add(11, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(16, "m").add(11, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(16, "m").add(11, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(16, "m").add(11, "s").second();
-                                    } break;
-                                    case 9: {
-                                        worker_update.Time = Raw_Time().add(20, "m").add(24, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(20, "m").add(24, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(20, "m").add(24, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(20, "m").add(24, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(20, "m").add(24, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(20, "m").add(24, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(20, "m").add(24, "s").second();
-                                    } break;
-                                    case 10: {
-                                        worker_update.Time = Raw_Time().add(25, "m").add(43, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(25, "m").add(43, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(25, "m").add(43, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(25, "m").add(43, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(25, "m").add(43, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(25, "m").add(43, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(25, "m").add(43, "s").second();
-                                    } break;
-                                    case 11: {
-                                        worker_update.Time = Raw_Time().add(32, "m").add(24, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(32, "m").add(24, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(32, "m").add(24, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(32, "m").add(24, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(32, "m").add(24, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(32, "m").add(24, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(32, "m").add(24, "s").second();
-                                    } break;
-                                    case 12: {
-                                        worker_update.Time = Raw_Time().add(40, "m").add(49, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(40, "m").add(49, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(40, "m").add(49, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(40, "m").add(49, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(40, "m").add(49, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(40, "m").add(49, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(40, "m").add(49, "s").second();
-                                    } break;
-                                    case 13: {
-                                        worker_update.Time = Raw_Time().add(51, "m").add(26, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(51, "m").add(26, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(51, "m").add(26, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(51, "m").add(26, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(51, "m").add(26, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(51, "m").add(26, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(51, "m").add(26, "s").second();
-                                    } break;
-                                    case 14: {
-                                        worker_update.Time = Raw_Time().add(1, "h").add(51, "m").add(26, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(1, "h").add(51, "m").add(26, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(1, "h").add(51, "m").add(26, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(1, "h").add(51, "m").add(26, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(1, "h").add(51, "m").add(26, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(1, "h").add(51, "m").add(26, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(1, "h").add(51, "m").add(26, "s").second();
-                                    } break;
-                                    case 15: {
-                                        worker_update.Time = Raw_Time().add(1, "h").add(4, "m").add(49, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(1, "h").add(4, "m").add(49, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(1, "h").add(4, "m").add(49, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(1, "h").add(4, "m").add(49, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(1, "h").add(4, "m").add(49, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(1, "h").add(4, "m").add(49, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(1, "h").add(4, "m").add(49, "s").second();
-                                    } break;
-                                    case 16: {
-                                        worker_update.Time = Raw_Time().add(1, "h").add(42, "m").add(54, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(1, "h").add(42, "m").add(54, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(1, "h").add(42, "m").add(54, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(1, "h").add(42, "m").add(54, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(1, "h").add(42, "m").add(54, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(1, "h").add(42, "m").add(54, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(1, "h").add(42, "m").add(54, "s").second();
-                                    } break;
-                                    case 17: {
-                                        worker_update.Time = Raw_Time().add(2, "h").add(9, "m").add(40, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(2, "h").add(9, "m").add(40, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(2, "h").add(9, "m").add(40, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(2, "h").add(9, "m").add(40, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(2, "h").add(9, "m").add(40, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(2, "h").add(9, "m").add(40, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(2, "h").add(9, "m").add(40, "s").second();
-                                    } break;
-                                    case 18: {
-                                        worker_update.Time = Raw_Time().add(2, "h").add(43, "m").add(23, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(2, "h").add(43, "m").add(23, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(2, "h").add(43, "m").add(23, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(2, "h").add(43, "m").add(23, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(2, "h").add(43, "m").add(23, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(2, "h").add(43, "m").add(23, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(2, "h").add(43, "m").add(23, "s").second();
-                                    } break;
-                                    case 19: {
-                                        worker_update.Time = Raw_Time().add(3, "h").add(25, "m").add(51, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(3, "h").add(25, "m").add(51, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(3, "h").add(25, "m").add(51, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(3, "h").add(25, "m").add(51, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(3, "h").add(25, "m").add(51, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(3, "h").add(25, "m").add(51, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(3, "h").add(25, "m").add(51, "s").second();
-                                    } break;
-                                    case 20: {
-                                        worker_update.Time = Raw_Time().add(4, "h").add(19, "m").add(23, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(4, "h").add(19, "m").add(23, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(4, "h").add(19, "m").add(23, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(4, "h").add(19, "m").add(23, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(4, "h").add(19, "m").add(23, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(4, "h").add(19, "m").add(23, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(4, "h").add(19, "m").add(23, "s").second();
-                                    } break;
-                                    case 21: {
-                                        worker_update.Time = Raw_Time().add(5, "h").add(26, "m").add(49, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(5, "h").add(26, "m").add(49, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(5, "h").add(26, "m").add(49, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(5, "h").add(26, "m").add(49, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(5, "h").add(26, "m").add(49, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(5, "h").add(26, "m").add(49, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(5, "h").add(26, "m").add(49, "s").second();
-                                    } break;
-                                    case 22: {
-                                        worker_update.Time = Raw_Time().add(6, "h").add(51, "m").add(48, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(6, "h").add(51, "m").add(48, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(6, "h").add(51, "m").add(48, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(6, "h").add(51, "m").add(48, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(6, "h").add(51, "m").add(48, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(6, "h").add(51, "m").add(48, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(6, "h").add(51, "m").add(48, "s").second();
-                                    } break;
-                                    case 23: {
-                                        worker_update.Time = Raw_Time().add(8, "h").add(38, "m").add(52, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(8, "h").add(38, "m").add(52, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(8, "h").add(38, "m").add(52, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(8, "h").add(38, "m").add(52, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(8, "h").add(38, "m").add(52, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(8, "h").add(38, "m").add(52, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(8, "h").add(38, "m").add(52, "s").second();
-                                    } break;
-                                    case 24: {
-                                        worker_update.Time = Raw_Time().add(10, "h").add(53, "m").add(46, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(10, "h").add(53, "m").add(46, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(10, "h").add(53, "m").add(46, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(10, "h").add(53, "m").add(46, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(10, "h").add(53, "m").add(46, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(10, "h").add(53, "m").add(46, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(10, "h").add(53, "m").add(46, "s").second();
-                                    } break;
-                                    case 25: {
-                                        worker_update.Time = Raw_Time().add(13, "h").add(43, "m").add(45, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(13, "h").add(43, "m").add(45, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(13, "h").add(43, "m").add(45, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(13, "h").add(43, "m").add(45, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(13, "h").add(43, "m").add(45, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(13, "h").add(43, "m").add(45, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(13, "h").add(43, "m").add(45, "s").second();
-                                    } break;
-                                    case 26: {
-                                        worker_update.Time = Raw_Time().add(17, "h").add(17, "m").add(56, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(17, "h").add(17, "m").add(56, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(17, "h").add(17, "m").add(56, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(17, "h").add(17, "m").add(56, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(17, "h").add(17, "m").add(56, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(17, "h").add(17, "m").add(56, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(17, "h").add(17, "m").add(56, "s").second();
-                                    } break;
-                                    case 27: {
-                                        worker_update.Time = Raw_Time().add(21, "h").add(47, "m").add(48, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(21, "h").add(47, "m").add(48, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(21, "h").add(47, "m").add(48, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(21, "h").add(47, "m").add(48, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(21, "h").add(47, "m").add(48, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(21, "h").add(47, "m").add(48, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(21, "h").add(47, "m").add(48, "s").second();
-                                    } break;
-                                    case 28: {
-                                        worker_update.Time = Raw_Time().add(27, "h").add(27, "m").add(50, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(27, "h").add(27, "m").add(50, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(27, "h").add(27, "m").add(50, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(27, "h").add(27, "m").add(50, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(27, "h").add(27, "m").add(50, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(27, "h").add(27, "m").add(50, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(27, "h").add(27, "m").add(50, "s").second();
-                                    } break;
-                                    case 29: {
-                                        worker_update.Time = Raw_Time().add(34, "h").add(36, "m").add(16, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(34, "h").add(36, "m").add(16, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(34, "h").add(36, "m").add(16, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(34, "h").add(36, "m").add(16, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(34, "h").add(36, "m").add(16, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(34, "h").add(36, "m").add(16, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(34, "h").add(36, "m").add(16, "s").second();
-                                    } break;
-                                    case 30: {
-                                        worker_update.Time = Raw_Time().add(43, "h").add(36, "m").add(6, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(43, "h").add(36, "m").add(6, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(43, "h").add(36, "m").add(6, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(43, "h").add(36, "m").add(6, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(43, "h").add(36, "m").add(6, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(43, "h").add(36, "m").add(6, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(43, "h").add(36, "m").add(6, "s").second();
-                                    } break;
+                                //fill level and time
+                                if (wood_build.ID == ID_build && wood_build.Level <= 29) {
+                                    //fill level time
+                                    wood_build.Level += 1;
+                                    worker_update.To_level = wood_build.Level;
+                                    switch (Number(wood_build.Level)) {
+
+                                        case 2: {
+                                            worker_update.Time = Raw_Time().add(4, "m").add(2, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(4, "m").add(2, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(4, "m").add(2, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(4, "m").add(2, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(4, "m").add(2, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(4, "m").add(2, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(4, "m").add(2, "s").second();
+                                        } break;
+                                        case 3: {
+                                            worker_update.Time = Raw_Time().add(5, "m").add(6, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(5, "m").add(6, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(5, "m").add(6, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(5, "m").add(6, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(5, "m").add(6, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(5, "m").add(6, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(5, "m").add(6, "s").second();
+                                        } break;
+                                        case 4: {
+                                            worker_update.Time = Raw_Time().add(6, "m").add(25, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(6, "m").add(25, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(6, "m").add(25, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(6, "m").add(25, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(6, "m").add(25, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(6, "m").add(25, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(6, "m").add(25, "s").second();
+                                        } break;
+                                        case 5: {
+                                            worker_update.Time = Raw_Time().add(8, "m").add(5, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(8, "m").add(5, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(8, "m").add(5, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(8, "m").add(5, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(8, "m").add(5, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(8, "m").add(5, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(8, "m").add(5, "s").second();
+                                        } break;
+                                        case 6: {
+                                            worker_update.Time = Raw_Time().add(10, "m").add(12, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(10, "m").add(12, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(10, "m").add(12, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(10, "m").add(12, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(10, "m").add(12, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(10, "m").add(12, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(10, "m").add(12, "s").second();
+                                        } break;
+                                        case 7: {
+                                            worker_update.Time = Raw_Time().add(12, "m").add(51, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(12, "m").add(51, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(12, "m").add(51, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(12, "m").add(51, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(12, "m").add(51, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(12, "m").add(51, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(12, "m").add(51, "s").second();
+                                        } break;
+                                        case 8: {
+                                            worker_update.Time = Raw_Time().add(16, "m").add(11, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(16, "m").add(11, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(16, "m").add(11, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(16, "m").add(11, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(16, "m").add(11, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(16, "m").add(11, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(16, "m").add(11, "s").second();
+                                        } break;
+                                        case 9: {
+                                            worker_update.Time = Raw_Time().add(20, "m").add(24, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(20, "m").add(24, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(20, "m").add(24, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(20, "m").add(24, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(20, "m").add(24, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(20, "m").add(24, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(20, "m").add(24, "s").second();
+                                        } break;
+                                        case 10: {
+                                            worker_update.Time = Raw_Time().add(25, "m").add(43, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(25, "m").add(43, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(25, "m").add(43, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(25, "m").add(43, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(25, "m").add(43, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(25, "m").add(43, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(25, "m").add(43, "s").second();
+                                        } break;
+                                        case 11: {
+                                            worker_update.Time = Raw_Time().add(32, "m").add(24, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(32, "m").add(24, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(32, "m").add(24, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(32, "m").add(24, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(32, "m").add(24, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(32, "m").add(24, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(32, "m").add(24, "s").second();
+                                        } break;
+                                        case 12: {
+                                            worker_update.Time = Raw_Time().add(40, "m").add(49, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(40, "m").add(49, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(40, "m").add(49, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(40, "m").add(49, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(40, "m").add(49, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(40, "m").add(49, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(40, "m").add(49, "s").second();
+                                        } break;
+                                        case 13: {
+                                            worker_update.Time = Raw_Time().add(51, "m").add(26, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(51, "m").add(26, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(51, "m").add(26, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(51, "m").add(26, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(51, "m").add(26, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(51, "m").add(26, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(51, "m").add(26, "s").second();
+                                        } break;
+                                        case 14: {
+                                            worker_update.Time = Raw_Time().add(1, "h").add(51, "m").add(26, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(1, "h").add(51, "m").add(26, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(1, "h").add(51, "m").add(26, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(1, "h").add(51, "m").add(26, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(1, "h").add(51, "m").add(26, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(1, "h").add(51, "m").add(26, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(1, "h").add(51, "m").add(26, "s").second();
+                                        } break;
+                                        case 15: {
+                                            worker_update.Time = Raw_Time().add(1, "h").add(4, "m").add(49, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(1, "h").add(4, "m").add(49, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(1, "h").add(4, "m").add(49, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(1, "h").add(4, "m").add(49, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(1, "h").add(4, "m").add(49, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(1, "h").add(4, "m").add(49, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(1, "h").add(4, "m").add(49, "s").second();
+                                        } break;
+                                        case 16: {
+                                            worker_update.Time = Raw_Time().add(1, "h").add(42, "m").add(54, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(1, "h").add(42, "m").add(54, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(1, "h").add(42, "m").add(54, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(1, "h").add(42, "m").add(54, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(1, "h").add(42, "m").add(54, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(1, "h").add(42, "m").add(54, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(1, "h").add(42, "m").add(54, "s").second();
+                                        } break;
+                                        case 17: {
+                                            worker_update.Time = Raw_Time().add(2, "h").add(9, "m").add(40, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(2, "h").add(9, "m").add(40, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(2, "h").add(9, "m").add(40, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(2, "h").add(9, "m").add(40, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(2, "h").add(9, "m").add(40, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(2, "h").add(9, "m").add(40, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(2, "h").add(9, "m").add(40, "s").second();
+                                        } break;
+                                        case 18: {
+                                            worker_update.Time = Raw_Time().add(2, "h").add(43, "m").add(23, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(2, "h").add(43, "m").add(23, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(2, "h").add(43, "m").add(23, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(2, "h").add(43, "m").add(23, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(2, "h").add(43, "m").add(23, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(2, "h").add(43, "m").add(23, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(2, "h").add(43, "m").add(23, "s").second();
+                                        } break;
+                                        case 19: {
+                                            worker_update.Time = Raw_Time().add(3, "h").add(25, "m").add(51, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(3, "h").add(25, "m").add(51, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(3, "h").add(25, "m").add(51, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(3, "h").add(25, "m").add(51, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(3, "h").add(25, "m").add(51, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(3, "h").add(25, "m").add(51, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(3, "h").add(25, "m").add(51, "s").second();
+                                        } break;
+                                        case 20: {
+                                            worker_update.Time = Raw_Time().add(4, "h").add(19, "m").add(23, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(4, "h").add(19, "m").add(23, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(4, "h").add(19, "m").add(23, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(4, "h").add(19, "m").add(23, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(4, "h").add(19, "m").add(23, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(4, "h").add(19, "m").add(23, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(4, "h").add(19, "m").add(23, "s").second();
+                                        } break;
+                                        case 21: {
+                                            worker_update.Time = Raw_Time().add(5, "h").add(26, "m").add(49, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(5, "h").add(26, "m").add(49, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(5, "h").add(26, "m").add(49, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(5, "h").add(26, "m").add(49, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(5, "h").add(26, "m").add(49, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(5, "h").add(26, "m").add(49, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(5, "h").add(26, "m").add(49, "s").second();
+                                        } break;
+                                        case 22: {
+                                            worker_update.Time = Raw_Time().add(6, "h").add(51, "m").add(48, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(6, "h").add(51, "m").add(48, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(6, "h").add(51, "m").add(48, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(6, "h").add(51, "m").add(48, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(6, "h").add(51, "m").add(48, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(6, "h").add(51, "m").add(48, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(6, "h").add(51, "m").add(48, "s").second();
+                                        } break;
+                                        case 23: {
+                                            worker_update.Time = Raw_Time().add(8, "h").add(38, "m").add(52, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(8, "h").add(38, "m").add(52, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(8, "h").add(38, "m").add(52, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(8, "h").add(38, "m").add(52, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(8, "h").add(38, "m").add(52, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(8, "h").add(38, "m").add(52, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(8, "h").add(38, "m").add(52, "s").second();
+                                        } break;
+                                        case 24: {
+                                            worker_update.Time = Raw_Time().add(10, "h").add(53, "m").add(46, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(10, "h").add(53, "m").add(46, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(10, "h").add(53, "m").add(46, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(10, "h").add(53, "m").add(46, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(10, "h").add(53, "m").add(46, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(10, "h").add(53, "m").add(46, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(10, "h").add(53, "m").add(46, "s").second();
+                                        } break;
+                                        case 25: {
+                                            worker_update.Time = Raw_Time().add(13, "h").add(43, "m").add(45, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(13, "h").add(43, "m").add(45, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(13, "h").add(43, "m").add(45, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(13, "h").add(43, "m").add(45, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(13, "h").add(43, "m").add(45, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(13, "h").add(43, "m").add(45, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(13, "h").add(43, "m").add(45, "s").second();
+                                        } break;
+                                        case 26: {
+                                            worker_update.Time = Raw_Time().add(17, "h").add(17, "m").add(56, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(17, "h").add(17, "m").add(56, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(17, "h").add(17, "m").add(56, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(17, "h").add(17, "m").add(56, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(17, "h").add(17, "m").add(56, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(17, "h").add(17, "m").add(56, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(17, "h").add(17, "m").add(56, "s").second();
+                                        } break;
+                                        case 27: {
+                                            worker_update.Time = Raw_Time().add(21, "h").add(47, "m").add(48, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(21, "h").add(47, "m").add(48, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(21, "h").add(47, "m").add(48, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(21, "h").add(47, "m").add(48, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(21, "h").add(47, "m").add(48, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(21, "h").add(47, "m").add(48, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(21, "h").add(47, "m").add(48, "s").second();
+                                        } break;
+                                        case 28: {
+                                            worker_update.Time = Raw_Time().add(27, "h").add(27, "m").add(50, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(27, "h").add(27, "m").add(50, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(27, "h").add(27, "m").add(50, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(27, "h").add(27, "m").add(50, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(27, "h").add(27, "m").add(50, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(27, "h").add(27, "m").add(50, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(27, "h").add(27, "m").add(50, "s").second();
+                                        } break;
+                                        case 29: {
+                                            worker_update.Time = Raw_Time().add(34, "h").add(36, "m").add(16, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(34, "h").add(36, "m").add(16, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(34, "h").add(36, "m").add(16, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(34, "h").add(36, "m").add(16, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(34, "h").add(36, "m").add(16, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(34, "h").add(36, "m").add(16, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(34, "h").add(36, "m").add(16, "s").second();
+                                        } break;
+                                        case 30: {
+                                            worker_update.Time = Raw_Time().add(43, "h").add(36, "m").add(6, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(43, "h").add(36, "m").add(6, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(43, "h").add(36, "m").add(6, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(43, "h").add(36, "m").add(6, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(43, "h").add(36, "m").add(6, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(43, "h").add(36, "m").add(6, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(43, "h").add(36, "m").add(6, "s").second();
+                                        } break;
+                                    }
+
+                                    //equal data with player acc
+                                    await Connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Worker": worker_update } });
                                 }
 
-                                //equal data with player acc
-                                await Connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Worker": worker_update } });
-                            }
 
+                            });
 
-                        });
-
+                        } else {
+                            worker_update= "";
+                        }
                     });
                 } break;
                 //food
                 case 1: {
 
                     await Connection.db("Besider").collection("Users").findOne({ "Info.Username": Username, "Info.Password": Password }).then(Raw_User => {
-                        //fill level and time
-                        Raw_User.Builds.Resource_Builds.Food_Build.forEach(async Food_Build => {
+                        if (Raw_User.Worker.length < Raw_User.Monitise.Worker) {
 
-                            //fill level
-                            if (Food_Build.ID == ID_build && Food_Build.Level <= 29) {
-                                Food_Build.Level += 1;
-                                worker_update.To_level = Food_Build.Level;
-                                switch (Number(Food_Build.Level)) {
+                            //fill level and time
+                            Raw_User.Builds.Resource_Builds.Food_Build.forEach(async Food_Build => {
 
-                                    case 2: {
-                                        worker_update.Time = Raw_Time().add(4, "m").add(2, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(4, "m").add(2, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(4, "m").add(2, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(4, "m").add(2, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(4, "m").add(2, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(4, "m").add(2, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(4, "m").add(2, "s").second();
-                                    } break;
-                                    case 3: {
-                                        worker_update.Time = Raw_Time().add(5, "m").add(6, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(5, "m").add(6, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(5, "m").add(6, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(5, "m").add(6, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(5, "m").add(6, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(5, "m").add(6, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(5, "m").add(6, "s").second();
-                                    } break;
-                                    case 4: {
-                                        worker_update.Time = Raw_Time().add(6, "m").add(25, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(6, "m").add(25, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(6, "m").add(25, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(6, "m").add(25, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(6, "m").add(25, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(6, "m").add(25, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(6, "m").add(25, "s").second();
-                                    } break;
-                                    case 5: {
-                                        worker_update.Time = Raw_Time().add(8, "m").add(5, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(8, "m").add(5, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(8, "m").add(5, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(8, "m").add(5, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(8, "m").add(5, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(8, "m").add(5, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(8, "m").add(5, "s").second();
-                                    } break;
-                                    case 6: {
-                                        worker_update.Time = Raw_Time().add(10, "m").add(12, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(10, "m").add(12, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(10, "m").add(12, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(10, "m").add(12, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(10, "m").add(12, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(10, "m").add(12, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(10, "m").add(12, "s").second();
-                                    } break;
-                                    case 7: {
-                                        worker_update.Time = Raw_Time().add(12, "m").add(51, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(12, "m").add(51, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(12, "m").add(51, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(12, "m").add(51, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(12, "m").add(51, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(12, "m").add(51, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(12, "m").add(51, "s").second();
-                                    } break;
-                                    case 8: {
-                                        worker_update.Time = Raw_Time().add(16, "m").add(11, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(16, "m").add(11, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(16, "m").add(11, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(16, "m").add(11, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(16, "m").add(11, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(16, "m").add(11, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(16, "m").add(11, "s").second();
-                                    } break;
-                                    case 9: {
-                                        worker_update.Time = Raw_Time().add(20, "m").add(24, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(20, "m").add(24, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(20, "m").add(24, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(20, "m").add(24, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(20, "m").add(24, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(20, "m").add(24, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(20, "m").add(24, "s").second();
-                                    } break;
-                                    case 10: {
-                                        worker_update.Time = Raw_Time().add(25, "m").add(43, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(25, "m").add(43, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(25, "m").add(43, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(25, "m").add(43, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(25, "m").add(43, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(25, "m").add(43, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(25, "m").add(43, "s").second();
-                                    } break;
-                                    case 11: {
-                                        worker_update.Time = Raw_Time().add(32, "m").add(24, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(32, "m").add(24, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(32, "m").add(24, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(32, "m").add(24, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(32, "m").add(24, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(32, "m").add(24, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(32, "m").add(24, "s").second();
-                                    } break;
-                                    case 12: {
-                                        worker_update.Time = Raw_Time().add(40, "m").add(49, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(40, "m").add(49, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(40, "m").add(49, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(40, "m").add(49, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(40, "m").add(49, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(40, "m").add(49, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(40, "m").add(49, "s").second();
-                                    } break;
-                                    case 13: {
-                                        worker_update.Time = Raw_Time().add(51, "m").add(26, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(51, "m").add(26, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(51, "m").add(26, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(51, "m").add(26, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(51, "m").add(26, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(51, "m").add(26, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(51, "m").add(26, "s").second();
-                                    } break;
-                                    case 14: {
-                                        worker_update.Time = Raw_Time().add(1, "h").add(51, "m").add(26, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(1, "h").add(51, "m").add(26, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(1, "h").add(51, "m").add(26, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(1, "h").add(51, "m").add(26, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(1, "h").add(51, "m").add(26, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(1, "h").add(51, "m").add(26, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(1, "h").add(51, "m").add(26, "s").second();
-                                    } break;
-                                    case 15: {
-                                        worker_update.Time = Raw_Time().add(1, "h").add(4, "m").add(49, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(1, "h").add(4, "m").add(49, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(1, "h").add(4, "m").add(49, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(1, "h").add(4, "m").add(49, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(1, "h").add(4, "m").add(49, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(1, "h").add(4, "m").add(49, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(1, "h").add(4, "m").add(49, "s").second();
-                                    } break;
-                                    case 16: {
-                                        worker_update.Time = Raw_Time().add(1, "h").add(42, "m").add(54, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(1, "h").add(42, "m").add(54, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(1, "h").add(42, "m").add(54, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(1, "h").add(42, "m").add(54, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(1, "h").add(42, "m").add(54, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(1, "h").add(42, "m").add(54, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(1, "h").add(42, "m").add(54, "s").second();
-                                    } break;
-                                    case 17: {
-                                        worker_update.Time = Raw_Time().add(2, "h").add(9, "m").add(40, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(2, "h").add(9, "m").add(40, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(2, "h").add(9, "m").add(40, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(2, "h").add(9, "m").add(40, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(2, "h").add(9, "m").add(40, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(2, "h").add(9, "m").add(40, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(2, "h").add(9, "m").add(40, "s").second();
-                                    } break;
-                                    case 18: {
-                                        worker_update.Time = Raw_Time().add(2, "h").add(43, "m").add(23, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(2, "h").add(43, "m").add(23, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(2, "h").add(43, "m").add(23, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(2, "h").add(43, "m").add(23, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(2, "h").add(43, "m").add(23, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(2, "h").add(43, "m").add(23, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(2, "h").add(43, "m").add(23, "s").second();
-                                    } break;
-                                    case 19: {
-                                        worker_update.Time = Raw_Time().add(3, "h").add(25, "m").add(51, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(3, "h").add(25, "m").add(51, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(3, "h").add(25, "m").add(51, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(3, "h").add(25, "m").add(51, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(3, "h").add(25, "m").add(51, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(3, "h").add(25, "m").add(51, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(3, "h").add(25, "m").add(51, "s").second();
-                                    } break;
-                                    case 20: {
-                                        worker_update.Time = Raw_Time().add(4, "h").add(19, "m").add(23, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(4, "h").add(19, "m").add(23, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(4, "h").add(19, "m").add(23, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(4, "h").add(19, "m").add(23, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(4, "h").add(19, "m").add(23, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(4, "h").add(19, "m").add(23, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(4, "h").add(19, "m").add(23, "s").second();
-                                    } break;
-                                    case 21: {
-                                        worker_update.Time = Raw_Time().add(5, "h").add(26, "m").add(49, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(5, "h").add(26, "m").add(49, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(5, "h").add(26, "m").add(49, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(5, "h").add(26, "m").add(49, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(5, "h").add(26, "m").add(49, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(5, "h").add(26, "m").add(49, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(5, "h").add(26, "m").add(49, "s").second();
-                                    } break;
-                                    case 22: {
-                                        worker_update.Time = Raw_Time().add(6, "h").add(51, "m").add(48, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(6, "h").add(51, "m").add(48, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(6, "h").add(51, "m").add(48, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(6, "h").add(51, "m").add(48, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(6, "h").add(51, "m").add(48, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(6, "h").add(51, "m").add(48, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(6, "h").add(51, "m").add(48, "s").second();
-                                    } break;
-                                    case 23: {
-                                        worker_update.Time = Raw_Time().add(8, "h").add(38, "m").add(52, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(8, "h").add(38, "m").add(52, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(8, "h").add(38, "m").add(52, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(8, "h").add(38, "m").add(52, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(8, "h").add(38, "m").add(52, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(8, "h").add(38, "m").add(52, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(8, "h").add(38, "m").add(52, "s").second();
-                                    } break;
-                                    case 24: {
-                                        worker_update.Time = Raw_Time().add(10, "h").add(53, "m").add(46, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(10, "h").add(53, "m").add(46, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(10, "h").add(53, "m").add(46, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(10, "h").add(53, "m").add(46, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(10, "h").add(53, "m").add(46, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(10, "h").add(53, "m").add(46, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(10, "h").add(53, "m").add(46, "s").second();
-                                    } break;
-                                    case 25: {
-                                        worker_update.Time = Raw_Time().add(13, "h").add(43, "m").add(45, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(13, "h").add(43, "m").add(45, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(13, "h").add(43, "m").add(45, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(13, "h").add(43, "m").add(45, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(13, "h").add(43, "m").add(45, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(13, "h").add(43, "m").add(45, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(13, "h").add(43, "m").add(45, "s").second();
-                                    } break;
-                                    case 26: {
-                                        worker_update.Time = Raw_Time().add(17, "h").add(17, "m").add(56, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(17, "h").add(17, "m").add(56, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(17, "h").add(17, "m").add(56, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(17, "h").add(17, "m").add(56, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(17, "h").add(17, "m").add(56, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(17, "h").add(17, "m").add(56, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(17, "h").add(17, "m").add(56, "s").second();
-                                    } break;
-                                    case 27: {
-                                        worker_update.Time = Raw_Time().add(21, "h").add(47, "m").add(48, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(21, "h").add(47, "m").add(48, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(21, "h").add(47, "m").add(48, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(21, "h").add(47, "m").add(48, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(21, "h").add(47, "m").add(48, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(21, "h").add(47, "m").add(48, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(21, "h").add(47, "m").add(48, "s").second();
-                                    } break;
-                                    case 28: {
-                                        worker_update.Time = Raw_Time().add(27, "h").add(27, "m").add(50, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(27, "h").add(27, "m").add(50, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(27, "h").add(27, "m").add(50, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(27, "h").add(27, "m").add(50, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(27, "h").add(27, "m").add(50, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(27, "h").add(27, "m").add(50, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(27, "h").add(27, "m").add(50, "s").second();
-                                    } break;
-                                    case 29: {
-                                        worker_update.Time = Raw_Time().add(34, "h").add(36, "m").add(16, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(34, "h").add(36, "m").add(16, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(34, "h").add(36, "m").add(16, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(34, "h").add(36, "m").add(16, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(34, "h").add(36, "m").add(16, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(34, "h").add(36, "m").add(16, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(34, "h").add(36, "m").add(16, "s").second();
-                                    } break;
-                                    case 30: {
-                                        worker_update.Time = Raw_Time().add(43, "h").add(36, "m").add(6, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(43, "h").add(36, "m").add(6, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(43, "h").add(36, "m").add(6, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(43, "h").add(36, "m").add(6, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(43, "h").add(36, "m").add(6, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(43, "h").add(36, "m").add(6, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(43, "h").add(36, "m").add(6, "s").second();
-                                    } break;
+                                //fill level
+                                if (Food_Build.ID == ID_build && Food_Build.Level <= 29) {
+                                    Food_Build.Level += 1;
+                                    worker_update.To_level = Food_Build.Level;
+                                    switch (Number(Food_Build.Level)) {
+
+                                        case 2: {
+                                            worker_update.Time = Raw_Time().add(4, "m").add(2, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(4, "m").add(2, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(4, "m").add(2, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(4, "m").add(2, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(4, "m").add(2, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(4, "m").add(2, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(4, "m").add(2, "s").second();
+                                        } break;
+                                        case 3: {
+                                            worker_update.Time = Raw_Time().add(5, "m").add(6, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(5, "m").add(6, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(5, "m").add(6, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(5, "m").add(6, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(5, "m").add(6, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(5, "m").add(6, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(5, "m").add(6, "s").second();
+                                        } break;
+                                        case 4: {
+                                            worker_update.Time = Raw_Time().add(6, "m").add(25, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(6, "m").add(25, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(6, "m").add(25, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(6, "m").add(25, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(6, "m").add(25, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(6, "m").add(25, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(6, "m").add(25, "s").second();
+                                        } break;
+                                        case 5: {
+                                            worker_update.Time = Raw_Time().add(8, "m").add(5, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(8, "m").add(5, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(8, "m").add(5, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(8, "m").add(5, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(8, "m").add(5, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(8, "m").add(5, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(8, "m").add(5, "s").second();
+                                        } break;
+                                        case 6: {
+                                            worker_update.Time = Raw_Time().add(10, "m").add(12, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(10, "m").add(12, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(10, "m").add(12, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(10, "m").add(12, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(10, "m").add(12, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(10, "m").add(12, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(10, "m").add(12, "s").second();
+                                        } break;
+                                        case 7: {
+                                            worker_update.Time = Raw_Time().add(12, "m").add(51, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(12, "m").add(51, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(12, "m").add(51, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(12, "m").add(51, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(12, "m").add(51, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(12, "m").add(51, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(12, "m").add(51, "s").second();
+                                        } break;
+                                        case 8: {
+                                            worker_update.Time = Raw_Time().add(16, "m").add(11, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(16, "m").add(11, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(16, "m").add(11, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(16, "m").add(11, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(16, "m").add(11, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(16, "m").add(11, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(16, "m").add(11, "s").second();
+                                        } break;
+                                        case 9: {
+                                            worker_update.Time = Raw_Time().add(20, "m").add(24, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(20, "m").add(24, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(20, "m").add(24, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(20, "m").add(24, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(20, "m").add(24, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(20, "m").add(24, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(20, "m").add(24, "s").second();
+                                        } break;
+                                        case 10: {
+                                            worker_update.Time = Raw_Time().add(25, "m").add(43, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(25, "m").add(43, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(25, "m").add(43, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(25, "m").add(43, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(25, "m").add(43, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(25, "m").add(43, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(25, "m").add(43, "s").second();
+                                        } break;
+                                        case 11: {
+                                            worker_update.Time = Raw_Time().add(32, "m").add(24, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(32, "m").add(24, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(32, "m").add(24, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(32, "m").add(24, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(32, "m").add(24, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(32, "m").add(24, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(32, "m").add(24, "s").second();
+                                        } break;
+                                        case 12: {
+                                            worker_update.Time = Raw_Time().add(40, "m").add(49, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(40, "m").add(49, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(40, "m").add(49, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(40, "m").add(49, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(40, "m").add(49, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(40, "m").add(49, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(40, "m").add(49, "s").second();
+                                        } break;
+                                        case 13: {
+                                            worker_update.Time = Raw_Time().add(51, "m").add(26, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(51, "m").add(26, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(51, "m").add(26, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(51, "m").add(26, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(51, "m").add(26, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(51, "m").add(26, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(51, "m").add(26, "s").second();
+                                        } break;
+                                        case 14: {
+                                            worker_update.Time = Raw_Time().add(1, "h").add(51, "m").add(26, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(1, "h").add(51, "m").add(26, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(1, "h").add(51, "m").add(26, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(1, "h").add(51, "m").add(26, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(1, "h").add(51, "m").add(26, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(1, "h").add(51, "m").add(26, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(1, "h").add(51, "m").add(26, "s").second();
+                                        } break;
+                                        case 15: {
+                                            worker_update.Time = Raw_Time().add(1, "h").add(4, "m").add(49, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(1, "h").add(4, "m").add(49, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(1, "h").add(4, "m").add(49, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(1, "h").add(4, "m").add(49, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(1, "h").add(4, "m").add(49, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(1, "h").add(4, "m").add(49, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(1, "h").add(4, "m").add(49, "s").second();
+                                        } break;
+                                        case 16: {
+                                            worker_update.Time = Raw_Time().add(1, "h").add(42, "m").add(54, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(1, "h").add(42, "m").add(54, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(1, "h").add(42, "m").add(54, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(1, "h").add(42, "m").add(54, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(1, "h").add(42, "m").add(54, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(1, "h").add(42, "m").add(54, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(1, "h").add(42, "m").add(54, "s").second();
+                                        } break;
+                                        case 17: {
+                                            worker_update.Time = Raw_Time().add(2, "h").add(9, "m").add(40, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(2, "h").add(9, "m").add(40, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(2, "h").add(9, "m").add(40, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(2, "h").add(9, "m").add(40, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(2, "h").add(9, "m").add(40, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(2, "h").add(9, "m").add(40, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(2, "h").add(9, "m").add(40, "s").second();
+                                        } break;
+                                        case 18: {
+                                            worker_update.Time = Raw_Time().add(2, "h").add(43, "m").add(23, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(2, "h").add(43, "m").add(23, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(2, "h").add(43, "m").add(23, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(2, "h").add(43, "m").add(23, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(2, "h").add(43, "m").add(23, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(2, "h").add(43, "m").add(23, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(2, "h").add(43, "m").add(23, "s").second();
+                                        } break;
+                                        case 19: {
+                                            worker_update.Time = Raw_Time().add(3, "h").add(25, "m").add(51, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(3, "h").add(25, "m").add(51, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(3, "h").add(25, "m").add(51, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(3, "h").add(25, "m").add(51, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(3, "h").add(25, "m").add(51, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(3, "h").add(25, "m").add(51, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(3, "h").add(25, "m").add(51, "s").second();
+                                        } break;
+                                        case 20: {
+                                            worker_update.Time = Raw_Time().add(4, "h").add(19, "m").add(23, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(4, "h").add(19, "m").add(23, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(4, "h").add(19, "m").add(23, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(4, "h").add(19, "m").add(23, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(4, "h").add(19, "m").add(23, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(4, "h").add(19, "m").add(23, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(4, "h").add(19, "m").add(23, "s").second();
+                                        } break;
+                                        case 21: {
+                                            worker_update.Time = Raw_Time().add(5, "h").add(26, "m").add(49, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(5, "h").add(26, "m").add(49, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(5, "h").add(26, "m").add(49, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(5, "h").add(26, "m").add(49, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(5, "h").add(26, "m").add(49, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(5, "h").add(26, "m").add(49, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(5, "h").add(26, "m").add(49, "s").second();
+                                        } break;
+                                        case 22: {
+                                            worker_update.Time = Raw_Time().add(6, "h").add(51, "m").add(48, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(6, "h").add(51, "m").add(48, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(6, "h").add(51, "m").add(48, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(6, "h").add(51, "m").add(48, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(6, "h").add(51, "m").add(48, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(6, "h").add(51, "m").add(48, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(6, "h").add(51, "m").add(48, "s").second();
+                                        } break;
+                                        case 23: {
+                                            worker_update.Time = Raw_Time().add(8, "h").add(38, "m").add(52, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(8, "h").add(38, "m").add(52, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(8, "h").add(38, "m").add(52, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(8, "h").add(38, "m").add(52, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(8, "h").add(38, "m").add(52, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(8, "h").add(38, "m").add(52, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(8, "h").add(38, "m").add(52, "s").second();
+                                        } break;
+                                        case 24: {
+                                            worker_update.Time = Raw_Time().add(10, "h").add(53, "m").add(46, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(10, "h").add(53, "m").add(46, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(10, "h").add(53, "m").add(46, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(10, "h").add(53, "m").add(46, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(10, "h").add(53, "m").add(46, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(10, "h").add(53, "m").add(46, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(10, "h").add(53, "m").add(46, "s").second();
+                                        } break;
+                                        case 25: {
+                                            worker_update.Time = Raw_Time().add(13, "h").add(43, "m").add(45, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(13, "h").add(43, "m").add(45, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(13, "h").add(43, "m").add(45, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(13, "h").add(43, "m").add(45, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(13, "h").add(43, "m").add(45, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(13, "h").add(43, "m").add(45, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(13, "h").add(43, "m").add(45, "s").second();
+                                        } break;
+                                        case 26: {
+                                            worker_update.Time = Raw_Time().add(17, "h").add(17, "m").add(56, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(17, "h").add(17, "m").add(56, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(17, "h").add(17, "m").add(56, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(17, "h").add(17, "m").add(56, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(17, "h").add(17, "m").add(56, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(17, "h").add(17, "m").add(56, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(17, "h").add(17, "m").add(56, "s").second();
+                                        } break;
+                                        case 27: {
+                                            worker_update.Time = Raw_Time().add(21, "h").add(47, "m").add(48, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(21, "h").add(47, "m").add(48, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(21, "h").add(47, "m").add(48, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(21, "h").add(47, "m").add(48, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(21, "h").add(47, "m").add(48, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(21, "h").add(47, "m").add(48, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(21, "h").add(47, "m").add(48, "s").second();
+                                        } break;
+                                        case 28: {
+                                            worker_update.Time = Raw_Time().add(27, "h").add(27, "m").add(50, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(27, "h").add(27, "m").add(50, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(27, "h").add(27, "m").add(50, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(27, "h").add(27, "m").add(50, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(27, "h").add(27, "m").add(50, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(27, "h").add(27, "m").add(50, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(27, "h").add(27, "m").add(50, "s").second();
+                                        } break;
+                                        case 29: {
+                                            worker_update.Time = Raw_Time().add(34, "h").add(36, "m").add(16, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(34, "h").add(36, "m").add(16, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(34, "h").add(36, "m").add(16, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(34, "h").add(36, "m").add(16, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(34, "h").add(36, "m").add(16, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(34, "h").add(36, "m").add(16, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(34, "h").add(36, "m").add(16, "s").second();
+                                        } break;
+                                        case 30: {
+                                            worker_update.Time = Raw_Time().add(43, "h").add(36, "m").add(6, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(43, "h").add(36, "m").add(6, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(43, "h").add(36, "m").add(6, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(43, "h").add(36, "m").add(6, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(43, "h").add(36, "m").add(6, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(43, "h").add(36, "m").add(6, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(43, "h").add(36, "m").add(6, "s").second();
+                                        } break;
+                                    }
+
+                                    //equal data with player acc
+
+                                    await Connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Worker": worker_update } });
                                 }
 
-                                //equal data with player acc
+                            });
 
-                                await Connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Worker": worker_update } });
-                            }
-
-                        });
+                        } else {
+                            worker_update= "";
+                        }
 
                     });
 
@@ -1297,691 +1308,702 @@ class Data_base_user {
                 //stone
                 case 2: {
                     await Connection.db("Besider").collection("Users").findOne({ "Info.Username": Username, "Info.Password": Password }).then(Raw_User => {
-                        //fill level and time
-                        Raw_User.Builds.Resource_Builds.Stone_Build.forEach(async Stone_Build => {
+                        if (Raw_User.Worker.length < Raw_User.Monitise.Worker) {
+                            //fill level and time
+                            Raw_User.Builds.Resource_Builds.Stone_Build.forEach(async Stone_Build => {
 
-                            //fill level
-                            if (Stone_Build.ID == ID_build && Stone_Build.Level <= 29) {
-                                Stone_Build.Level += 1;
-                                worker_update.To_level = Stone_Build.Level;
-                                switch (Number(Stone_Build.Level)) {
+                                //fill level
+                                if (Stone_Build.ID == ID_build && Stone_Build.Level <= 29) {
+                                    Stone_Build.Level += 1;
+                                    worker_update.To_level = Stone_Build.Level;
+                                    switch (Number(Stone_Build.Level)) {
 
-                                    case 2: {
-                                        worker_update.Time = Raw_Time().add(4, "m").add(2, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(4, "m").add(2, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(4, "m").add(2, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(4, "m").add(2, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(4, "m").add(2, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(4, "m").add(2, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(4, "m").add(2, "s").second();
-                                    } break;
-                                    case 3: {
-                                        worker_update.Time = Raw_Time().add(5, "m").add(6, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(5, "m").add(6, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(5, "m").add(6, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(5, "m").add(6, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(5, "m").add(6, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(5, "m").add(6, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(5, "m").add(6, "s").second();
-                                    } break;
-                                    case 4: {
-                                        worker_update.Time = Raw_Time().add(6, "m").add(25, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(6, "m").add(25, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(6, "m").add(25, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(6, "m").add(25, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(6, "m").add(25, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(6, "m").add(25, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(6, "m").add(25, "s").second();
-                                    } break;
-                                    case 5: {
-                                        worker_update.Time = Raw_Time().add(8, "m").add(5, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(8, "m").add(5, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(8, "m").add(5, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(8, "m").add(5, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(8, "m").add(5, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(8, "m").add(5, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(8, "m").add(5, "s").second();
-                                    } break;
-                                    case 6: {
-                                        worker_update.Time = Raw_Time().add(10, "m").add(12, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(10, "m").add(12, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(10, "m").add(12, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(10, "m").add(12, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(10, "m").add(12, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(10, "m").add(12, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(10, "m").add(12, "s").second();
-                                    } break;
-                                    case 7: {
-                                        worker_update.Time = Raw_Time().add(12, "m").add(51, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(12, "m").add(51, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(12, "m").add(51, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(12, "m").add(51, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(12, "m").add(51, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(12, "m").add(51, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(12, "m").add(51, "s").second();
-                                    } break;
-                                    case 8: {
-                                        worker_update.Time = Raw_Time().add(16, "m").add(11, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(16, "m").add(11, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(16, "m").add(11, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(16, "m").add(11, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(16, "m").add(11, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(16, "m").add(11, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(16, "m").add(11, "s").second();
-                                    } break;
-                                    case 9: {
-                                        worker_update.Time = Raw_Time().add(20, "m").add(24, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(20, "m").add(24, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(20, "m").add(24, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(20, "m").add(24, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(20, "m").add(24, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(20, "m").add(24, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(20, "m").add(24, "s").second();
-                                    } break;
-                                    case 10: {
-                                        worker_update.Time = Raw_Time().add(25, "m").add(43, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(25, "m").add(43, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(25, "m").add(43, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(25, "m").add(43, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(25, "m").add(43, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(25, "m").add(43, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(25, "m").add(43, "s").second();
-                                    } break;
-                                    case 11: {
-                                        worker_update.Time = Raw_Time().add(32, "m").add(24, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(32, "m").add(24, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(32, "m").add(24, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(32, "m").add(24, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(32, "m").add(24, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(32, "m").add(24, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(32, "m").add(24, "s").second();
-                                    } break;
-                                    case 12: {
-                                        worker_update.Time = Raw_Time().add(40, "m").add(49, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(40, "m").add(49, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(40, "m").add(49, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(40, "m").add(49, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(40, "m").add(49, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(40, "m").add(49, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(40, "m").add(49, "s").second();
-                                    } break;
-                                    case 13: {
-                                        worker_update.Time = Raw_Time().add(51, "m").add(26, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(51, "m").add(26, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(51, "m").add(26, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(51, "m").add(26, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(51, "m").add(26, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(51, "m").add(26, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(51, "m").add(26, "s").second();
-                                    } break;
-                                    case 14: {
-                                        worker_update.Time = Raw_Time().add(1, "h").add(51, "m").add(26, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(1, "h").add(51, "m").add(26, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(1, "h").add(51, "m").add(26, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(1, "h").add(51, "m").add(26, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(1, "h").add(51, "m").add(26, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(1, "h").add(51, "m").add(26, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(1, "h").add(51, "m").add(26, "s").second();
-                                    } break;
-                                    case 15: {
-                                        worker_update.Time = Raw_Time().add(1, "h").add(4, "m").add(49, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(1, "h").add(4, "m").add(49, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(1, "h").add(4, "m").add(49, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(1, "h").add(4, "m").add(49, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(1, "h").add(4, "m").add(49, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(1, "h").add(4, "m").add(49, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(1, "h").add(4, "m").add(49, "s").second();
-                                    } break;
-                                    case 16: {
-                                        worker_update.Time = Raw_Time().add(1, "h").add(42, "m").add(54, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(1, "h").add(42, "m").add(54, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(1, "h").add(42, "m").add(54, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(1, "h").add(42, "m").add(54, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(1, "h").add(42, "m").add(54, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(1, "h").add(42, "m").add(54, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(1, "h").add(42, "m").add(54, "s").second();
-                                    } break;
-                                    case 17: {
-                                        worker_update.Time = Raw_Time().add(2, "h").add(9, "m").add(40, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(2, "h").add(9, "m").add(40, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(2, "h").add(9, "m").add(40, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(2, "h").add(9, "m").add(40, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(2, "h").add(9, "m").add(40, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(2, "h").add(9, "m").add(40, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(2, "h").add(9, "m").add(40, "s").second();
-                                    } break;
-                                    case 18: {
-                                        worker_update.Time = Raw_Time().add(2, "h").add(43, "m").add(23, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(2, "h").add(43, "m").add(23, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(2, "h").add(43, "m").add(23, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(2, "h").add(43, "m").add(23, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(2, "h").add(43, "m").add(23, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(2, "h").add(43, "m").add(23, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(2, "h").add(43, "m").add(23, "s").second();
-                                    } break;
-                                    case 19: {
-                                        worker_update.Time = Raw_Time().add(3, "h").add(25, "m").add(51, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(3, "h").add(25, "m").add(51, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(3, "h").add(25, "m").add(51, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(3, "h").add(25, "m").add(51, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(3, "h").add(25, "m").add(51, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(3, "h").add(25, "m").add(51, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(3, "h").add(25, "m").add(51, "s").second();
-                                    } break;
-                                    case 20: {
-                                        worker_update.Time = Raw_Time().add(4, "h").add(19, "m").add(23, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(4, "h").add(19, "m").add(23, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(4, "h").add(19, "m").add(23, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(4, "h").add(19, "m").add(23, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(4, "h").add(19, "m").add(23, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(4, "h").add(19, "m").add(23, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(4, "h").add(19, "m").add(23, "s").second();
-                                    } break;
-                                    case 21: {
-                                        worker_update.Time = Raw_Time().add(5, "h").add(26, "m").add(49, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(5, "h").add(26, "m").add(49, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(5, "h").add(26, "m").add(49, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(5, "h").add(26, "m").add(49, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(5, "h").add(26, "m").add(49, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(5, "h").add(26, "m").add(49, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(5, "h").add(26, "m").add(49, "s").second();
-                                    } break;
-                                    case 22: {
-                                        worker_update.Time = Raw_Time().add(6, "h").add(51, "m").add(48, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(6, "h").add(51, "m").add(48, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(6, "h").add(51, "m").add(48, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(6, "h").add(51, "m").add(48, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(6, "h").add(51, "m").add(48, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(6, "h").add(51, "m").add(48, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(6, "h").add(51, "m").add(48, "s").second();
-                                    } break;
-                                    case 23: {
-                                        worker_update.Time = Raw_Time().add(8, "h").add(38, "m").add(52, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(8, "h").add(38, "m").add(52, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(8, "h").add(38, "m").add(52, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(8, "h").add(38, "m").add(52, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(8, "h").add(38, "m").add(52, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(8, "h").add(38, "m").add(52, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(8, "h").add(38, "m").add(52, "s").second();
-                                    } break;
-                                    case 24: {
-                                        worker_update.Time = Raw_Time().add(10, "h").add(53, "m").add(46, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(10, "h").add(53, "m").add(46, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(10, "h").add(53, "m").add(46, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(10, "h").add(53, "m").add(46, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(10, "h").add(53, "m").add(46, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(10, "h").add(53, "m").add(46, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(10, "h").add(53, "m").add(46, "s").second();
-                                    } break;
-                                    case 25: {
-                                        worker_update.Time = Raw_Time().add(13, "h").add(43, "m").add(45, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(13, "h").add(43, "m").add(45, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(13, "h").add(43, "m").add(45, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(13, "h").add(43, "m").add(45, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(13, "h").add(43, "m").add(45, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(13, "h").add(43, "m").add(45, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(13, "h").add(43, "m").add(45, "s").second();
-                                    } break;
-                                    case 26: {
-                                        worker_update.Time = Raw_Time().add(17, "h").add(17, "m").add(56, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(17, "h").add(17, "m").add(56, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(17, "h").add(17, "m").add(56, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(17, "h").add(17, "m").add(56, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(17, "h").add(17, "m").add(56, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(17, "h").add(17, "m").add(56, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(17, "h").add(17, "m").add(56, "s").second();
-                                    } break;
-                                    case 27: {
-                                        worker_update.Time = Raw_Time().add(21, "h").add(47, "m").add(48, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(21, "h").add(47, "m").add(48, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(21, "h").add(47, "m").add(48, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(21, "h").add(47, "m").add(48, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(21, "h").add(47, "m").add(48, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(21, "h").add(47, "m").add(48, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(21, "h").add(47, "m").add(48, "s").second();
-                                    } break;
-                                    case 28: {
-                                        worker_update.Time = Raw_Time().add(27, "h").add(27, "m").add(50, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(27, "h").add(27, "m").add(50, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(27, "h").add(27, "m").add(50, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(27, "h").add(27, "m").add(50, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(27, "h").add(27, "m").add(50, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(27, "h").add(27, "m").add(50, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(27, "h").add(27, "m").add(50, "s").second();
-                                    } break;
-                                    case 29: {
-                                        worker_update.Time = Raw_Time().add(34, "h").add(36, "m").add(16, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(34, "h").add(36, "m").add(16, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(34, "h").add(36, "m").add(16, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(34, "h").add(36, "m").add(16, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(34, "h").add(36, "m").add(16, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(34, "h").add(36, "m").add(16, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(34, "h").add(36, "m").add(16, "s").second();
-                                    } break;
-                                    case 30: {
-                                        worker_update.Time = Raw_Time().add(43, "h").add(36, "m").add(6, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(43, "h").add(36, "m").add(6, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(43, "h").add(36, "m").add(6, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(43, "h").add(36, "m").add(6, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(43, "h").add(36, "m").add(6, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(43, "h").add(36, "m").add(6, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(43, "h").add(36, "m").add(6, "s").second();
-                                    } break;
+                                        case 2: {
+                                            worker_update.Time = Raw_Time().add(4, "m").add(2, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(4, "m").add(2, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(4, "m").add(2, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(4, "m").add(2, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(4, "m").add(2, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(4, "m").add(2, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(4, "m").add(2, "s").second();
+                                        } break;
+                                        case 3: {
+                                            worker_update.Time = Raw_Time().add(5, "m").add(6, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(5, "m").add(6, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(5, "m").add(6, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(5, "m").add(6, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(5, "m").add(6, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(5, "m").add(6, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(5, "m").add(6, "s").second();
+                                        } break;
+                                        case 4: {
+                                            worker_update.Time = Raw_Time().add(6, "m").add(25, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(6, "m").add(25, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(6, "m").add(25, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(6, "m").add(25, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(6, "m").add(25, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(6, "m").add(25, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(6, "m").add(25, "s").second();
+                                        } break;
+                                        case 5: {
+                                            worker_update.Time = Raw_Time().add(8, "m").add(5, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(8, "m").add(5, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(8, "m").add(5, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(8, "m").add(5, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(8, "m").add(5, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(8, "m").add(5, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(8, "m").add(5, "s").second();
+                                        } break;
+                                        case 6: {
+                                            worker_update.Time = Raw_Time().add(10, "m").add(12, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(10, "m").add(12, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(10, "m").add(12, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(10, "m").add(12, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(10, "m").add(12, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(10, "m").add(12, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(10, "m").add(12, "s").second();
+                                        } break;
+                                        case 7: {
+                                            worker_update.Time = Raw_Time().add(12, "m").add(51, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(12, "m").add(51, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(12, "m").add(51, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(12, "m").add(51, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(12, "m").add(51, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(12, "m").add(51, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(12, "m").add(51, "s").second();
+                                        } break;
+                                        case 8: {
+                                            worker_update.Time = Raw_Time().add(16, "m").add(11, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(16, "m").add(11, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(16, "m").add(11, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(16, "m").add(11, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(16, "m").add(11, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(16, "m").add(11, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(16, "m").add(11, "s").second();
+                                        } break;
+                                        case 9: {
+                                            worker_update.Time = Raw_Time().add(20, "m").add(24, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(20, "m").add(24, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(20, "m").add(24, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(20, "m").add(24, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(20, "m").add(24, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(20, "m").add(24, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(20, "m").add(24, "s").second();
+                                        } break;
+                                        case 10: {
+                                            worker_update.Time = Raw_Time().add(25, "m").add(43, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(25, "m").add(43, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(25, "m").add(43, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(25, "m").add(43, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(25, "m").add(43, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(25, "m").add(43, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(25, "m").add(43, "s").second();
+                                        } break;
+                                        case 11: {
+                                            worker_update.Time = Raw_Time().add(32, "m").add(24, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(32, "m").add(24, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(32, "m").add(24, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(32, "m").add(24, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(32, "m").add(24, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(32, "m").add(24, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(32, "m").add(24, "s").second();
+                                        } break;
+                                        case 12: {
+                                            worker_update.Time = Raw_Time().add(40, "m").add(49, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(40, "m").add(49, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(40, "m").add(49, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(40, "m").add(49, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(40, "m").add(49, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(40, "m").add(49, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(40, "m").add(49, "s").second();
+                                        } break;
+                                        case 13: {
+                                            worker_update.Time = Raw_Time().add(51, "m").add(26, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(51, "m").add(26, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(51, "m").add(26, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(51, "m").add(26, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(51, "m").add(26, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(51, "m").add(26, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(51, "m").add(26, "s").second();
+                                        } break;
+                                        case 14: {
+                                            worker_update.Time = Raw_Time().add(1, "h").add(51, "m").add(26, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(1, "h").add(51, "m").add(26, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(1, "h").add(51, "m").add(26, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(1, "h").add(51, "m").add(26, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(1, "h").add(51, "m").add(26, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(1, "h").add(51, "m").add(26, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(1, "h").add(51, "m").add(26, "s").second();
+                                        } break;
+                                        case 15: {
+                                            worker_update.Time = Raw_Time().add(1, "h").add(4, "m").add(49, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(1, "h").add(4, "m").add(49, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(1, "h").add(4, "m").add(49, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(1, "h").add(4, "m").add(49, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(1, "h").add(4, "m").add(49, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(1, "h").add(4, "m").add(49, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(1, "h").add(4, "m").add(49, "s").second();
+                                        } break;
+                                        case 16: {
+                                            worker_update.Time = Raw_Time().add(1, "h").add(42, "m").add(54, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(1, "h").add(42, "m").add(54, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(1, "h").add(42, "m").add(54, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(1, "h").add(42, "m").add(54, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(1, "h").add(42, "m").add(54, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(1, "h").add(42, "m").add(54, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(1, "h").add(42, "m").add(54, "s").second();
+                                        } break;
+                                        case 17: {
+                                            worker_update.Time = Raw_Time().add(2, "h").add(9, "m").add(40, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(2, "h").add(9, "m").add(40, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(2, "h").add(9, "m").add(40, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(2, "h").add(9, "m").add(40, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(2, "h").add(9, "m").add(40, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(2, "h").add(9, "m").add(40, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(2, "h").add(9, "m").add(40, "s").second();
+                                        } break;
+                                        case 18: {
+                                            worker_update.Time = Raw_Time().add(2, "h").add(43, "m").add(23, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(2, "h").add(43, "m").add(23, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(2, "h").add(43, "m").add(23, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(2, "h").add(43, "m").add(23, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(2, "h").add(43, "m").add(23, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(2, "h").add(43, "m").add(23, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(2, "h").add(43, "m").add(23, "s").second();
+                                        } break;
+                                        case 19: {
+                                            worker_update.Time = Raw_Time().add(3, "h").add(25, "m").add(51, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(3, "h").add(25, "m").add(51, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(3, "h").add(25, "m").add(51, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(3, "h").add(25, "m").add(51, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(3, "h").add(25, "m").add(51, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(3, "h").add(25, "m").add(51, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(3, "h").add(25, "m").add(51, "s").second();
+                                        } break;
+                                        case 20: {
+                                            worker_update.Time = Raw_Time().add(4, "h").add(19, "m").add(23, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(4, "h").add(19, "m").add(23, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(4, "h").add(19, "m").add(23, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(4, "h").add(19, "m").add(23, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(4, "h").add(19, "m").add(23, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(4, "h").add(19, "m").add(23, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(4, "h").add(19, "m").add(23, "s").second();
+                                        } break;
+                                        case 21: {
+                                            worker_update.Time = Raw_Time().add(5, "h").add(26, "m").add(49, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(5, "h").add(26, "m").add(49, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(5, "h").add(26, "m").add(49, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(5, "h").add(26, "m").add(49, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(5, "h").add(26, "m").add(49, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(5, "h").add(26, "m").add(49, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(5, "h").add(26, "m").add(49, "s").second();
+                                        } break;
+                                        case 22: {
+                                            worker_update.Time = Raw_Time().add(6, "h").add(51, "m").add(48, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(6, "h").add(51, "m").add(48, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(6, "h").add(51, "m").add(48, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(6, "h").add(51, "m").add(48, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(6, "h").add(51, "m").add(48, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(6, "h").add(51, "m").add(48, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(6, "h").add(51, "m").add(48, "s").second();
+                                        } break;
+                                        case 23: {
+                                            worker_update.Time = Raw_Time().add(8, "h").add(38, "m").add(52, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(8, "h").add(38, "m").add(52, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(8, "h").add(38, "m").add(52, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(8, "h").add(38, "m").add(52, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(8, "h").add(38, "m").add(52, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(8, "h").add(38, "m").add(52, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(8, "h").add(38, "m").add(52, "s").second();
+                                        } break;
+                                        case 24: {
+                                            worker_update.Time = Raw_Time().add(10, "h").add(53, "m").add(46, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(10, "h").add(53, "m").add(46, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(10, "h").add(53, "m").add(46, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(10, "h").add(53, "m").add(46, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(10, "h").add(53, "m").add(46, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(10, "h").add(53, "m").add(46, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(10, "h").add(53, "m").add(46, "s").second();
+                                        } break;
+                                        case 25: {
+                                            worker_update.Time = Raw_Time().add(13, "h").add(43, "m").add(45, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(13, "h").add(43, "m").add(45, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(13, "h").add(43, "m").add(45, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(13, "h").add(43, "m").add(45, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(13, "h").add(43, "m").add(45, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(13, "h").add(43, "m").add(45, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(13, "h").add(43, "m").add(45, "s").second();
+                                        } break;
+                                        case 26: {
+                                            worker_update.Time = Raw_Time().add(17, "h").add(17, "m").add(56, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(17, "h").add(17, "m").add(56, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(17, "h").add(17, "m").add(56, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(17, "h").add(17, "m").add(56, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(17, "h").add(17, "m").add(56, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(17, "h").add(17, "m").add(56, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(17, "h").add(17, "m").add(56, "s").second();
+                                        } break;
+                                        case 27: {
+                                            worker_update.Time = Raw_Time().add(21, "h").add(47, "m").add(48, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(21, "h").add(47, "m").add(48, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(21, "h").add(47, "m").add(48, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(21, "h").add(47, "m").add(48, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(21, "h").add(47, "m").add(48, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(21, "h").add(47, "m").add(48, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(21, "h").add(47, "m").add(48, "s").second();
+                                        } break;
+                                        case 28: {
+                                            worker_update.Time = Raw_Time().add(27, "h").add(27, "m").add(50, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(27, "h").add(27, "m").add(50, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(27, "h").add(27, "m").add(50, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(27, "h").add(27, "m").add(50, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(27, "h").add(27, "m").add(50, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(27, "h").add(27, "m").add(50, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(27, "h").add(27, "m").add(50, "s").second();
+                                        } break;
+                                        case 29: {
+                                            worker_update.Time = Raw_Time().add(34, "h").add(36, "m").add(16, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(34, "h").add(36, "m").add(16, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(34, "h").add(36, "m").add(16, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(34, "h").add(36, "m").add(16, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(34, "h").add(36, "m").add(16, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(34, "h").add(36, "m").add(16, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(34, "h").add(36, "m").add(16, "s").second();
+                                        } break;
+                                        case 30: {
+                                            worker_update.Time = Raw_Time().add(43, "h").add(36, "m").add(6, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(43, "h").add(36, "m").add(6, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(43, "h").add(36, "m").add(6, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(43, "h").add(36, "m").add(6, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(43, "h").add(36, "m").add(6, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(43, "h").add(36, "m").add(6, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(43, "h").add(36, "m").add(6, "s").second();
+                                        } break;
+                                    }
+
+                                    //equal data with player acc
+
+                                    await Connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Worker": worker_update } });
                                 }
 
-                                //equal data with player acc
+                            });
 
-                                await Connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Worker": worker_update } });
-                            }
-
-                        });
-
+                        } else {
+                            worker_update= "";
+                        }
                     });
+
                 } break;
                 //storage
                 case 3: {
                     await Connection.db("Besider").collection("Users").findOne({ "Info.Username": Username, "Info.Password": Password }).then(Raw_User => {
-                        //fill level and time
-                        Raw_User.Builds.Resource_Builds.Storage_Build.forEach(async Storage_Build => {
 
-                            //fill level
-                            if (Storage_Build.ID == ID_build && Storage_Build.Level <= 29) {
-                                Storage_Build.Level += 1;
-                                worker_update.To_level = Storage_Build.Level;
-                                switch (Number(Storage_Build.Level)) {
+                        if (Raw_User.Worker.length < Raw_User.Monitise.Worker) {
 
-                                    case 2: {
-                                        worker_update.Time = Raw_Time().add(4, "m").add(2, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(4, "m").add(2, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(4, "m").add(2, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(4, "m").add(2, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(4, "m").add(2, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(4, "m").add(2, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(4, "m").add(2, "s").second();
-                                    } break;
-                                    case 3: {
-                                        worker_update.Time = Raw_Time().add(5, "m").add(6, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(5, "m").add(6, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(5, "m").add(6, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(5, "m").add(6, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(5, "m").add(6, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(5, "m").add(6, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(5, "m").add(6, "s").second();
-                                    } break;
-                                    case 4: {
-                                        worker_update.Time = Raw_Time().add(6, "m").add(25, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(6, "m").add(25, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(6, "m").add(25, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(6, "m").add(25, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(6, "m").add(25, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(6, "m").add(25, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(6, "m").add(25, "s").second();
-                                    } break;
-                                    case 5: {
-                                        worker_update.Time = Raw_Time().add(8, "m").add(5, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(8, "m").add(5, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(8, "m").add(5, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(8, "m").add(5, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(8, "m").add(5, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(8, "m").add(5, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(8, "m").add(5, "s").second();
-                                    } break;
-                                    case 6: {
-                                        worker_update.Time = Raw_Time().add(10, "m").add(12, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(10, "m").add(12, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(10, "m").add(12, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(10, "m").add(12, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(10, "m").add(12, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(10, "m").add(12, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(10, "m").add(12, "s").second();
-                                    } break;
-                                    case 7: {
-                                        worker_update.Time = Raw_Time().add(12, "m").add(51, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(12, "m").add(51, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(12, "m").add(51, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(12, "m").add(51, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(12, "m").add(51, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(12, "m").add(51, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(12, "m").add(51, "s").second();
-                                    } break;
-                                    case 8: {
-                                        worker_update.Time = Raw_Time().add(16, "m").add(11, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(16, "m").add(11, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(16, "m").add(11, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(16, "m").add(11, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(16, "m").add(11, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(16, "m").add(11, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(16, "m").add(11, "s").second();
-                                    } break;
-                                    case 9: {
-                                        worker_update.Time = Raw_Time().add(20, "m").add(24, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(20, "m").add(24, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(20, "m").add(24, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(20, "m").add(24, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(20, "m").add(24, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(20, "m").add(24, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(20, "m").add(24, "s").second();
-                                    } break;
-                                    case 10: {
-                                        worker_update.Time = Raw_Time().add(25, "m").add(43, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(25, "m").add(43, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(25, "m").add(43, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(25, "m").add(43, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(25, "m").add(43, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(25, "m").add(43, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(25, "m").add(43, "s").second();
-                                    } break;
-                                    case 11: {
-                                        worker_update.Time = Raw_Time().add(32, "m").add(24, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(32, "m").add(24, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(32, "m").add(24, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(32, "m").add(24, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(32, "m").add(24, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(32, "m").add(24, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(32, "m").add(24, "s").second();
-                                    } break;
-                                    case 12: {
-                                        worker_update.Time = Raw_Time().add(40, "m").add(49, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(40, "m").add(49, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(40, "m").add(49, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(40, "m").add(49, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(40, "m").add(49, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(40, "m").add(49, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(40, "m").add(49, "s").second();
-                                    } break;
-                                    case 13: {
-                                        worker_update.Time = Raw_Time().add(51, "m").add(26, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(51, "m").add(26, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(51, "m").add(26, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(51, "m").add(26, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(51, "m").add(26, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(51, "m").add(26, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(51, "m").add(26, "s").second();
-                                    } break;
-                                    case 14: {
-                                        worker_update.Time = Raw_Time().add(1, "h").add(51, "m").add(26, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(1, "h").add(51, "m").add(26, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(1, "h").add(51, "m").add(26, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(1, "h").add(51, "m").add(26, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(1, "h").add(51, "m").add(26, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(1, "h").add(51, "m").add(26, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(1, "h").add(51, "m").add(26, "s").second();
-                                    } break;
-                                    case 15: {
-                                        worker_update.Time = Raw_Time().add(1, "h").add(4, "m").add(49, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(1, "h").add(4, "m").add(49, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(1, "h").add(4, "m").add(49, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(1, "h").add(4, "m").add(49, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(1, "h").add(4, "m").add(49, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(1, "h").add(4, "m").add(49, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(1, "h").add(4, "m").add(49, "s").second();
-                                    } break;
-                                    case 16: {
-                                        worker_update.Time = Raw_Time().add(1, "h").add(42, "m").add(54, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(1, "h").add(42, "m").add(54, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(1, "h").add(42, "m").add(54, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(1, "h").add(42, "m").add(54, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(1, "h").add(42, "m").add(54, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(1, "h").add(42, "m").add(54, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(1, "h").add(42, "m").add(54, "s").second();
-                                    } break;
-                                    case 17: {
-                                        worker_update.Time = Raw_Time().add(2, "h").add(9, "m").add(40, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(2, "h").add(9, "m").add(40, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(2, "h").add(9, "m").add(40, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(2, "h").add(9, "m").add(40, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(2, "h").add(9, "m").add(40, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(2, "h").add(9, "m").add(40, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(2, "h").add(9, "m").add(40, "s").second();
-                                    } break;
-                                    case 18: {
-                                        worker_update.Time = Raw_Time().add(2, "h").add(43, "m").add(23, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(2, "h").add(43, "m").add(23, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(2, "h").add(43, "m").add(23, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(2, "h").add(43, "m").add(23, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(2, "h").add(43, "m").add(23, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(2, "h").add(43, "m").add(23, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(2, "h").add(43, "m").add(23, "s").second();
-                                    } break;
-                                    case 19: {
-                                        worker_update.Time = Raw_Time().add(3, "h").add(25, "m").add(51, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(3, "h").add(25, "m").add(51, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(3, "h").add(25, "m").add(51, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(3, "h").add(25, "m").add(51, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(3, "h").add(25, "m").add(51, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(3, "h").add(25, "m").add(51, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(3, "h").add(25, "m").add(51, "s").second();
-                                    } break;
-                                    case 20: {
-                                        worker_update.Time = Raw_Time().add(4, "h").add(19, "m").add(23, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(4, "h").add(19, "m").add(23, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(4, "h").add(19, "m").add(23, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(4, "h").add(19, "m").add(23, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(4, "h").add(19, "m").add(23, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(4, "h").add(19, "m").add(23, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(4, "h").add(19, "m").add(23, "s").second();
-                                    } break;
-                                    case 21: {
-                                        worker_update.Time = Raw_Time().add(5, "h").add(26, "m").add(49, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(5, "h").add(26, "m").add(49, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(5, "h").add(26, "m").add(49, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(5, "h").add(26, "m").add(49, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(5, "h").add(26, "m").add(49, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(5, "h").add(26, "m").add(49, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(5, "h").add(26, "m").add(49, "s").second();
-                                    } break;
-                                    case 22: {
-                                        worker_update.Time = Raw_Time().add(6, "h").add(51, "m").add(48, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(6, "h").add(51, "m").add(48, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(6, "h").add(51, "m").add(48, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(6, "h").add(51, "m").add(48, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(6, "h").add(51, "m").add(48, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(6, "h").add(51, "m").add(48, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(6, "h").add(51, "m").add(48, "s").second();
-                                    } break;
-                                    case 23: {
-                                        worker_update.Time = Raw_Time().add(8, "h").add(38, "m").add(52, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(8, "h").add(38, "m").add(52, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(8, "h").add(38, "m").add(52, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(8, "h").add(38, "m").add(52, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(8, "h").add(38, "m").add(52, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(8, "h").add(38, "m").add(52, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(8, "h").add(38, "m").add(52, "s").second();
-                                    } break;
-                                    case 24: {
-                                        worker_update.Time = Raw_Time().add(10, "h").add(53, "m").add(46, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(10, "h").add(53, "m").add(46, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(10, "h").add(53, "m").add(46, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(10, "h").add(53, "m").add(46, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(10, "h").add(53, "m").add(46, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(10, "h").add(53, "m").add(46, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(10, "h").add(53, "m").add(46, "s").second();
-                                    } break;
-                                    case 25: {
-                                        worker_update.Time = Raw_Time().add(13, "h").add(43, "m").add(45, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(13, "h").add(43, "m").add(45, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(13, "h").add(43, "m").add(45, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(13, "h").add(43, "m").add(45, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(13, "h").add(43, "m").add(45, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(13, "h").add(43, "m").add(45, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(13, "h").add(43, "m").add(45, "s").second();
-                                    } break;
-                                    case 26: {
-                                        worker_update.Time = Raw_Time().add(17, "h").add(17, "m").add(56, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(17, "h").add(17, "m").add(56, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(17, "h").add(17, "m").add(56, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(17, "h").add(17, "m").add(56, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(17, "h").add(17, "m").add(56, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(17, "h").add(17, "m").add(56, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(17, "h").add(17, "m").add(56, "s").second();
-                                    } break;
-                                    case 27: {
-                                        worker_update.Time = Raw_Time().add(21, "h").add(47, "m").add(48, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(21, "h").add(47, "m").add(48, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(21, "h").add(47, "m").add(48, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(21, "h").add(47, "m").add(48, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(21, "h").add(47, "m").add(48, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(21, "h").add(47, "m").add(48, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(21, "h").add(47, "m").add(48, "s").second();
-                                    } break;
-                                    case 28: {
-                                        worker_update.Time = Raw_Time().add(27, "h").add(27, "m").add(50, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(27, "h").add(27, "m").add(50, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(27, "h").add(27, "m").add(50, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(27, "h").add(27, "m").add(50, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(27, "h").add(27, "m").add(50, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(27, "h").add(27, "m").add(50, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(27, "h").add(27, "m").add(50, "s").second();
-                                    } break;
-                                    case 29: {
-                                        worker_update.Time = Raw_Time().add(34, "h").add(36, "m").add(16, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(34, "h").add(36, "m").add(16, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(34, "h").add(36, "m").add(16, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(34, "h").add(36, "m").add(16, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(34, "h").add(36, "m").add(16, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(34, "h").add(36, "m").add(16, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(34, "h").add(36, "m").add(16, "s").second();
-                                    } break;
-                                    case 30: {
-                                        worker_update.Time = Raw_Time().add(43, "h").add(36, "m").add(6, "s").unix();
-                                        //date
-                                        worker_update.Deserilze_time.Y = Raw_Time().add(43, "h").add(36, "m").add(6, "s").year();
-                                        worker_update.Deserilze_time.MO = Raw_Time().add(43, "h").add(36, "m").add(6, "s").month() + 1;
-                                        worker_update.Deserilze_time.D = Raw_Time().add(43, "h").add(36, "m").add(6, "s").days() + 1;
-                                        //time
-                                        worker_update.Deserilze_time.H = Raw_Time().add(43, "h").add(36, "m").add(6, "s").hour();
-                                        worker_update.Deserilze_time.M = Raw_Time().add(43, "h").add(36, "m").add(6, "s").minute();
-                                        worker_update.Deserilze_time.S = Raw_Time().add(43, "h").add(36, "m").add(6, "s").second();
-                                    } break;
+                            //fill level and time
+                            Raw_User.Builds.Resource_Builds.Storage_Build.forEach(async Storage_Build => {
+
+                                //fill level
+                                if (Storage_Build.ID == ID_build && Storage_Build.Level <= 29) {
+                                    Storage_Build.Level += 1;
+                                    worker_update.To_level = Storage_Build.Level;
+                                    switch (Number(Storage_Build.Level)) {
+
+                                        case 2: {
+                                            worker_update.Time = Raw_Time().add(4, "m").add(2, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(4, "m").add(2, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(4, "m").add(2, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(4, "m").add(2, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(4, "m").add(2, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(4, "m").add(2, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(4, "m").add(2, "s").second();
+                                        } break;
+                                        case 3: {
+                                            worker_update.Time = Raw_Time().add(5, "m").add(6, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(5, "m").add(6, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(5, "m").add(6, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(5, "m").add(6, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(5, "m").add(6, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(5, "m").add(6, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(5, "m").add(6, "s").second();
+                                        } break;
+                                        case 4: {
+                                            worker_update.Time = Raw_Time().add(6, "m").add(25, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(6, "m").add(25, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(6, "m").add(25, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(6, "m").add(25, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(6, "m").add(25, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(6, "m").add(25, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(6, "m").add(25, "s").second();
+                                        } break;
+                                        case 5: {
+                                            worker_update.Time = Raw_Time().add(8, "m").add(5, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(8, "m").add(5, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(8, "m").add(5, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(8, "m").add(5, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(8, "m").add(5, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(8, "m").add(5, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(8, "m").add(5, "s").second();
+                                        } break;
+                                        case 6: {
+                                            worker_update.Time = Raw_Time().add(10, "m").add(12, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(10, "m").add(12, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(10, "m").add(12, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(10, "m").add(12, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(10, "m").add(12, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(10, "m").add(12, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(10, "m").add(12, "s").second();
+                                        } break;
+                                        case 7: {
+                                            worker_update.Time = Raw_Time().add(12, "m").add(51, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(12, "m").add(51, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(12, "m").add(51, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(12, "m").add(51, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(12, "m").add(51, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(12, "m").add(51, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(12, "m").add(51, "s").second();
+                                        } break;
+                                        case 8: {
+                                            worker_update.Time = Raw_Time().add(16, "m").add(11, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(16, "m").add(11, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(16, "m").add(11, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(16, "m").add(11, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(16, "m").add(11, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(16, "m").add(11, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(16, "m").add(11, "s").second();
+                                        } break;
+                                        case 9: {
+                                            worker_update.Time = Raw_Time().add(20, "m").add(24, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(20, "m").add(24, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(20, "m").add(24, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(20, "m").add(24, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(20, "m").add(24, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(20, "m").add(24, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(20, "m").add(24, "s").second();
+                                        } break;
+                                        case 10: {
+                                            worker_update.Time = Raw_Time().add(25, "m").add(43, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(25, "m").add(43, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(25, "m").add(43, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(25, "m").add(43, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(25, "m").add(43, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(25, "m").add(43, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(25, "m").add(43, "s").second();
+                                        } break;
+                                        case 11: {
+                                            worker_update.Time = Raw_Time().add(32, "m").add(24, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(32, "m").add(24, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(32, "m").add(24, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(32, "m").add(24, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(32, "m").add(24, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(32, "m").add(24, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(32, "m").add(24, "s").second();
+                                        } break;
+                                        case 12: {
+                                            worker_update.Time = Raw_Time().add(40, "m").add(49, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(40, "m").add(49, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(40, "m").add(49, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(40, "m").add(49, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(40, "m").add(49, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(40, "m").add(49, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(40, "m").add(49, "s").second();
+                                        } break;
+                                        case 13: {
+                                            worker_update.Time = Raw_Time().add(51, "m").add(26, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(51, "m").add(26, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(51, "m").add(26, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(51, "m").add(26, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(51, "m").add(26, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(51, "m").add(26, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(51, "m").add(26, "s").second();
+                                        } break;
+                                        case 14: {
+                                            worker_update.Time = Raw_Time().add(1, "h").add(51, "m").add(26, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(1, "h").add(51, "m").add(26, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(1, "h").add(51, "m").add(26, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(1, "h").add(51, "m").add(26, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(1, "h").add(51, "m").add(26, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(1, "h").add(51, "m").add(26, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(1, "h").add(51, "m").add(26, "s").second();
+                                        } break;
+                                        case 15: {
+                                            worker_update.Time = Raw_Time().add(1, "h").add(4, "m").add(49, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(1, "h").add(4, "m").add(49, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(1, "h").add(4, "m").add(49, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(1, "h").add(4, "m").add(49, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(1, "h").add(4, "m").add(49, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(1, "h").add(4, "m").add(49, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(1, "h").add(4, "m").add(49, "s").second();
+                                        } break;
+                                        case 16: {
+                                            worker_update.Time = Raw_Time().add(1, "h").add(42, "m").add(54, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(1, "h").add(42, "m").add(54, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(1, "h").add(42, "m").add(54, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(1, "h").add(42, "m").add(54, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(1, "h").add(42, "m").add(54, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(1, "h").add(42, "m").add(54, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(1, "h").add(42, "m").add(54, "s").second();
+                                        } break;
+                                        case 17: {
+                                            worker_update.Time = Raw_Time().add(2, "h").add(9, "m").add(40, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(2, "h").add(9, "m").add(40, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(2, "h").add(9, "m").add(40, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(2, "h").add(9, "m").add(40, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(2, "h").add(9, "m").add(40, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(2, "h").add(9, "m").add(40, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(2, "h").add(9, "m").add(40, "s").second();
+                                        } break;
+                                        case 18: {
+                                            worker_update.Time = Raw_Time().add(2, "h").add(43, "m").add(23, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(2, "h").add(43, "m").add(23, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(2, "h").add(43, "m").add(23, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(2, "h").add(43, "m").add(23, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(2, "h").add(43, "m").add(23, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(2, "h").add(43, "m").add(23, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(2, "h").add(43, "m").add(23, "s").second();
+                                        } break;
+                                        case 19: {
+                                            worker_update.Time = Raw_Time().add(3, "h").add(25, "m").add(51, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(3, "h").add(25, "m").add(51, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(3, "h").add(25, "m").add(51, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(3, "h").add(25, "m").add(51, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(3, "h").add(25, "m").add(51, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(3, "h").add(25, "m").add(51, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(3, "h").add(25, "m").add(51, "s").second();
+                                        } break;
+                                        case 20: {
+                                            worker_update.Time = Raw_Time().add(4, "h").add(19, "m").add(23, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(4, "h").add(19, "m").add(23, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(4, "h").add(19, "m").add(23, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(4, "h").add(19, "m").add(23, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(4, "h").add(19, "m").add(23, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(4, "h").add(19, "m").add(23, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(4, "h").add(19, "m").add(23, "s").second();
+                                        } break;
+                                        case 21: {
+                                            worker_update.Time = Raw_Time().add(5, "h").add(26, "m").add(49, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(5, "h").add(26, "m").add(49, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(5, "h").add(26, "m").add(49, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(5, "h").add(26, "m").add(49, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(5, "h").add(26, "m").add(49, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(5, "h").add(26, "m").add(49, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(5, "h").add(26, "m").add(49, "s").second();
+                                        } break;
+                                        case 22: {
+                                            worker_update.Time = Raw_Time().add(6, "h").add(51, "m").add(48, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(6, "h").add(51, "m").add(48, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(6, "h").add(51, "m").add(48, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(6, "h").add(51, "m").add(48, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(6, "h").add(51, "m").add(48, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(6, "h").add(51, "m").add(48, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(6, "h").add(51, "m").add(48, "s").second();
+                                        } break;
+                                        case 23: {
+                                            worker_update.Time = Raw_Time().add(8, "h").add(38, "m").add(52, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(8, "h").add(38, "m").add(52, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(8, "h").add(38, "m").add(52, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(8, "h").add(38, "m").add(52, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(8, "h").add(38, "m").add(52, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(8, "h").add(38, "m").add(52, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(8, "h").add(38, "m").add(52, "s").second();
+                                        } break;
+                                        case 24: {
+                                            worker_update.Time = Raw_Time().add(10, "h").add(53, "m").add(46, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(10, "h").add(53, "m").add(46, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(10, "h").add(53, "m").add(46, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(10, "h").add(53, "m").add(46, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(10, "h").add(53, "m").add(46, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(10, "h").add(53, "m").add(46, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(10, "h").add(53, "m").add(46, "s").second();
+                                        } break;
+                                        case 25: {
+                                            worker_update.Time = Raw_Time().add(13, "h").add(43, "m").add(45, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(13, "h").add(43, "m").add(45, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(13, "h").add(43, "m").add(45, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(13, "h").add(43, "m").add(45, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(13, "h").add(43, "m").add(45, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(13, "h").add(43, "m").add(45, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(13, "h").add(43, "m").add(45, "s").second();
+                                        } break;
+                                        case 26: {
+                                            worker_update.Time = Raw_Time().add(17, "h").add(17, "m").add(56, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(17, "h").add(17, "m").add(56, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(17, "h").add(17, "m").add(56, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(17, "h").add(17, "m").add(56, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(17, "h").add(17, "m").add(56, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(17, "h").add(17, "m").add(56, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(17, "h").add(17, "m").add(56, "s").second();
+                                        } break;
+                                        case 27: {
+                                            worker_update.Time = Raw_Time().add(21, "h").add(47, "m").add(48, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(21, "h").add(47, "m").add(48, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(21, "h").add(47, "m").add(48, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(21, "h").add(47, "m").add(48, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(21, "h").add(47, "m").add(48, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(21, "h").add(47, "m").add(48, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(21, "h").add(47, "m").add(48, "s").second();
+                                        } break;
+                                        case 28: {
+                                            worker_update.Time = Raw_Time().add(27, "h").add(27, "m").add(50, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(27, "h").add(27, "m").add(50, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(27, "h").add(27, "m").add(50, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(27, "h").add(27, "m").add(50, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(27, "h").add(27, "m").add(50, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(27, "h").add(27, "m").add(50, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(27, "h").add(27, "m").add(50, "s").second();
+                                        } break;
+                                        case 29: {
+                                            worker_update.Time = Raw_Time().add(34, "h").add(36, "m").add(16, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(34, "h").add(36, "m").add(16, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(34, "h").add(36, "m").add(16, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(34, "h").add(36, "m").add(16, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(34, "h").add(36, "m").add(16, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(34, "h").add(36, "m").add(16, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(34, "h").add(36, "m").add(16, "s").second();
+                                        } break;
+                                        case 30: {
+                                            worker_update.Time = Raw_Time().add(43, "h").add(36, "m").add(6, "s").unix();
+                                            //date
+                                            worker_update.Deserilze_time.Y = Raw_Time().add(43, "h").add(36, "m").add(6, "s").year();
+                                            worker_update.Deserilze_time.MO = Raw_Time().add(43, "h").add(36, "m").add(6, "s").month() + 1;
+                                            worker_update.Deserilze_time.D = Raw_Time().add(43, "h").add(36, "m").add(6, "s").days() + 1;
+                                            //time
+                                            worker_update.Deserilze_time.H = Raw_Time().add(43, "h").add(36, "m").add(6, "s").hour();
+                                            worker_update.Deserilze_time.M = Raw_Time().add(43, "h").add(36, "m").add(6, "s").minute();
+                                            worker_update.Deserilze_time.S = Raw_Time().add(43, "h").add(36, "m").add(6, "s").second();
+                                        } break;
+                                    }
+
+                                    //equal data with player acc
+
+                                    await Connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Worker": worker_update } });
+
                                 }
+                            });
 
-                                //equal data with player acc
-
-                                await Connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Worker": worker_update } });
-
-                            }
-                        });
+                        } else {
+                            worker_update= "";
+                        }
 
                     });
                 } break;
             }
 
         });
-
         return worker_update;
     }
 
