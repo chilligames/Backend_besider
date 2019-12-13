@@ -43,111 +43,124 @@ class Data_base_user {
     };
 
 
-    async creat_wood_build(Username, Password, Postion, type_build) {
+    async creat_build(Username, Password, Postion, type_build) {
+        switch (type_build) {
+            //wood
+            case 0: {
+                let Raw_model_resource = {
+                    ID: new Mongo_raw.ObjectId().toHexString(),
+                    Name: Username + Math.random(),
+                    Level: 1,
+                    Health: 1000,
+                    Postion: JSON.parse(Postion),
+                    Type_build: Number(type_build)
+                }
 
-        let Raw_model_resource = {
-            ID: new Mongo_raw.ObjectId().toHexString(),
-            Name: Username + Math.random(),
-            Level: 1,
-            Health: 1000,
-            Postion: JSON.parse(Postion),
-            Type_build: Number(type_build)
+                await new Mongo_raw.MongoClient(Mongo_string, { useUnifiedTopology: true, useNewUrlParser: true }).connect().then(async connection => {
+
+                    //cheack resurce here
+                    //cheak postion
+                    console.log("cheack here creat wood build");
+
+                    //insert to user build
+                    await connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Builds.Resource_Builds.Wood_Build": Raw_model_resource } });
+
+                });
+            } break;
+            //food
+            case 1: {
+                let Raw_model_resource = {
+                    ID: new Mongo_raw.ObjectId().toHexString(),
+                    Name: Username + Math.random(),
+                    Level: 1,
+                    Health: 1000,
+                    Postion: JSON.parse(Postion),
+                    Type_build: Number(type_build)
+                }
+
+                await new Mongo_raw.MongoClient(Mongo_string, { useUnifiedTopology: true, useNewUrlParser: true }).connect().then(async connection => {
+
+                    //cheack resurce here
+
+                    //cheak postion
+                    console.log("cheack here creat food build");
+
+                    //insert to user build
+                    await connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Builds.Resource_Builds.Food_Build": Raw_model_resource } });
+
+                });
+            } break;
+            //stone
+            case 2: {
+
+                let Raw_model_resource = {
+                    ID: new Mongo_raw.ObjectId().toHexString(),
+                    Name: Username + Math.random(),
+                    Level: 1,
+                    Health: 1000,
+                    Postion: JSON.parse(Postion),
+                    Type_build: Number(type_build)
+                }
+
+
+
+                await new Mongo_raw.MongoClient(Mongo_string, { useUnifiedTopology: true, useNewUrlParser: true }).connect().then(async connection => {
+
+                    //cheack resurce here
+                    //cheak postion
+                    console.log("cheack here creat stone build");
+
+                    //insert to user build
+                    await connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Builds.Resource_Builds.Stone_Build": Raw_model_resource } });
+
+                });
+            } break;
+            //storage
+            case 3: {
+                let Storage = {
+                    ID: new Mongo_raw.ObjectId().toHexString(),
+                    Name: Username + Math.random(),
+                    Level: 1,
+                    Health: 1000,
+                    Storage: 1000,
+                    Postion: JSON.parse(Postion),
+                    Type_build: Number(type_build)
+                }
+
+                await new Mongo_raw.MongoClient(Mongo_string, { useNewUrlParser: true, useUnifiedTopology: true }).connect().then(async connection => {
+
+                    console.log("cheak storeage money");
+                    await connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Builds.Resource_Builds.Storage_Build": Storage } });
+
+
+                });
+
+            } break;
+            //house
+            case 4: {
+
+                let House = {
+                    ID: new Mongo_raw.ObjectId().toHexString(),
+                    Name: Username + Math.random(),
+                    Level: 1,
+                    Health: 1000,
+                    People: 1000,
+                    Postion: JSON.parse(Postion),
+                    Type_build: Number(type_build)
+                }
+
+
+                await new Mongo_raw.MongoClient(Mongo_string, { useNewUrlParser: true, useUnifiedTopology: true }).connect().then(async connection => {
+
+                    console.log("cheak house money");
+                    await connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Builds.War_build.House": House } });
+                });
+
+            } break;
+
         }
 
-
-
-        await new Mongo_raw.MongoClient(Mongo_string, { useUnifiedTopology: true, useNewUrlParser: true }).connect().then(async connection => {
-
-            //cheack resurce here
-            //cheak postion
-            console.log("cheack here creat wood build");
-
-            //insert to user build
-            await connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Builds.Resource_Builds.Wood_Build": Raw_model_resource } });
-
-        });
     }
-
-
-    async creat_food_build(Username, Password, Postion, type_build) {
-
-
-        let Raw_model_resource = {
-            ID: new Mongo_raw.ObjectId().toHexString(),
-            Name: Username + Math.random(),
-            Level: 1,
-            Health: 1000,
-            Postion: JSON.parse(Postion),
-            Type_build: Number(type_build)
-        }
-
-
-
-        await new Mongo_raw.MongoClient(Mongo_string, { useUnifiedTopology: true, useNewUrlParser: true }).connect().then(async connection => {
-
-            //cheack resurce here
-
-            //cheak postion
-            console.log("cheack here creat food build");
-
-            //insert to user build
-            await connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Builds.Resource_Builds.Food_Build": Raw_model_resource } });
-
-        });
-    }
-
-
-    async creat_stone_build(Username, Password, Postion, type_build) {
-
-        let Raw_model_resource = {
-            ID: new Mongo_raw.ObjectId().toHexString(),
-            Name: Username + Math.random(),
-            Level: 1,
-            Health: 1000,
-            Postion: JSON.parse(Postion),
-            Type_build: Number(type_build)
-        }
-
-
-
-        await new Mongo_raw.MongoClient(Mongo_string, { useUnifiedTopology: true, useNewUrlParser: true }).connect().then(async connection => {
-
-            //cheack resurce here
-            //cheak postion
-            console.log("cheack here creat stone build");
-
-            //insert to user build
-            await connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Builds.Resource_Builds.Stone_Build": Raw_model_resource } });
-
-        });
-    }
-
-
-    async creat_storage(Username, Password, Postion, type_build) {
-
-        let Storage = {
-            ID: new Mongo_raw.ObjectId().toHexString(),
-            Name: Username + Math.random(),
-            Level: 1,
-            Health: 1000,
-            Storage: 1000,
-            Postion: JSON.parse(Postion),
-            Type_build: Number(type_build)
-        }
-
-
-
-        await new Mongo_raw.MongoClient(Mongo_string, { useNewUrlParser: true, useUnifiedTopology: true }).connect().then(async connection => {
-
-            console.log("cheak storeage money");
-            await connection.db("Besider").collection("Users").updateOne({ "Info.Username": Username, "Info.Password": Password }, { $push: { "Builds.Resource_Builds.Storage_Build": Storage } });
-
-
-        });
-
-
-    }
-
 
 
     async recive_postion_info(Postions) {
@@ -951,7 +964,7 @@ class Data_base_user {
                             });
 
                         } else {
-                            worker_update= "";
+                            worker_update = "";
                         }
                     });
                 } break;
@@ -1299,7 +1312,7 @@ class Data_base_user {
                             });
 
                         } else {
-                            worker_update= "";
+                            worker_update = "";
                         }
 
                     });
@@ -1647,7 +1660,7 @@ class Data_base_user {
                             });
 
                         } else {
-                            worker_update= "";
+                            worker_update = "";
                         }
                     });
 
@@ -1665,6 +1678,7 @@ class Data_base_user {
                                 if (Storage_Build.ID == ID_build && Storage_Build.Level <= 29) {
                                     Storage_Build.Level += 1;
                                     worker_update.To_level = Storage_Build.Level;
+
                                     switch (Number(Storage_Build.Level)) {
 
                                         case 2: {
@@ -1996,7 +2010,7 @@ class Data_base_user {
                             });
 
                         } else {
-                            worker_update= "";
+                            worker_update = "";
                         }
 
                     });
@@ -2431,7 +2445,7 @@ class Data_base_user {
                                     //data to user
                                     await new Mongo_raw.MongoClient(Mongo_string, { useUnifiedTopology: true, useNewUrlParser: true }).connect().then(async Connection_Internal => {
 
-                                        await Connection_Internal.db("Besider").collection("Users").findOneAndUpdate({ "Info.Username": Username, "Info.Password": Password }, { $set: { Worker: users.Worker, "Builds": users.Builds } });
+                                        await Connection_Internal.db("Besider").collection("Users").findOneAndUpdate({ "Info.Username": Username, "Info.Password": Password }, { $set: { Worker: users.Worker, Builds: users.Builds } });
 
                                     });
 
@@ -2461,7 +2475,7 @@ class Data_base_user {
 
                                     }
                                     await new Mongo_raw.MongoClient(Mongo_string, { useUnifiedTopology: true, useNewUrlParser: true }).connect().then(async Connection_Internal => {
-                                        await Connection_Internal.db("Besider").collection("Users").findOneAndUpdate({ "Info.Username": Username, "Info.Password": Password }, { $set: { Worker: users.Worker, "Builds": users.Builds } });
+                                        await Connection_Internal.db("Besider").collection("Users").findOneAndUpdate({ "Info.Username": Username, "Info.Password": Password }, { $set: { Worker: users.Worker, Builds: users.Builds } });
                                     });
 
 
@@ -2489,7 +2503,7 @@ class Data_base_user {
                                     }
                                     await new Mongo_raw.MongoClient(Mongo_string, { useNewUrlParser: true, useUnifiedTopology: true }).connect().then(async  Connection_Internal => {
 
-                                        await Connection_Internal.db("Besider").collection("Users").findOneAndUpdate({ "Info.Username": Username, "Info.Password": Password }, { $set: { Worker: users.Worker, "Builds": users.Builds } });
+                                        await Connection_Internal.db("Besider").collection("Users").findOneAndUpdate({ "Info.Username": Username, "Info.Password": Password }, { $set: { Worker: users.Worker, Builds: users.Builds } });
 
                                     });
 
@@ -2501,9 +2515,10 @@ class Data_base_user {
                                         //delete worker and inject new level
                                         if (users.Builds.Resource_Builds.Storage_Build[a].ID == users.Worker[i].ID_Build) {
 
-                                            //inject level and health build
+                                            //inject level, health ,storage build
                                             users.Builds.Resource_Builds.Storage_Build[a].Level = users.Worker[i].To_level;
                                             users.Builds.Resource_Builds.Storage_Build[a].Health += Math.round(users.Builds.Resource_Builds.Storage_Build[a].Health * 1.2);
+                                            users.Builds.Resource_Builds.Storage_Build[a].Storage += Math.round(users.Builds.Resource_Builds.Storage_Build[a].Storage * 1.7);
                                             //remove work
                                             delete users.Worker[i];
                                             let new_worker = [];
@@ -2517,7 +2532,7 @@ class Data_base_user {
                                     }
                                     await new Mongo_raw.MongoClient(Mongo_string, { useNewUrlParser: true, useUnifiedTopology: true }).connect().then(async Connection_Internal => {
 
-                                        await Connection_Internal.db("Besider").collection("Users").findOneAndUpdate({ "Info.Username": Username, "Info.Password": Password }, { $set: { Worker: users.Worker, "Builds": users.Builds } });
+                                        await Connection_Internal.db("Besider").collection("Users").findOneAndUpdate({ "Info.Username": Username, "Info.Password": Password }, { $set: { Worker: users.Worker, Builds: users.Builds } });
 
                                     });
 

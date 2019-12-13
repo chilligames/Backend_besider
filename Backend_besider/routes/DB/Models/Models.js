@@ -20,6 +20,7 @@ module.exports.Model_User = {
             Storage_Build: []
         },
         War_build: {
+            House:[]
         },
         Assistant_Builds: {
         },
